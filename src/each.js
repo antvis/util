@@ -1,5 +1,3 @@
-const checkType = require('./type');
-
 function each(elements, callback) {
   if (!elements) return;
 

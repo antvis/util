@@ -1,4 +1,4 @@
-const checkType = require('./type');
+const isFunction = require('./type/isFunction');
 const toArray = require('./toArray');
 const objectUtil = require('./object');
 
@@ -7,7 +7,7 @@ const mix = objectUtil.mix;
 const classUtil = {
   extend(subclass, superclass, overrides, staticOverrides) {
     // 如果只提供父类构造函数，则自动生成子类构造函数
-    if (!checkType.isFunction(superclass)) {
+    if (!isFunction(superclass)) {
       overrides = superclass;
       superclass = subclass;
       subclass = function() {};
@@ -41,7 +41,7 @@ const classUtil = {
     const args = toArray(arguments);
     for (let i = 1; i < args.length; i++) {
       let obj = args[i];
-      if (checkType.isFunction(obj)) {
+      if (isFunction(obj)) {
         obj = obj.prototype;
       }
       mix(c.prototype, obj);

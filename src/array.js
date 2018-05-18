@@ -1,5 +1,4 @@
-const toArray = require('./toArray');
-const checkType = require('./type');
+const isArrayLike = require('./type/isArrayLike');
 
 const arrayProto = Array.prototype;
 const slice = arrayProto.slice;
@@ -60,7 +59,7 @@ function remove(arr, predicate) {
    * console.log(evens) // => [2, 4]
    */
   const result = [];
-  if (!checkType.isArrayLike(arr)) {
+  if (!isArrayLike(arr)) {
     return result;
   }
   let i = -1;

@@ -1,5 +1,4 @@
-const checkType = require('./type');
-const isNumber = checkType.isNumber;
+const isNumber = require('./type/isNumber');
 const PRECISION = 0.00001; // numbers less than this is considered as 0
 const RADIAN = Math.PI / 180;
 const DEGREE = 180 / Math.PI;
