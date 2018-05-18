@@ -2,7 +2,7 @@ const isArray = require('./type/isArray');
 const isObject = require('./type/isObject');
 
 const MAX_LEVEL = 5;
-const merge = function(dst, src, level) {
+const merge = function (dst, src, level) {
   level = level || 0;
   for (var k in src) {
     if (src.hasOwnProperty(k)) {
@@ -18,11 +18,10 @@ const merge = function(dst, src, level) {
         }
       } else if (isArray(value)) {
         dst[k] = [];
-        }
-        dst[k] = dst[k].concat(value);
-      } else if (value !== undefined) {
-        dst[k] = src[k];
       }
+      dst[k] = dst[k].concat(value);
+    } else if (value !== undefined) {
+      dst[k] = src[k];
     }
   }
 };
