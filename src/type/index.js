@@ -3,7 +3,6 @@ const checkType =  {
     isArray: require('./isArray'),
     isArrayLike: require('./isArrayLike'),
     isBoolean: require('./isBoolean'),
-    isEmpty: require('./isEmpty'),
     isFunction: require('./isFunction'),
     isNil: require('./isNil'),
     isNull: require('./isNull'),
