@@ -6,13 +6,16 @@ const indexOf = arrayProto.indexOf;
 const splice = arrayProto.splice;
 
 function contains(arr, value) {
+  if (!isArrayLike(arr)) {
+    return false;
+  }
   return indexOf.call(arr, value) > -1;
 }
 
 function uniq(arr) {
   const resultArr = [];
   arr.forEach(item => {
-    if (!contains(resultArr)) {
+    if (!contains(resultArr, item)) {
       resultArr.push(item);
     }
   });
@@ -37,6 +40,9 @@ function pull(arr) {
 }
 
 function pullAt(arr, indexes) {
+  if (!isArrayLike(arr)) {
+    return [];
+  }
   let length = arr ? indexes.length : 0;
   const last = length - 1;
 
