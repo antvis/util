@@ -5,7 +5,7 @@ const isArrayLike = function(value) {
      * isArrayLike('abc') => true
      * isArrayLike(Function) => false
      */
-    return value !== null && typeof value !== 'function' && isFinite(value.length);
+  return value !== null && typeof value !== 'function' && isFinite(value.length);
 };
 
 module.exports = isArrayLike;

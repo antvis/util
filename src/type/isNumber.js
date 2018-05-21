@@ -1,10 +1,10 @@
 /**
- * ÅÐ¶ÏÊÇ·ñÊý×Ö
- * @return {Boolean} ÊÇ·ñÊý×Ö
+ * ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @return {Boolean} ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 const isType = require('./isType');
 
 const isNumber = function(value) {
-    return isType(value, 'Number');
+  return isType(value, 'Number');
 };
 module.exports = isNumber;

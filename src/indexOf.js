@@ -1,11 +1,11 @@
 const indexOf = function(arr, obj) {
-  var m = Array.prototype.indexOf;
+  const m = Array.prototype.indexOf;
   if (m) {
     return m.call(arr, obj);
   }
-  var index = -1;
+  let index = -1;
 
-  for (var i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     if (arr[i] === obj) {
       index = i;
       break;

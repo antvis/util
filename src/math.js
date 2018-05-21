@@ -41,7 +41,7 @@ const mathUtil = {
   },
   mod(n, m) {
     return ((n % m) + m) % m;
-  }
+  },
   toFloat(str) {
     return parseFloat(str);
   },
@@ -52,7 +52,7 @@ const mathUtil = {
   toInteger,
   toRadian(degree) {
     return RADIAN * degree;
-  },
-}
+  }
+};
 
 module.exports = mathUtil;

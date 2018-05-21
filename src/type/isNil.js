@@ -1,9 +1,9 @@
 function isNull(value) {
-    return value === null;
+  return value === null;
 }
 
 function isUndefined(value) {
-    return value === undefined;
+  return value === undefined;
 }
 
 // isFinite,
@@ -12,7 +12,7 @@ const isNil = function(value) {
      * isNil(null) => true
      * isNil() => true
      */
-    return isUndefined(value) || isNull(value);
-}
+  return isUndefined(value) || isNull(value);
+};
 
 module.exports = isNil;

@@ -5,8 +5,8 @@ const isObject = function(value) {
      * isObject(Function) => true
      * isObject(null) => false
      */
-    const type = typeof value;
-    return value !== null && type === 'object' || type === 'function';
+  const type = typeof value;
+  return value !== null && type === 'object' || type === 'function';
 };
 
 module.exports = isObject;

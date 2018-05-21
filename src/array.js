@@ -26,10 +26,10 @@ function pull(arr) {
    * console.log(arr) // => [ 'b', 'b' ]
    */
   const values = slice.call(arguments, 1);
-  for (let i = 0; i < values.length; i ++) {
+  for (let i = 0; i < values.length; i++) {
     const value = values[i];
     let fromIndex = -1;
-    while (fromIndex = indexOf.call(arr, value) > -1) {
+    while ((fromIndex = indexOf.call(arr, value)) > -1) {
       splice.call(arr, fromIndex, 1);
     }
   }
@@ -68,9 +68,9 @@ function remove(arr, predicate) {
 
   while (++i < length) {
     const value = arr[i];
-    if (predicate(value, i, array)) {
+    if (predicate(value, i, arr)) {
       result.push(value);
-      indexes.push(index);
+      indexes.push(i);
     }
   }
   pullAt(arr, indexes);
@@ -83,7 +83,7 @@ const arrayUtil = {
   pullAll: pull,
   pullAt,
   remove,
-  uniq,
+  uniq
 };
 
 module.exports = arrayUtil;

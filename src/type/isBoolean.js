@@ -1,13 +1,13 @@
 /**
- * ÊÇ·ñÊÇ²¼¶ûÀàĞÍ
+ * æ˜¯å¦æ˜¯å¸ƒå°”ç±»å‹
  *
- * @param {Object} value ²âÊÔµÄÖµ
+ * @param {Object} value æµ‹è¯•çš„å€¼
  * @return {Boolean}
  */
 const isType = require('./isType');
 
-isBoolean = function(value) {
-    return isType(value, 'Boolean';;
+const isBoolean = function(value) {
+  return isType(value, 'Boolean');
 };
 
 module.exports = isBoolean;

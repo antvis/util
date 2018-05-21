@@ -2,11 +2,12 @@ const isArray = require('./type/isArray');
 const isObject = require('./type/isObject');
 
 const MAX_LEVEL = 5;
-const merge = function (dst, src, level) {
+const merge = function(dst, src, level) {
   level = level || 0;
-  for (var k in src) {
+  let value;
+  for (const k in src) {
     if (src.hasOwnProperty(k)) {
-      var value = src[k];
+      value = src[k];
       if (value !== null && isObject(value)) {
         if (!isObject(dst[k])) {
           dst[k] = {};

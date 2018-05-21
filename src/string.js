@@ -23,7 +23,7 @@ const strUtil = {
   upperFirst(value) {
     value = toString(value);
     return upperCase(value.charAt(0)) + value.substring(1);
-  },
-}
+  }
+};
 
 module.exports = strUtil;

@@ -1,13 +1,13 @@
 /**
- * ÊÇ·ñÎªº¯Êý
- * @param  {*} fn ¶ÔÏó
- * @return {Boolean}  ÊÇ·ñº¯Êý
+ * ï¿½Ç·ï¿½Îªï¿½ï¿½ï¿½ï¿½
+ * @param  {*} fn ï¿½ï¿½ï¿½ï¿½
+ * @return {Boolean}  ï¿½Ç·ï¿½ï¿½ï¿½
  */
 
 const isType = require('./isType');
 
 const isFunction = function(value) {
-    return isType(value, 'Function');
-}
+  return isType(value, 'Function');
+};
 
 module.exports = isFunction;

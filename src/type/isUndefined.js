@@ -1,5 +1,5 @@
 const isUndefined = function(value) {
-    return value === undefined;
+  return value === undefined;
 };
 
 module.exports = isUndefined;

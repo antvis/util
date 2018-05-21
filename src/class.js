@@ -46,7 +46,7 @@ const classUtil = {
       }
       mix(c.prototype, obj);
     }
-  },
+  }
 };
 
 module.exports = classUtil;
