@@ -1,4 +1,9 @@
+const isArrayLike = require('./type/isArrayLike');
+
 const indexOf = function(arr, obj) {
+  if (!isArrayLike(arr)) {
+    return -1;
+  }
   const m = Array.prototype.indexOf;
   if (m) {
     return m.call(arr, obj);
