@@ -12,6 +12,10 @@ module.exports = {
     sourceMaps: 'inline'
   },
   extensions: ['.js'],
-  include: [],
-  exclude: []
-};
+  include: [
+    'node_modules/**/src/gl-matrix/**/*.js'
+  ],
+  exclude: [
+    'bower_components/**/*.js',
+  ]
+}
