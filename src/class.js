@@ -2,7 +2,7 @@ const isFunction = require('./type/isFunction');
 const toArray = require('./toArray');
 const objectUtil = require('./object');
 
-const mix = objectUtil.mix;
+const assign = objectUtil.assign;
 
 const classUtil = {
   extend(subclass, superclass, overrides, staticOverrides) {
@@ -30,10 +30,10 @@ const classUtil = {
       };
 
     const superObj = create(superclass.prototype, subclass); // new superclass(),//实例化父类作为子类的prototype
-    subclass.prototype = mix(superObj, subclass.prototype); // 指定子类的prototype
+    subclass.prototype = assign(superObj, subclass.prototype); // 指定子类的prototype
     subclass.superclass = create(superclass.prototype, superclass);
-    mix(superObj, overrides);
-    mix(subclass, staticOverrides);
+    assign(superObj, overrides);
+    assign(subclass, staticOverrides);
     return subclass;
   },
 
@@ -44,7 +44,7 @@ const classUtil = {
       if (isFunction(obj)) {
         obj = obj.prototype;
       }
-      mix(c.prototype, obj);
+      assign(c.prototype, obj);
     }
   }
 };

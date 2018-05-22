@@ -38,7 +38,7 @@ function _deepMix(dist, src, level, maxLevel) {
 }
 
 const objectUtil = {
-  deepMix() {
+  merge() {
     const args = toArray(arguments);
     const dist = args[0];
     for (let i = 1; i < args.length; i++) {
@@ -46,7 +46,7 @@ const objectUtil = {
     }
     return dist;
   },
-  mix(dist, src1, src2, src3) {
+  assign(dist, src1, src2, src3) {
     if (src1) _mix(dist, src1);
     if (src2) _mix(dist, src2);
     if (src3) _mix(dist, src3);
