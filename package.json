@@ -1,7 +1,7 @@
 {
   "name": "@antv/util",
   "version": "1.0.0",
-  "description": "A common util collection for other antv projects",
+  "description": "A common util collection for antv projects",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
@@ -46,7 +46,6 @@
     "eslint-config-airbnb": "~15.0.1",
     "eslint-config-egg": "~4.2.0",
     "istanbul": "~0.4.5",
-    "lebab": "^2.7.7",
     "pre-commit": "~1.2.2",
     "shelljs": "~0.7.8",
     "spm-sinon": "~1.6.0",
