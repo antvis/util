@@ -1,6 +1,6 @@
 /**
- * �ж��Ƿ�����
- * @return {Boolean} �Ƿ�����
+ * 判断是否数字
+ * @return {Boolean} 是否数字
  */
 const isType = require('./isType');
 
