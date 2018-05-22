@@ -1,5 +1,4 @@
-const toArray = require('./toArray');
-const checkType = require('./type');
+const isArrayLike = require('./type/isArrayLike');
 
 const arrayProto = Array.prototype;
 const slice = arrayProto.slice;
@@ -7,13 +6,16 @@ const indexOf = arrayProto.indexOf;
 const splice = arrayProto.splice;
 
 function contains(arr, value) {
+  if (!isArrayLike(arr)) {
+    return false;
+  }
   return indexOf.call(arr, value) > -1;
 }
 
 function uniq(arr) {
   const resultArr = [];
   arr.forEach(item => {
-    if (!contains(resultArr)) {
+    if (!contains(resultArr, item)) {
       resultArr.push(item);
     }
   });
@@ -27,10 +29,10 @@ function pull(arr) {
    * console.log(arr) // => [ 'b', 'b' ]
    */
   const values = slice.call(arguments, 1);
-  for (let i = 0; i < values.length; i ++) {
+  for (let i = 0; i < values.length; i++) {
     const value = values[i];
     let fromIndex = -1;
-    while (fromIndex = indexOf.call(arr, value) > -1) {
+    while ((fromIndex = indexOf.call(arr, value)) > -1) {
       splice.call(arr, fromIndex, 1);
     }
   }
@@ -38,6 +40,9 @@ function pull(arr) {
 }
 
 function pullAt(arr, indexes) {
+  if (!isArrayLike(arr)) {
+    return [];
+  }
   let length = arr ? indexes.length : 0;
   const last = length - 1;
 
@@ -60,7 +65,7 @@ function remove(arr, predicate) {
    * console.log(evens) // => [2, 4]
    */
   const result = [];
-  if (!checkType.isArrayLike(arr)) {
+  if (!isArrayLike(arr)) {
     return result;
   }
   let i = -1;
@@ -69,9 +74,9 @@ function remove(arr, predicate) {
 
   while (++i < length) {
     const value = arr[i];
-    if (predicate(value, i, array)) {
+    if (predicate(value, i, arr)) {
       result.push(value);
-      indexes.push(index);
+      indexes.push(i);
     }
   }
   pullAt(arr, indexes);
@@ -84,7 +89,7 @@ const arrayUtil = {
   pullAll: pull,
   pullAt,
   remove,
-  uniq,
+  uniq
 };
 
 module.exports = arrayUtil;

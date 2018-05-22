@@ -15,8 +15,8 @@ function isObject(value) {
      * isObject(Function) => true
      * isObject(null) => false
      */
-    const type = typeof value;
-    return value !== null && type === 'object' || type === 'function';
+  const type = typeof value;
+  return value !== null && type === 'object' || type === 'function';
 }
 function isObjectLike(value) {
     /**
@@ -25,7 +25,7 @@ function isObjectLike(value) {
      * isObjectLike(Function) => false
      * isObjectLike(null) => false
      */
-    return typeof value === 'object' && value !== null;
+  return typeof value === 'object' && value !== null;
 }
 
 const checkType = {
@@ -41,7 +41,7 @@ const checkType = {
      * isArrayLike(Function) => false
      */
     return value !== null && typeof value !== 'function' && isFinite(value.length);
-  }
+  },
   // isFinite,
   isNil(value) {
     /**
@@ -78,7 +78,7 @@ const checkType = {
     const proto = (typeof Ctor === 'function' && Ctor.prototype) || objectProto;
     return value === proto;
   },
-  isUndefined,
+  isUndefined
 };
 
 // common types
@@ -91,7 +91,7 @@ const checkType = {
   'Number',
   'RegExp',
   'String'
-].forEach(function(type){
+].forEach(function(type) {
   checkType['is' + type] = function(value) {
     return isType(value, type);
   };

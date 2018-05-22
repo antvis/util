@@ -1,4 +1,5 @@
-const checkType = require('./type');
+const isPlainObject = require('./type/isPlainObject');
+const isArray = require('./type/isArray');
 const toArray = require('./toArray');
 
 const MAX_MIX_LEVEL = 5;
@@ -17,8 +18,8 @@ function _deepMix(dist, src, level, maxLevel) {
   for (const key in src) {
     if (src.hasOwnProperty(key)) {
       const value = src[key];
-      if (value !== null && checkType.isPlainObject(value)) {
-        if (!checkType.isPlainObject(dist[key])) {
+      if (value !== null && isPlainObject(value)) {
+        if (!isPlainObject(dist[key])) {
           dist[key] = {};
         }
         if (level < maxLevel) {
@@ -26,7 +27,7 @@ function _deepMix(dist, src, level, maxLevel) {
         } else {
           dist[key] = src[key];
         }
-      } else if (checkType.isArray(value)) {
+      } else if (isArray(value)) {
         dist[key] = [];
         dist[key] = dist[key].concat(value);
       } else if (value !== undefined) {
@@ -40,7 +41,7 @@ const objectUtil = {
   deepMix() {
     const args = toArray(arguments);
     const dist = args[0];
-    for (let i = 1; i < args.length; i ++) {
+    for (let i = 1; i < args.length; i++) {
       _deepMix(dist, args[i]);
     }
     return dist;

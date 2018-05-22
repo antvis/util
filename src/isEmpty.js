@@ -1,5 +1,8 @@
-const checkType = require('./type');
-const hasOwnProperty = Object.prototype.hasOwnProperty
+const isNil = require('./type/isNil');
+const isArrayLike = require('./type/isArrayLike');
+const getType = require('./type/getType');
+const isPrototype = require('./type/isPrototype');
+const hasOwnProperty = Object.prototype.hasOwnProperty;
 
 function isEmpty(value) {
   /**
@@ -11,17 +14,17 @@ function isEmpty(value) {
    * isEmpty('abc') => false
    * isEmpty({ a: 1 }) => false
    */
-  if (checkType.isNil(value)) {
+  if (isNil(value)) {
     return true;
   }
-  if (checkType.isArrayLike(value)) {
+  if (isArrayLike(value)) {
     return !value.length;
   }
-  const type = checkType.getType(value);
+  const type = getType(value);
   if (type === 'Map' || type === 'Set') {
     return !value.size;
   }
-  if (checkType.isPrototype(value)) {
+  if (isPrototype(value)) {
     return !Object.keys(value).length;
   }
   for (const key in value) {

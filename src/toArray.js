@@ -1,8 +1,7 @@
-
-const checkType = require('./type');
+const isArrayLike = require('./type/isArrayLike');
 
 function toArray(value) {
-  return checkType.isArrayLike(value) ? Array.prototype.slice.call(value) : [];
+  return isArrayLike(value) ? Array.prototype.slice.call(value) : [];
 }
 
 module.exports = toArray;
