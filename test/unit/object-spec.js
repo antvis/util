@@ -6,7 +6,7 @@ describe('object utils', () => {
     const a = { a: 123 },
       b = { b: 'b' };
 
-    objectUtil.assign(a, b);
+    objectUtil.mix(a, b);
     expect(a.b).to.equal(b.b);
 
     const test = {
@@ -15,7 +15,7 @@ describe('object utils', () => {
       c: { x: 1, y: 2 }
     };
 
-    const testMix = objectUtil.merge({}, test, {
+    const testMix = objectUtil.deepMix({}, test, {
       e: {
         f: 1,
         g: 3
@@ -27,16 +27,16 @@ describe('object utils', () => {
     expect(testMix.b.length).to.equal(1);
   });
 
-  it('merge circle', function() {
+  it('deepMix circle', function() {
     const a = { a1: 123, a2: 234 };
     const b = { b1: 222, b2: a };
 
     a.a3 = b;
-    const obj = objectUtil.merge({}, b);
+    const obj = objectUtil.deepMix({}, b);
     expect(obj.b2).not.to.equal(a);
   });
 
-  it('merge prototype', function() {
+  it('deepMix prototype', function() {
     const A = function(a) {
         this.a = a;
       },
@@ -45,7 +45,7 @@ describe('object utils', () => {
     A.prototype.c = 'c';
     const a = new A('123');
 
-    objectUtil.merge(b, a);
+    objectUtil.deepMix(b, a);
     expect(b.c).to.be.undefined;
   });
 });
