@@ -59,4 +59,7 @@ typings/
 
 package-lock.json
 
+bin
 build
+dist
+lib
