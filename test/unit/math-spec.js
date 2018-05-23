@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const mathUtil = require('../../src/math');
+const mathUtil = require('../../src/math/index');
 
 describe('math util', () => {
   it('clamp', () => {
@@ -78,8 +78,8 @@ describe('math util', () => {
   });
 
   it('toInt', () => {
-    expect(mathUtil.toInt('123.45')).to.equal(123);
-    expect(mathUtil.toInt('-3.4')).to.equal(-3);
+    expect(mathUtil.toInteger('123.45')).to.equal(123);
+    expect(mathUtil.toInteger('-3.4')).to.equal(-3);
     expect(isNaN(mathUtil.toInt('NaN'))).to.be.true;
   });
 

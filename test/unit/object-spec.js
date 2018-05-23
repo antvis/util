@@ -1,12 +1,13 @@
 const expect = require('chai').expect;
-const objectUtil = require('../../src/object');
+const deepMix = require('../../src/deepMix');
+const mix = require('../../src/mix');
 
 describe('object utils', () => {
   it('mix', function() {
     const a = { a: 123 },
       b = { b: 'b' };
 
-    objectUtil.mix(a, b);
+    mix(a, b);
     expect(a.b).to.equal(b.b);
 
     const test = {
@@ -15,7 +16,7 @@ describe('object utils', () => {
       c: { x: 1, y: 2 }
     };
 
-    const testMix = objectUtil.deepMix({}, test, {
+    const testMix = deepMix({}, test, {
       e: {
         f: 1,
         g: 3
@@ -32,7 +33,7 @@ describe('object utils', () => {
     const b = { b1: 222, b2: a };
 
     a.a3 = b;
-    const obj = objectUtil.deepMix({}, b);
+    const obj = deepMix({}, b);
     expect(obj.b2).not.to.equal(a);
   });
 
@@ -45,7 +46,7 @@ describe('object utils', () => {
     A.prototype.c = 'c';
     const a = new A('123');
 
-    objectUtil.deepMix(b, a);
+    deepMix(b, a);
     expect(b.c).to.be.undefined;
   });
 });
