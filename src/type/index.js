@@ -1,3 +1,5 @@
+const isType = require('./isType');
+
 const checkType = {
   getType: require('./getType'),
   isArray: require('./isArray'),
@@ -11,7 +13,7 @@ const checkType = {
   isObjectLike: require('./isObjectLike'),
   isPlainObject: require('./isPlainObject'),
   isPrototype: require('./isPrototype'),
-  isType: require('./isType'),
+  isType,
   isUndefined: require('./isUndefined')
 };
 
@@ -23,7 +25,7 @@ const checkType = {
   'String'
 ].forEach(function(type) {
   checkType['is' + type] = function(value) {
-    return this.isType(value, type);
+    return isType(value, type);
   };
 });
 
