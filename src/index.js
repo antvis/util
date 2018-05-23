@@ -4,6 +4,7 @@ module.exports = {
   mathUtil: require('./math'),
   objectUtil: require('./object'),
   stringUtil: require('./string'),
+  typeUtil: require('./type/index'),
   clone: require('./clone'),
   each: require('./each'),
   filter: require('./filter'),
