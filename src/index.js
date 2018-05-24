@@ -52,7 +52,6 @@ module.exports = {
   contains: require('./array/contains'),
   firstValue: require('./array/firstValue'),
   getRange: require('./array/getRange'),
-  mergeArray: require('./array/merge'),
   pull: require('./array/pull'),
   pullAt: require('./array/pullAt'),
   remove: require('./array/remove'),
