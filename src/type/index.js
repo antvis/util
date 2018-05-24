@@ -14,15 +14,15 @@ const checkType = {
   isPlainObject: require('./isPlainObject'),
   isPrototype: require('./isPrototype'),
   isType,
-  isUndefined: require('./isUndefined')
+  isUndefined: require('./isUndefined'),
+  isString: require('./isString'),
+  isRegExp: require('./isRegExp')
 };
 
 [
   'Arguments',
   'Date',
-  'Error',
-  'RegExp',
-  'String'
+  'Error'
 ].forEach(function(type) {
   checkType['is' + type] = function(value) {
     return isType(value, type);

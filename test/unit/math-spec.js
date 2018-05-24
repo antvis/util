@@ -22,16 +22,6 @@ describe('math util', () => {
     expect(mathUtil.isEven(-1)).to.be.false;
   });
 
-  it('isFinite', () => {
-    expect(mathUtil.isFinite(1)).to.be.true;
-    expect(mathUtil.isFinite(NaN)).to.be.false;
-  });
-
-  it('isNaN', () => {
-    expect(mathUtil.isNaN(0)).to.be.false;
-    expect(mathUtil.isNaN(NaN)).to.be.true;
-  });
-
   it('isNegative', () => {
     expect(mathUtil.isNegative(0)).to.be.false;
     expect(mathUtil.isNegative(11)).to.be.false;
@@ -65,12 +55,6 @@ describe('math util', () => {
     expect(mathUtil.mod(5, 2)).to.equal(1);
     expect(mathUtil.mod(-5, 2)).to.equal(1);
     expect(mathUtil.mod(5, -2)).to.equal(-1);
-  });
-
-  it('toFloat', () => {
-    expect(mathUtil.toFloat('123.45')).to.equal(123.45);
-    expect(mathUtil.toFloat('0')).to.equal(0);
-    expect(isNaN(mathUtil.toFloat('NaN'))).to.be.true;
   });
 
   it('toDegree', () => {
