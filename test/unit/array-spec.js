@@ -54,11 +54,4 @@ describe('array', () => {
     expect(values.length).to.equal(3);
     expect(values[2]).to.equal(-1);
   });
-
-  it('merge', () => {
-    const data = [ null, { a: 1 }, 1, '2' ];
-    const b = arrayUtil.merge(data);
-    expect(b.length).to.equal(4);
-    expect(b[0]).to.equal(null);
-  });
 });

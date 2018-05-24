@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const mathUtil = require('../../src/math');
+const mathUtil = require('../../src/math/index');
 
 describe('math util', () => {
   it('clamp', () => {
@@ -20,16 +20,6 @@ describe('math util', () => {
     expect(mathUtil.isEven(0)).to.be.true;
     expect(mathUtil.isEven(1)).to.be.false;
     expect(mathUtil.isEven(-1)).to.be.false;
-  });
-
-  it('isFinite', () => {
-    expect(mathUtil.isFinite(1)).to.be.true;
-    expect(mathUtil.isFinite(NaN)).to.be.false;
-  });
-
-  it('isNaN', () => {
-    expect(mathUtil.isNaN(0)).to.be.false;
-    expect(mathUtil.isNaN(NaN)).to.be.true;
   });
 
   it('isNegative', () => {
@@ -67,19 +57,13 @@ describe('math util', () => {
     expect(mathUtil.mod(5, -2)).to.equal(-1);
   });
 
-  it('toFloat', () => {
-    expect(mathUtil.toFloat('123.45')).to.equal(123.45);
-    expect(mathUtil.toFloat('0')).to.equal(0);
-    expect(isNaN(mathUtil.toFloat('NaN'))).to.be.true;
-  });
-
   it('toDegree', () => {
     expect(mathUtil.toDegree(1)).to.equal(180 / Math.PI * 1);
   });
 
   it('toInt', () => {
-    expect(mathUtil.toInt('123.45')).to.equal(123);
-    expect(mathUtil.toInt('-3.4')).to.equal(-3);
+    expect(mathUtil.toInteger('123.45')).to.equal(123);
+    expect(mathUtil.toInteger('-3.4')).to.equal(-3);
     expect(isNaN(mathUtil.toInt('NaN'))).to.be.true;
   });
 
