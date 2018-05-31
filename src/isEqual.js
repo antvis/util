@@ -1,11 +1,15 @@
 const isObjectLike = require('./type/isObjectLike');
 const isArrayLike = require('./type/isArrayLike');
+const isString = require('./type/isString');
 
 const isEqual = function(value, other) {
   if (value === other) {
     return true;
   }
   if (!value || !other) {
+    return false;
+  }
+  if (isString(value) || isString(other)) {
     return false;
   }
   if (isArrayLike(value) || isArrayLike(other)) {

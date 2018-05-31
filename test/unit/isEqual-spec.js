@@ -10,6 +10,7 @@ describe('compare arrays', () => {
     expect(isEqual([ '1', '2' ], [ '1', '2' ])).to.be.true;
     expect(isEqual([ '1', '12' ], [ '1' ])).to.be.false;
     expect(isEqual([ 1, 2 ], [ 1, 2, 3 ])).to.be.false;
+    expect(isEqual([ 'ab', 'cd' ], [ 'ed', 'as' ])).to.be.false;
   });
   it('对象数组', () => {
     expect(isEqual([{ a: 1 }], [{ a: 1 }])).to.be.true;
