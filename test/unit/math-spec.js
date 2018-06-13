@@ -70,4 +70,20 @@ describe('math util', () => {
   it('toRadian', () => {
     expect(mathUtil.toRadian(45)).to.equal(Math.PI / 180 * 45);
   });
+
+  it('maxBy', () => {
+    const data = [{ n: 1 }, { n: 2 }];
+    let result = mathUtil.maxBy(data, function(o) { return o.n; });
+    expect(result.n).to.equal(2);
+    result = mathUtil.maxBy(data, 'n');
+    expect(result.n).to.equal(2);
+  });
+
+  it('minBy', () => {
+    const data = [{ n: 1 }, { n: 2 }];
+    let result = mathUtil.minBy(data, function(o) { return o.n; });
+    expect(result.n).to.equal(1);
+    result = mathUtil.minBy(data, 'n');
+    expect(result.n).to.equal(1);
+  });
 });
