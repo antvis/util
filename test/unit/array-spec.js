@@ -54,4 +54,21 @@ describe('array', () => {
     expect(values.length).to.equal(3);
     expect(values[2]).to.equal(-1);
   });
+
+  it('flatten with primitive array', () => {
+    const data = [ 1, [ 2, [ 3, [ 4 ]], 5 ]];
+    const result = arrayUtil.flatten(data);
+    expect(result.length).to.equal(4);
+    expect(result[1]).to.equal(2);
+    expect(Array.isArray(result[2])).to.be.true;
+    expect(result[2].length).to.equal(2);
+  });
+
+  it('flatten with object array', () => {
+    const data = [[ 1, [ 2, 3 ]], [{ a: 1, b: 2 }, [ 2, 3 ]]];
+    const result = arrayUtil.flatten(data);
+    expect(result.length).to.equal(4);
+    expect(result[0]).to.equal(1);
+    expect(result[3].length).to.equal(2);
+  });
 });
