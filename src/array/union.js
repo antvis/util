@@ -1,24 +1,16 @@
-const isArray = require('../type/isArray');
 const each = require('../each');
-
-const hasOwnProperty = Object.prototype.hasOwnProperty;
+const toArray = require('../toArray');
 
 const union = function() {
-  const temp = {};
-  const result = [];
+  const result = new Set();
+  let values = [];
   each(arguments, arg => {
-    if (isArray(arg)) {
-      each(arg, item => {
-        if (!hasOwnProperty.call(temp, item)) {
-          temp[item] = item;
-        }
-      });
-    }
+    values = toArray(arg);
+    each(values, val => {
+      result.add(val);
+    });
   });
-  each(temp, v => {
-    result.push(v);
-  });
-  return result;
+  return Array.from(result);
 };
 
 module.exports = union;
