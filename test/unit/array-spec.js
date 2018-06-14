@@ -79,8 +79,25 @@ describe('array', () => {
     expect(result[2]).to.equal(3);
   });
 
-  it.only('union with array', () => {
+  it('union with array', () => {
     const result = arrayUtil.union([[ 1, 2 ], 3 ], [[ 1, 2 ], 4 ]);
     expect(result.length).to.equal(3);
+  });
+
+  it('reduce plain array', () => {
+    const result = arrayUtil.reduce([ 1, 2 ], function(sum, n) {
+      return sum + n;
+    }, 0);
+    expect(result).to.equal(3);
+  });
+
+  it.only('reduce object array', () => {
+    const result = arrayUtil.reduce({ a: 1, b: 2, c: 1 }, function(result, value, key) {
+      (result[value] || (result[value] = [])).push(key);
+      return result;
+    }, {});
+    expect(typeof result).to.equal('object');
+    expect(result[1].length).to.equal(2);
+    expect(result[2].length).to.equal(1);
   });
 });
