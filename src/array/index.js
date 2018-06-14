@@ -6,5 +6,8 @@ module.exports = {
   pullAt: require('./pullAt'),
   remove: require('./remove'),
   uniq: require('./uniq'),
-  values: require('./values')
+  values: require('./values'),
+  flatten: require('./flatten'),
+  union: require('./union'),
+  reduce: require('./reduce')
 };
