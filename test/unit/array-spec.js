@@ -91,7 +91,7 @@ describe('array', () => {
     expect(result).to.equal(3);
   });
 
-  it.only('reduce object array', () => {
+  it('reduce object array', () => {
     const result = arrayUtil.reduce({ a: 1, b: 2, c: 1 }, function(result, value, key) {
       (result[value] || (result[value] = [])).push(key);
       return result;
