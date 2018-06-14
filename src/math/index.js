@@ -12,5 +12,7 @@ module.exports = {
   toDegree: require('./toDegree'),
   toInt: require('./toInteger'),
   toInteger: require('./toInteger'),
-  toRadian: require('./toRadian')
+  toRadian: require('./toRadian'),
+  maxBy: require('./maxBy'),
+  minBy: require('./minBy')
 };
