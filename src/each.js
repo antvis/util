@@ -7,7 +7,7 @@ const each = function(elements, func) {
   }
   let rst;
   if (isArray(elements)) {
-    for (let i = 0; i < elements.length; i++) {
+    for (let i = 0, len = elements.length; i < len; i++) {
       rst = func(elements[i], i);
       if (rst === false) {
         break;
