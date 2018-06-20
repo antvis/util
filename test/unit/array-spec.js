@@ -75,16 +75,16 @@ describe('array', () => {
   it('union with plain array', () => {
     const result = arrayUtil.union([ 2 ], [ 1, 2 ], [ 1, 2, 3 ]);
     expect(result.length).to.equal(3);
-    expect(result[0]).to.equal(1);
+    expect(result[0]).to.equal(2);
     expect(result[2]).to.equal(3);
   });
 
   it('union with array', () => {
     const result = arrayUtil.union([[ 1, 2 ], 3 ], [[ 1, 2 ], 4 ]);
-    expect(result.length).to.equal(3);
+    expect(result.length).to.equal(4);
   });
 
-  it.only('union with object and array', () => {
+  it('union with object and array', () => {
     const result = arrayUtil.union([ 1, 2, 3, 'a' ], [{ a: 1 }, { b: 2 }, 'a' ]);
     console.log(result);
     expect(result.length).to.equal(6);
