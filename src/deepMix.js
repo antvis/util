@@ -1,6 +1,5 @@
 const isPlainObject = require('./type/isPlainObject');
 const isArray = require('./type/isArray');
-const toArray = require('./toArray');
 
 const MAX_MIX_LEVEL = 5;
 
@@ -30,12 +29,16 @@ function _deepMix(dist, src, level, maxLevel) {
 }
 
 const deepMix = function() {
-  const args = toArray(arguments);
-  const dist = args[0];
-  for (let i = 1; i < args.length; i++) {
-    _deepMix(dist, args[i]);
+  const args = new Array(arguments.length);
+  const length = args.length;
+  for (let i = 0; i < length; i++) {
+    args[i] = arguments[i];
   }
-  return dist;
+  const rst = args[0];
+  for (let i = 1; i < length; i++) {
+    _deepMix(rst, args[i]);
+  }
+  return rst;
 };
 
 module.exports = deepMix;
