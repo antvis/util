@@ -1,19 +1,24 @@
 
 const arrayUtil = require('./array');
 const eventUtil = require('./event');
+const mathUtil = require('./math');
 const stringUtil = require('./string');
+const typeUtil = require('./type');
+const each = require('./each');
 const mix = require('./mix');
 
-module.exports = mix({
+const util = {
   // collections
   arrayUtil,
   eventUtil,
+  mathUtil,
   stringUtil,
+  typeUtil,
   // others
   augment: require('./augment'),
   clone: require('./clone'),
   deepMix: require('./deepMix'),
-  each: require('./each'),
+  each,
   extend: require('./extend'),
   filter: require('./filter'),
   group: require('./group'),
@@ -28,4 +33,16 @@ module.exports = mix({
   pick: require('./pick'),
   toArray: require('./toArray'),
   uniqueId: require('./uniqueId')
-}, arrayUtil, eventUtil, stringUtil);
+};
+
+each([
+  arrayUtil,
+  eventUtil,
+  mathUtil,
+  stringUtil,
+  typeUtil
+], collection => {
+  mix(util, collection);
+});
+
+module.exports = util;

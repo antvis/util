@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const pick = require('../../src/pick');
+const pick = require('../../src').pick;
 
 describe('pick', () => {
   it('pick object', () => {

@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const isEmpty = require('../../src/isEmpty');
+const isEmpty = require('../../src').isEmpty;
 
 describe('isEmpty', () => {
   it('null', () => {

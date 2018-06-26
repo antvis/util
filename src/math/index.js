@@ -8,11 +8,11 @@ module.exports = {
   isNumberEqual: require('./isNumberEqual'),
   isOdd: require('./isOdd'),
   isPositive: require('./isPositive'),
+  maxBy: require('./maxBy'),
+  minBy: require('./minBy'),
   mod: require('./mod'),
   toDegree: require('./toDegree'),
   toInt: require('./toInteger'),
   toInteger: require('./toInteger'),
-  toRadian: require('./toRadian'),
-  maxBy: require('./maxBy'),
-  minBy: require('./minBy')
+  toRadian: require('./toRadian')
 };

@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const arrayUtil = require('../../src/array/index');
+const arrayUtil = require('../../src').arrayUtil;
 
 describe('array', () => {
   it('contains', () => {

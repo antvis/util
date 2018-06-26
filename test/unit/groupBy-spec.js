@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
-const groupBy = require('../../src/groupBy');
-const groupToMap = require('../../src/groupToMap');
-const group = require('../../src/group');
+const groupBy = require('../../src').groupBy;
+const groupToMap = require('../../src').groupToMap;
+const group = require('../../src').group;
 
 describe('group', () => {
   const a = [{

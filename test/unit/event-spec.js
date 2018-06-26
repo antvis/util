@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
-const eventUtil = require('../../src/event');
+const eventUtil = require('../../src').eventUtil;
 
-describe.only('event', () => {
+describe('event', () => {
   const obj = {
     test() {}
   };
