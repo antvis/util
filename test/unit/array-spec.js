@@ -86,7 +86,6 @@ describe('array', () => {
 
   it('union with object and array', () => {
     const result = arrayUtil.union([ 1, 2, 3, 'a' ], [{ a: 1 }, { b: 2 }, 'a' ]);
-    console.log(result);
     expect(result.length).to.equal(6);
     expect(result[4].a).to.equal(1);
   });
