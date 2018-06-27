@@ -1,10 +1,7 @@
-const isString = require('../type/isString');
+const toString = require('../toString');
 
 const upperCase = function(str) {
-  if (!isString(str)) {
-    return str;
-  }
-  return str.toString().toUpperCase();
+  return toString(str).toUpperCase();
 };
 
 module.exports = upperCase;

@@ -32,6 +32,7 @@ const util = {
   mix,
   pick: require('./pick'),
   toArray: require('./toArray'),
+  toString: require('./toString'),
   uniqueId: require('./uniqueId')
 };
 

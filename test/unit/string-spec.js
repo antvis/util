@@ -23,4 +23,8 @@ describe('string utils', () => {
     expect(strUtil.upperFirst('abc')).to.equal('Abc');
     expect(strUtil.upperFirst('AbC')).to.equal('AbC');
   });
+
+  it('substitute', () => {
+    expect(strUtil.substitute('hello {value}', { value: 'world' })).to.equal('hello world');
+  });
 });

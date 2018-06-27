@@ -1,10 +1,7 @@
-const isString = require('../type/isString');
+const toString = require('../toString');
 
 const lowerCase = function(str) {
-  if (!isString(str)) {
-    return str;
-  }
-  return str.toString().toLowerCase();
+  return toString(str).toLowerCase();
 };
 
 module.exports = lowerCase;
