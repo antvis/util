@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const checkType = require('../../src/type/index');
+const checkType = require('../../src');
 
 describe('type util', () => {
   it('getType', () => {

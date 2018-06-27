@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const each = require('../../src/each');
+const each = require('../../src').each;
 
 describe('each', () => {
   it('each null', () => {

@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
-const isEqual = require('../../src/isEqual');
-const isEqualWith = require('../../src/isEqualWith');
+const isEqual = require('../../src').isEqual;
+const isEqualWith = require('../../src').isEqualWith;
 
 describe('isEqual', () => {
   it('primitive arrays', () => {

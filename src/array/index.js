@@ -1,13 +1,14 @@
 module.exports = {
   contains: require('./contains'),
   firstValue: require('./firstValue'),
+  flatten: require('./flatten'),
   getRange: require('./getRange'),
+  merge: require('./merge'),
   pull: require('./pull'),
   pullAt: require('./pullAt'),
+  reduce: require('./reduce'),
   remove: require('./remove'),
-  uniq: require('./uniq'),
-  values: require('./values'),
-  flatten: require('./flatten'),
   union: require('./union'),
-  reduce: require('./reduce')
+  uniq: require('./uniq'),
+  values: require('./values')
 };

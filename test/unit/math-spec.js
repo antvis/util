@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const mathUtil = require('../../src/math/index');
+const mathUtil = require('../../src');
 
 describe('math util', () => {
   it('clamp', () => {

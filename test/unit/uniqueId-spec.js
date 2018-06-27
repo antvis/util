@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const uniqueId = require('../../src/uniqueId');
+const uniqueId = require('../../src').uniqueId;
 
 describe('uniqueId', () => {
   it('uniqueId', () => {

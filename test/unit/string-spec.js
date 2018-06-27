@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const strUtil = require('../../src/string');
+const strUtil = require('../../src/string/index');
 
 describe('string utils', () => {
   it('lc & lowercase', () => {

@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const indexOf = require('../../src/indexOf');
+const indexOf = require('../../src').indexOf;
 
 describe('indexOf', () => {
   it('null', () => {

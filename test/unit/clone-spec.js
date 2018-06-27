@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const clone = require('../../src/clone');
+const clone = require('../../src').clone;
 
 describe('clone', () => {
   it('clone primitive array', () => {

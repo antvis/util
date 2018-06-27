@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 const classUtil = {
-  extend: require('../../src/extend'),
-  augment: require('../../src/augment')
+  extend: require('../../src').extend,
+  augment: require('../../src').augment
 };
 
 describe('class', () => {

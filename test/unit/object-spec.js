@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
-const deepMix = require('../../src/deepMix');
-const mix = require('../../src/mix');
+const deepMix = require('../../src').deepMix;
+const mix = require('../../src').mix;
 
 describe('object utils', () => {
   it('mix', function() {
