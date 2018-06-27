@@ -1,6 +1,6 @@
 {
   "name": "@antv/util",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A common util collection for antv projects",
   "browser": "build/util.js",
   "main": "lib/index.js",
