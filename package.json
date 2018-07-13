@@ -1,10 +1,8 @@
 {
   "name": "@antv/util",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A common util collection for antv projects",
-  "browser": "build/util.js",
-  "main": "build/index.js",
-  "module": "lib/index.js",
+  "main": "build/util.js",
   "scripts": {
     "build": "webpack",
     "build-lib": "babel src --out-dir lib",
