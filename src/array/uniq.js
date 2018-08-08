@@ -1,8 +1,9 @@
+const each = require('../each');
 const contains = require('./contains');
 
 const uniq = function(arr) {
   const resultArr = [];
-  arr.forEach(item => {
+  each(arr, item => {
     if (!contains(resultArr, item)) {
       resultArr.push(item);
     }

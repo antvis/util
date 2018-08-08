@@ -1,16 +1,14 @@
 const each = require('../each');
 const toArray = require('../toArray');
+const uniq = require('./uniq');
 
 const union = function() {
-  const result = new Set();
-  let values = [];
-  each(arguments, arg => {
-    values = toArray(arg);
-    each(values, val => {
-      result.add(val);
-    });
+  let result = [];
+  const sources = toArray(arguments);
+  each(sources, arr => {
+    result = result.concat(arr);
   });
-  return Array.from(result);
+  return uniq(result);
 };
 
 module.exports = union;

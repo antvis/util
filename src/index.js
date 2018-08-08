@@ -2,6 +2,7 @@
 const arrayUtil = require('./array');
 const eventUtil = require('./event');
 const mathUtil = require('./math');
+const objectUtil = require('./object');
 const stringUtil = require('./string');
 const typeUtil = require('./type');
 const each = require('./each');
@@ -12,6 +13,7 @@ const util = {
   arrayUtil,
   eventUtil,
   mathUtil,
+  objectUtil,
   stringUtil,
   typeUtil,
   // others
@@ -40,6 +42,7 @@ each([
   arrayUtil,
   eventUtil,
   mathUtil,
+  objectUtil,
   stringUtil,
   typeUtil
 ], collection => {
