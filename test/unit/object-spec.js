@@ -1,6 +1,8 @@
 const expect = require('chai').expect;
-const deepMix = require('../../src').deepMix;
-const mix = require('../../src').mix;
+const util = require('../../src');
+const deepMix = util.deepMix;
+const mix = util.mix;
+const objectUtils = util.objectUtil;
 
 describe('object utils', () => {
   it('mix', function() {
@@ -48,6 +50,40 @@ describe('object utils', () => {
 
     deepMix(b, a);
     expect(b.c).to.be.undefined;
+  });
+
+  it('forIn', function() {
+    expect(objectUtils.forIn).to.equal(util.each);
+  });
+
+  it('has', function() {
+    const a = { a1: 123, a2: 234 };
+    expect(objectUtils.has(a, 'a1')).to.equal(true);
+  });
+
+  it('hasKey', function() {
+    expect(objectUtils.hasKey).to.equal(objectUtils.has);
+  });
+
+  it('hasValue', function() {
+    const a = { a1: 123, a2: 234 };
+    expect(objectUtils.hasValue(a, 123)).to.equal(true);
+    expect(objectUtils.hasValue(a, 12)).to.equal(false);
+  });
+
+  it('isMatch', function() {
+    const a = { a1: 123, a2: 234 };
+    expect(objectUtils.isMatch(a, { a1: 123 })).to.equal(true);
+    expect(objectUtils.isMatch(a, { a1: 12 })).to.equal(false);
+  });
+
+  it('keys', function() {
+    const a = { a1: 123, a2: 234 };
+    expect(objectUtils.keys(a)).to.eql([ 'a1', 'a2' ]);
+  });
+
+  it('values', function() {
+    expect(objectUtils.values).to.equal(util.values);
   });
 });
 

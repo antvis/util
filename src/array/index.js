@@ -1,7 +1,10 @@
 module.exports = {
   contains: require('./contains'),
+  difference: require('./difference'),
+  find: require('./find'),
   firstValue: require('./firstValue'),
   flatten: require('./flatten'),
+  flattenDeep: require('./flattenDeep'),
   getRange: require('./getRange'),
   merge: require('./merge'),
   pull: require('./pull'),
@@ -9,6 +12,5 @@ module.exports = {
   reduce: require('./reduce'),
   remove: require('./remove'),
   union: require('./union'),
-  uniq: require('./uniq'),
-  values: require('./values')
+  uniq: require('./uniq')
 };

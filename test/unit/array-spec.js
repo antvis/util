@@ -10,6 +10,19 @@ describe('array', () => {
     expect(arrayUtil.contains(null, 1)).to.be.false;
   });
 
+  it('difference', () => {
+    expect(arrayUtil.difference([ 1, 2, 3 ], [ 1 ])).to.eql([ 2, 3 ]);
+  });
+
+  it('find', () => {
+    expect(arrayUtil.find([ 1, 2, 3 ], a => a % 2 === 0)).to.be.equal(2);
+    expect(arrayUtil.find([
+      { a: 1, b: 2 },
+      { a: 2, b: 3 },
+      { a: 3, b: 4 }
+    ], { a: 2 })).to.be.eql({ a: 2, b: 3 });
+  });
+
   it('pull & pullAll', () => {
     expect(arrayUtil.pull([ 1, 1, 2, 3 ], 1, 2).length).to.equal(1);
     expect(arrayUtil.pull([ 'a', 'b', 'c', 'a', 'b', 'c' ], 'a', 'c').length).to.equal(2);
@@ -48,13 +61,6 @@ describe('array', () => {
     expect(range2.max).to.equal(9);
   });
 
-  it('values', () => {
-    const data = [{ x: 0, y: 0 }, { x: 1, y: 1 }, { x: -1 }, { y: 0 }];
-    const values = arrayUtil.values(data, 'x');
-    expect(values.length).to.equal(3);
-    expect(values[2]).to.equal(-1);
-  });
-
   it('flatten with primitive array', () => {
     const data = [ 1, [ 2, [ 3, [ 4 ]], 5 ]];
     const result = arrayUtil.flatten(data);
@@ -70,6 +76,12 @@ describe('array', () => {
     expect(result.length).to.equal(4);
     expect(result[0]).to.equal(1);
     expect(result[3].length).to.equal(2);
+  });
+
+  it('flattenDeep', () => {
+    const data = [ 1, [ 2, [ 3, [ 4 ]], 5 ]];
+    const result = arrayUtil.flattenDeep(data);
+    expect(result).to.eql([ 1, 2, 3, 4, 5 ]);
   });
 
   it('union with plain array', () => {
