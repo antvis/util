@@ -8,7 +8,7 @@ const contains = require('./contains');
  * @param {Array} values The values to exclude.
  * @return {Array} Returns the new array of filtered values.
  * @example
- * _.difference([2, 1], [2, 3]);  // => [1]
+ * difference([2, 1], [2, 3]);  // => [1]
  */
 const difference = function(arr, values = []) {
   return filter(arr, value => !contains(values, value));

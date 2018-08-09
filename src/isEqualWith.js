@@ -20,7 +20,7 @@ const isEqual = require('./isEqual');
  * var array = ['hello', 'goodbye'];
  * var other = ['hi', 'goodbye'];
  *
- * _.isEqualWith(array, other, customizer);  // => true
+ * isEqualWith(array, other, customizer);  // => true
  */
 
 const isEqualWith = function(value, other, fn) {

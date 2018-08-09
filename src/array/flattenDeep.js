@@ -8,7 +8,7 @@ const isArray = require('../type/isArray');
  * @return {Array} Returns the new flattened array.
  * @example
  *
- * _.flatten([1, [2, [3, [4]], 5]]);  // => [1, 2, 3, 4, 5]
+ * flattenDeep([1, [2, [3, [4]], 5]]);  // => [1, 2, 3, 4, 5]
  */
 const flattenDeep = function(arr, result = []) {
   if (!isArray(arr)) {

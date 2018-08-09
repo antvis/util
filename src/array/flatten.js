@@ -8,7 +8,7 @@ const each = require('../each');
  * @return {Array} Returns the new flattened array.
  * @example
  *
- * _.flatten([1, [2, [3, [4]], 5]]);  // => [1, 2, [3, [4]], 5]
+ * flatten([1, [2, [3, [4]], 5]]);  // => [1, 2, [3, [4]], 5]
  */
 const flatten = function(arr) {
   if (!isArray(arr)) {
