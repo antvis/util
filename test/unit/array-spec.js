@@ -118,4 +118,32 @@ describe('array', () => {
     expect(result[1].length).to.equal(2);
     expect(result[2].length).to.equal(1);
   });
+
+  it('sortBy', () => {
+    expect(arrayUtil.sortBy(
+      [ 1, 2, 3, 4, 5, 6 ], num => Math.sin(num)
+    )).to.eql(
+      [ 5, 4, 6, 3, 1, 2 ]
+    );
+    expect(arrayUtil.sortBy(
+      [{ name: 'moe', age: 40 }, { name: 'larry', age: 50 }, { name: 'curly', age: 60 }], 'name'
+    )).to.eql(
+      [{ name: 'curly', age: 60 }, { name: 'larry', age: 50 }, { name: 'moe', age: 40 }]
+    );
+    expect(arrayUtil.sortBy(
+      [
+        { user: 'fred', age: 48 },
+        { user: 'barney', age: 36 },
+        { user: 'fred', age: 40 },
+        { user: 'barney', age: 34 }
+      ], [ 'user', 'age' ]
+    )).to.eql(
+      [
+        { user: 'barney', age: 34 },
+        { user: 'barney', age: 36 },
+        { user: 'fred', age: 40 },
+        { user: 'fred', age: 48 }
+      ]
+    );
+  });
 });

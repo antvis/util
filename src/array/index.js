@@ -11,6 +11,7 @@ module.exports = {
   pullAt: require('./pullAt'),
   reduce: require('./reduce'),
   remove: require('./remove'),
+  sortBy: require('./sortBy'),
   union: require('./union'),
   uniq: require('./uniq')
 };
