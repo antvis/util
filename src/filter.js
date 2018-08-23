@@ -1,5 +1,5 @@
 const each = require('./each');
-const isArrayLike = require('./type/isArrayLike');
+const isArrayLike = require('./type/is-array-like');
 
 const filter = function(arr, func) {
   if (!isArrayLike(arr)) {

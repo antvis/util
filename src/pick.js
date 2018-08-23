@@ -1,5 +1,5 @@
 const each = require('./each');
-const isPlaineObject = require('./type/isPlainObject');
+const isPlaineObject = require('./type/is-plain-object');
 
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 /**

@@ -1,5 +1,5 @@
-const isArray = require('../type/isArray');
-const isPlainObject = require('../type/isPlainObject');
+const isArray = require('../type/is-array');
+const isPlainObject = require('../type/is-plain-object');
 const each = require('../each');
 
 const reduce = function(arr, fn, init) {

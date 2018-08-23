@@ -1,5 +1,5 @@
-const isObject = require('./type/isObject');
-const isArray = require('./type/isArray');
+const isObject = require('./type/is-object');
+const isArray = require('./type/is-array');
 
 const each = function(elements, func) {
   if (!elements) {

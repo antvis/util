@@ -1,5 +1,5 @@
 const each = require('../each');
-const toArray = require('../toArray');
+const toArray = require('../to-array');
 const uniq = require('./uniq');
 
 const union = function() {

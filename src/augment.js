@@ -1,5 +1,5 @@
-const isFunction = require('./type/isFunction');
-const toArray = require('./toArray');
+const isFunction = require('./type/is-function');
+const toArray = require('./to-array');
 const mix = require('./mix');
 
 const augment = function(c) {

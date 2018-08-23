@@ -1,5 +1,5 @@
-const isArrayLike = require('../type/isArrayLike');
-const pullAt = require('./pullAt');
+const isArrayLike = require('../type/is-array-like');
+const pullAt = require('./pull-at');
 
 const remove = function(arr, predicate) {
   /**

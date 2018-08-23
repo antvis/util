@@ -19,23 +19,23 @@ const util = {
   // others
   augment: require('./augment'),
   clone: require('./clone'),
-  deepMix: require('./deepMix'),
+  deepMix: require('./deep-mix'),
   each,
   extend: require('./extend'),
   filter: require('./filter'),
   group: require('./group'),
-  groupBy: require('./groupBy'),
-  groupToMap: require('./groupToMap'),
-  indexOf: require('./indexOf'),
-  isEmpty: require('./isEmpty'),
-  isEqual: require('./isEqual'),
-  isEqualWith: require('./isEqualWith'),
+  groupBy: require('./group-by'),
+  groupToMap: require('./group-to-map'),
+  indexOf: require('./index-of'),
+  isEmpty: require('./is-empty'),
+  isEqual: require('./is-equal'),
+  isEqualWith: require('./is-equal-with'),
   map: require('./map'),
   mix,
   pick: require('./pick'),
-  toArray: require('./toArray'),
-  toString: require('./toString'),
-  uniqueId: require('./uniqueId')
+  toArray: require('./to-array'),
+  toString: require('./to-string'),
+  uniqueId: require('./unique-id')
 };
 
 each([

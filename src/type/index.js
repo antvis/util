@@ -1,22 +1,22 @@
-const isType = require('./isType');
+const isType = require('./is-type');
 
 const checkType = {
-  getType: require('./getType'),
-  isArray: require('./isArray'),
-  isArrayLike: require('./isArrayLike'),
-  isBoolean: require('./isBoolean'),
-  isFunction: require('./isFunction'),
-  isNil: require('./isNil'),
-  isNull: require('./isNull'),
-  isNumber: require('./isNumber'),
-  isObject: require('./isObject'),
-  isObjectLike: require('./isObjectLike'),
-  isPlainObject: require('./isPlainObject'),
-  isPrototype: require('./isPrototype'),
+  getType: require('./get-type'),
+  isArray: require('./is-array'),
+  isArrayLike: require('./is-array-like'),
+  isBoolean: require('./is-boolean'),
+  isFunction: require('./is-function'),
+  isNil: require('./is-nil'),
+  isNull: require('./is-null'),
+  isNumber: require('./is-number'),
+  isObject: require('./is-object'),
+  isObjectLike: require('./is-object-like'),
+  isPlainObject: require('./is-plain-object'),
+  isPrototype: require('./is-prototype'),
   isType,
-  isUndefined: require('./isUndefined'),
-  isString: require('./isString'),
-  isRegExp: require('./isRegExp')
+  isUndefined: require('./is-undefined'),
+  isString: require('./is-string'),
+  isRegExp: require('./is-reg-exp')
 };
 
 [

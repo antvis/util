@@ -1,4 +1,4 @@
-const isArrayLike = require('../type/isArrayLike');
+const isArrayLike = require('../type/is-array-like');
 
 const indexOf = Array.prototype.indexOf;
 
