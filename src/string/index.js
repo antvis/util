@@ -1,12 +1,12 @@
 
 const strUtil = {
   lc: require('./lc'),
-  lowerCase: require('./lowerCase'),
-  lowerFirst: require('./lowerFirst'),
+  lowerCase: require('./lower-case'),
+  lowerFirst: require('./lower-first'),
   substitute: require('./substitute'),
   uc: require('./uc'),
-  upperCase: require('./upperCase'),
-  upperFirst: require('./upperFirst')
+  upperCase: require('./upper-case'),
+  upperFirst: require('./upper-first')
 };
 
 module.exports = strUtil;

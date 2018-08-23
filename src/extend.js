@@ -1,4 +1,4 @@
-const isFunction = require('./type/isFunction');
+const isFunction = require('./type/is-function');
 const mix = require('./mix');
 
 const extend = function(subclass, superclass, overrides, staticOverrides) {

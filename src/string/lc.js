@@ -1,1 +1,1 @@
-module.exports = require('./lowerCase');
+module.exports = require('./lower-case');

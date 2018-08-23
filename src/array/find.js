@@ -1,6 +1,6 @@
-const isFunction = require('../type/isFunction');
-const isPlainObject = require('../type/isPlainObject');
-const isMatch = require('../object/isMatch');
+const isFunction = require('../type/is-function');
+const isPlainObject = require('../type/is-plain-object');
+const isMatch = require('../object/is-match');
 
 function find(arr, predicate) {
   let _predicate;

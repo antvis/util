@@ -1,4 +1,4 @@
-const isArray = require('../type/isArray');
+const isArray = require('../type/is-array');
 const each = require('../each');
 
 /**

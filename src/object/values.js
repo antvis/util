@@ -1,5 +1,5 @@
 const each = require('../each');
-const isFunction = require('../type/isFunction');
+const isFunction = require('../type/is-function');
 
 const values = Object.values ? obj => Object.values(obj) : obj => {
   const result = [];

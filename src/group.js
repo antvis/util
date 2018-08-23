@@ -1,4 +1,4 @@
-const groupToMap = require('./groupToMap');
+const groupToMap = require('./group-to-map');
 
 const group = function(data, condition) {
   if (!condition) {
