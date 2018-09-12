@@ -60,5 +60,8 @@
     ],
     "silent": false
   },
-  "homepage": "https://github.com/antvis/util#readme"
+  "homepage": "https://github.com/antvis/util#readme",
+  "dependencies": {
+    "@antv/gl-matrix": "^2.7.1"
+  }
 }
