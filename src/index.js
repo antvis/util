@@ -4,12 +4,14 @@ const mix = require('./mix');
 
 // collections
 const DOMUtil = require('./dom/');
-const arrayUtil = require('./array');
+const arrayUtil = require('./array/');
 const eventUtil = require('./event/');
+const formatUtil = require('./format');
 const mathUtil = require('./math/');
-const objectUtil = require('./object');
-const stringUtil = require('./string');
-const typeUtil = require('./type');
+const objectUtil = require('./object/');
+const pathUtil = require('./path/');
+const stringUtil = require('./string/');
+const typeUtil = require('./type/');
 
 const util = {
   // collections
@@ -17,9 +19,11 @@ const util = {
   DomUtil: DOMUtil,
   arrayUtil,
   eventUtil,
+  formatUtil,
   mathUtil,
   objectUtil,
   stringUtil,
+  pathUtil,
   typeUtil,
   // others
   augment: require('./augment'),
@@ -47,8 +51,10 @@ each([
   DOMUtil,
   arrayUtil,
   eventUtil,
+  formatUtil,
   mathUtil,
   objectUtil,
+  pathUtil,
   stringUtil,
   typeUtil
 ], collection => {
