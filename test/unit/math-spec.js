@@ -57,6 +57,11 @@ describe('math util', () => {
     expect(mathUtil.mod(5, -2)).to.equal(-1);
   });
 
+  it('snapEqual', () => {
+    expect(mathUtil.snapEqual(1, 1.00099, 0.0009)).to.be.false;
+  });
+
+
   it('toDegree', () => {
     expect(mathUtil.toDegree(1)).to.equal(180 / Math.PI * 1);
   });
