@@ -8,6 +8,7 @@ const arrayUtil = require('./array/');
 const eventUtil = require('./event/');
 const formatUtil = require('./format');
 const mathUtil = require('./math/');
+const matrixUtil = require('./matrix/');
 const objectUtil = require('./object/');
 const pathUtil = require('./path/');
 const stringUtil = require('./string/');
@@ -17,10 +18,13 @@ const util = {
   // collections
   DOMUtil,
   DomUtil: DOMUtil,
+  MatrixUtil: matrixUtil,
   arrayUtil,
+  domUtil: DOMUtil,
   eventUtil,
   formatUtil,
   mathUtil,
+  matrixUtil,
   objectUtil,
   stringUtil,
   pathUtil,
@@ -53,6 +57,7 @@ each([
   eventUtil,
   formatUtil,
   mathUtil,
+  matrixUtil,
   objectUtil,
   pathUtil,
   stringUtil,
