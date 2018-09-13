@@ -1,3 +1,5 @@
+const isNumberEqual = require('./is-number-equal');
+
 module.exports = {
   clamp: require('./clamp'),
   fixedBase: require('./fixed-base'),
@@ -5,13 +7,13 @@ module.exports = {
   isEven: require('./is-even'),
   isInteger: require('./is-integer'),
   isNegative: require('./is-negative'),
-  isNumberEqual: require('./is-number-equal'),
+  isNumberEqual,
   isOdd: require('./is-odd'),
   isPositive: require('./is-positive'),
   maxBy: require('./max-by'),
   minBy: require('./min-by'),
   mod: require('./mod'),
-  snapEqual: require('./snap-equal'),
+  snapEqual: isNumberEqual,
   toDegree: require('./to-degree'),
   toInt: require('./to-integer'),
   toInteger: require('./to-integer'),

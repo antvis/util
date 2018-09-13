@@ -1,7 +1,5 @@
 const PRECISION = 0.00001; // numbers less than this is considered as 0
 
-const isNumberEqual = function(a, b) {
-  return Math.abs((a - b)) < PRECISION;
+module.exports = function isNumberEqual(a, b, precision = PRECISION) {
+  return Math.abs((a - b)) < precision;
 };
-
-module.exports = isNumberEqual;

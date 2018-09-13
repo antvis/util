@@ -58,9 +58,7 @@ describe('math util', () => {
   });
 
   it('snapEqual', () => {
-    expect(mathUtil.snapEqual(1, 1.00099)).to.equal(true);
-    expect(mathUtil.snapEqual(1.00099, 1)).to.equal(true);
-    expect(mathUtil.snapEqual(1, 1.00099, 0.0009)).to.equal(false);
+    expect(mathUtil.snapEqual(1, 1.00099, 0.0009)).to.be.false;
   });
 
 
