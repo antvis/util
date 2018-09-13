@@ -11,6 +11,7 @@ module.exports = {
   maxBy: require('./max-by'),
   minBy: require('./min-by'),
   mod: require('./mod'),
+  snapEqual: require('./snap-equal'),
   toDegree: require('./to-degree'),
   toInt: require('./to-integer'),
   toInteger: require('./to-integer'),
