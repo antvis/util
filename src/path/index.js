@@ -2,9 +2,11 @@
 const pathIntersection = require('./path-intersection');
 const path2absolute = require('./path2absolute');
 const path2curve = require('./path2curve');
+const catmullRom2Bezier = require('./catmull-rom2bezier');
 
 module.exports = {
-  catmullRomToBezier: require('./catmull-rom2bezier'),
+  catmullRom2Bezier,
+  catmullRomToBezier: catmullRom2Bezier,
   fillPath: require('./fill-path'),
   fillPathByDiff: require('./fill-path-by-diff'),
   formatPath: require('./format-path'),

@@ -19,6 +19,7 @@ const util = {
   DOMUtil,
   DomUtil: DOMUtil,
   MatrixUtil: matrixUtil,
+  PathUtil: pathUtil,
   arrayUtil,
   domUtil: DOMUtil,
   eventUtil,
