@@ -146,4 +146,16 @@ describe('array', () => {
       ]
     );
   });
+
+  it('valuesOfKey', () => {
+    expect(arrayUtil.valuesOfKey(
+      [
+        { a: 1, b: 2 },
+        { a: 2, b: 3 },
+        { a: 3, b: 4 }
+      ], 'a'
+    )).to.eql(
+      [ 1, 2, 3 ]
+    );
+  });
 });

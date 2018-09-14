@@ -13,5 +13,6 @@ module.exports = {
   remove: require('./remove'),
   sortBy: require('./sort-by'),
   union: require('./union'),
-  uniq: require('./uniq')
+  uniq: require('./uniq'),
+  valuesOfKey: require('./values-of-key')
 };
