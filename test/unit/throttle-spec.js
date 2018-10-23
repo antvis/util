@@ -23,17 +23,17 @@ describe('throttle', () => {
     const incr = function() {
       counter++;
     };
-    const throttleIncr = throttle(incr, 16);
-    throttleIncr();
-    throttleIncr();
-    throttleIncr();
+    const throttledIncr = throttle(incr, 16);
+    throttledIncr();
+    throttledIncr();
+    throttledIncr();
     expect(counter).to.equal(1);
     setTimeout(() => {
-      throttleIncr();
-      throttleIncr();
-      throttleIncr();
+      throttledIncr();
+      throttledIncr();
+      throttledIncr();
       expect(counter).to.equal(2);
-      throttleIncr.cancel();
+      throttledIncr.cancel();
     }, 20);
     setTimeout(() => {
       expect(counter).to.equal(2);
