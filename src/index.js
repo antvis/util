@@ -33,6 +33,7 @@ const util = {
   // others
   augment: require('./augment'),
   clone: require('./clone'),
+  debounce: require('./debounce'),
   deepMix: require('./deep-mix'),
   each,
   extend: require('./extend'),
@@ -47,6 +48,7 @@ const util = {
   map: require('./map'),
   mix,
   pick: require('./pick'),
+  throttle: require('./throttle'),
   toArray: require('./to-array'),
   toString: require('./to-string'),
   uniqueId: require('./unique-id')
