@@ -16,17 +16,10 @@ const checkType = {
   isType,
   isUndefined: require('./is-undefined'),
   isString: require('./is-string'),
-  isRegExp: require('./is-reg-exp')
+  isRegExp: require('./is-reg-exp'),
+  isDate: require('./is-date'),
+  isArguments: require('./is-arguments'),
+  isError: require('./is-error')
 };
-
-[
-  'Arguments',
-  'Date',
-  'Error'
-].forEach(function(type) {
-  checkType['is' + type] = function(value) {
-    return isType(value, type);
-  };
-});
 
 module.exports = checkType;
