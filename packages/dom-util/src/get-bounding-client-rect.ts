@@ -14,8 +14,8 @@ export default function getBoundingClientRect(node:HTMLElement, defaultValue:any
       top: rect.top - top,
       bottom: rect.bottom - top,
       left: rect.left - left,
-      right: rect.right - left
+      right: rect.right - left,
     };
   }
   return defaultValue || null;
-};
+}

@@ -17,4 +17,4 @@ export default function getStyle(dom: HTMLElement, name: string, defaultValue?: 
     v = v === undefined ? defaultValue : v;
   }
   return v;
-};
+}

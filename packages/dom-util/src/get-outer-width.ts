@@ -11,4 +11,4 @@ export default function getOuterWidth(el: HTMLElement, defaultValue?: any): numb
   const mRight = parseFloat(getStyle(el, 'marginRight')) || 0;
   const mLeft = parseFloat(getStyle(el, 'marginLeft')) || 0;
   return width + bLeft + bRight + pLeft + pRight + mLeft + mRight;
-};
+}

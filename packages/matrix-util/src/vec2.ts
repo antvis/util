@@ -1,7 +1,7 @@
 import * as vec2 from '@antv/gl-matrix/lib/gl-matrix/vec2';
-import {clamp} from '@antv/util';
+import { clamp } from '@antv/util';
 
-vec2.angle = function(v1, v2) {
+vec2.angle = function (v1, v2) {
   const theta = vec2.dot(v1, v2) / (vec2.length(v1) * vec2.length(v2));
   return Math.acos(clamp(theta, -1, 1));
 };
@@ -12,11 +12,11 @@ vec2.angle = function(v1, v2) {
  * @param  {Array} v2 向量
  * @return {Boolean} >= 0 顺时针 < 0 逆时针
  */
-vec2.direction = function(v1: number[], v2: number[]): number {
+vec2.direction = function (v1: number[], v2: number[]): number {
   return v1[0] * v2[1] - v2[0] * v1[1];
 };
 
-vec2.angleTo = function(v1: number, v2: number, direct: boolean): number {
+vec2.angleTo = function (v1: number, v2: number, direct: boolean): number {
   const angle = vec2.angle(v1, v2);
   const angleLargeThanPI = vec2.direction(v1, v2) >= 0;
   if (direct) {
@@ -33,7 +33,7 @@ vec2.angleTo = function(v1: number, v2: number, direct: boolean): number {
   return Math.PI * 2 - angle;
 };
 
-vec2.vertical = function(out: number[], v: number[], flag: boolean): number[] {
+vec2.vertical = function (out: number[], v: number[], flag: boolean): number[] {
   if (flag) {
     out[0] = v[1];
     out[1] = -1 * v[0];

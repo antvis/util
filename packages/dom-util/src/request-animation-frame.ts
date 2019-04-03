@@ -5,9 +5,9 @@ export default function requestAnimationFrame(fn: FrameRequestCallback) {
     window.mozRequestAnimationFrame ||
     // @ts-ignore
     window.msRequestAnimationFrame ||
-    function(f) {
+    function (f) {
       return setTimeout(f, 16);
     };
 
   return method(fn);
-};
+}

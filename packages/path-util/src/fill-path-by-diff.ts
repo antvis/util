@@ -1,4 +1,4 @@
-import {isEqual} from '@antv/util';
+import { isEqual } from '@antv/util';
 
 export interface DiffType {
   type: string;
@@ -18,7 +18,7 @@ function getMinDiff(del: number, add: number, modify: number): DiffType {
   }
   return {
     type,
-    min
+    min,
   };
 }
 
@@ -26,7 +26,7 @@ function getMinDiff(del: number, add: number, modify: number): DiffType {
  * https://en.wikipedia.org/wiki/Levenshtein_distance
  * 计算两条path的编辑距离
  */
-const levenshteinDistance = function(source: string, target: string): DiffType[][] {
+const levenshteinDistance = function (source: string, target: string): DiffType[][] {
   const sourceLen = source.length;
   const targetLen = target.length;
   let sourceSegment,
@@ -115,4 +115,4 @@ export default function fillPathByDiff(source: string, target: string) {
     }
   }
   return source;
-};
+}

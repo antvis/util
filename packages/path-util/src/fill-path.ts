@@ -27,7 +27,7 @@ function decasteljau(points, t) {
 }
 
 function splitCurve(start, end, count) {
-  const points = [[ start[1], start[2] ]];
+  const points = [ [ start[1], start[2] ] ];
   count = count || 2;
   const segments = [];
   if (end[0] === 'A') {
@@ -54,7 +54,7 @@ function splitCurve(start, end, count) {
     leftSegments = split.right;
   }
   segments.push(leftSegments);
-  const result = segments.map(segment => {
+  const result = segments.map((segment) => {
     let cmd = [];
     if (segment.length === 4) {
       cmd.push('C');
@@ -117,10 +117,10 @@ export default function fillPath(source, target) {
       return filled.concat(source[sourceLen]);
     }
     return filled.concat(splitSegment(source[i], source[i + 1], count));
-  }, []);
+  },                                   []);
   filled.unshift(source[0]);
   if (target[targetLen] === 'Z' || target[targetLen] === 'z') {
     filled.push('Z');
   }
   return filled;
-};
+}

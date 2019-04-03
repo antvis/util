@@ -6,4 +6,4 @@ export default function getHeight(el: HTMLElement, defaultValue?: any): number {
     width = el.offsetWidth;
   }
   return parseFloat(width);
-};
+}

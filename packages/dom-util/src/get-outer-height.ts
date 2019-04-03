@@ -11,4 +11,4 @@ export default function getOuterHeight(el: HTMLElement, defaultValue?: any): num
   const mTop = parseFloat(getStyle(el, 'marginTop')) || 0;
   const mBottom = parseFloat(getStyle(el, 'marginBottom')) || 0;
   return height + bTop + bBottom + pTop + pBottom + mTop + mBottom;
-};
+}

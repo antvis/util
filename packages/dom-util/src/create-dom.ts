@@ -23,7 +23,7 @@ function initConstants() {
     tfoot: TABLE,
     td: TABLE_TR,
     th: TABLE_TR,
-    '*': document.createElement('div')
+    '*': document.createElement('div'),
   };
 }
 
@@ -41,4 +41,4 @@ export default function createDom(str:string): any {
   const dom = container.childNodes[0];
   container.removeChild(dom);
   return dom;
-};
+}

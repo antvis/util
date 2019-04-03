@@ -1,15 +1,15 @@
-import {isArray} from '@antv/util';;
+import { isArray } from '@antv/util'; 
 
 import rectPath from './rect-path';
 import path2Curve from './path-2-curve';
 
-const base3 = function(t: number, p1: number, p2: number, p3: number, p4: number): number {
+const base3 = function (t: number, p1: number, p2: number, p3: number, p4: number): number {
   const t1 = -3 * p1 + 9 * p2 - 9 * p3 + 3 * p4;
   const t2 = t * t1 + 6 * p1 - 12 * p2 + 6 * p3;
   return t * t2 - 3 * p1 + 3 * p2;
 };
 
-const bezlen = function(x1: number, y1: number, x2: number, y2: number,
+const bezlen = function (x1: number, y1: number, x2: number, y2: number,
                         x3: number, y3: number, x4: number, y4: number, z: number): number {
   if (z === null) {
     z = 1;
@@ -40,12 +40,12 @@ export interface BoundPoint {
   max: Point;
 }
 
-const curveDim = function(x0: number, y0: number, x1: number, y1: number,
+const curveDim = function (x0: number, y0: number, x1: number, y1: number,
                           x2: number, y2: number, x3: number, y3: number): BoundPoint {
   const tvalues = [];
   const bounds = [
     [],
-    []
+    [],
   ];
   let a;
   let b;
@@ -103,20 +103,19 @@ const curveDim = function(x0: number, y0: number, x1: number, y1: number,
   bounds[1][jlen + 1] = y3;
   bounds[0].length = bounds[1].length = jlen + 2;
 
-
   return {
     min: {
       x: Math.min.apply(0, bounds[0]),
-      y: Math.min.apply(0, bounds[1])
+      y: Math.min.apply(0, bounds[1]),
     },
     max: {
       x: Math.max.apply(0, bounds[0]),
-      y: Math.max.apply(0, bounds[1])
-    }
+      y: Math.max.apply(0, bounds[1]),
+    },
   };
 };
 
-const intersect = function(x1: number, y1: number, x2: number, y2: number,
+const intersect = function (x1: number, y1: number, x2: number, y2: number,
                            x3: number, y3: number, x4: number, y4: number): Point {
   if (
     Math.max(x1, x2) < Math.min(x3, x4) ||
@@ -151,18 +150,18 @@ const intersect = function(x1: number, y1: number, x2: number, y2: number,
   }
   return {
     x: px,
-    y: py
+    y: py,
   };
 };
 
-const isPointInsideBBox = function(bbox, x, y) {
+const isPointInsideBBox = function (bbox, x, y) {
   return x >= bbox.x &&
     x <= bbox.x + bbox.width &&
     y >= bbox.y &&
     y <= bbox.y + bbox.height;
 };
 
-const box = function(x, y, width, height) {
+const box = function (x, y, width, height) {
   if (x === null) {
     x = y = width = height = 0;
   }
@@ -187,11 +186,11 @@ const box = function(x, y, width, height) {
     r2: Math.max(width, height) / 2,
     r0: Math.sqrt(width * width + height * height) / 2,
     path: rectPath(x, y, width, height),
-    vb: [ x, y, width, height ].join(' ')
+    vb: [ x, y, width, height ].join(' '),
   };
 };
 
-const isBBoxIntersect = function(bbox1, bbox2) {
+const isBBoxIntersect = function (bbox1, bbox2) {
   // @ts-ignore
   bbox1 = box(bbox1);
   // @ts-ignore
@@ -199,7 +198,7 @@ const isBBoxIntersect = function(bbox1, bbox2) {
   return isPointInsideBBox(bbox2, bbox1.x, bbox1.y) || isPointInsideBBox(bbox2, bbox1.x2, bbox1.y) || isPointInsideBBox(bbox2, bbox1.x, bbox1.y2) || isPointInsideBBox(bbox2, bbox1.x2, bbox1.y2) || isPointInsideBBox(bbox1, bbox2.x, bbox2.y) || isPointInsideBBox(bbox1, bbox2.x2, bbox2.y) || isPointInsideBBox(bbox1, bbox2.x, bbox2.y2) || isPointInsideBBox(bbox1, bbox2.x2, bbox2.y2) || (bbox1.x < bbox2.x2 && bbox1.x > bbox2.x || bbox2.x < bbox1.x2 && bbox2.x > bbox1.x) && (bbox1.y < bbox2.y2 && bbox1.y > bbox2.y || bbox2.y < bbox1.y2 && bbox2.y > bbox1.y);
 };
 
-const bezierBBox = function(p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y) {
+const bezierBBox = function (p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y) {
   if (!isArray(p1x)) {
     p1x = [ p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y ];
   }
@@ -208,11 +207,11 @@ const bezierBBox = function(p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y) {
     bbox.min.x,
     bbox.min.y,
     bbox.max.x - bbox.min.x,
-    bbox.max.y - bbox.min.y
+    bbox.max.y - bbox.min.y,
   );
 };
 
-const findDotsAtSegment = function(p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, t) {
+const findDotsAtSegment = function (p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, t) {
   const t1 = 1 - t;
   const t13 = Math.pow(t1, 3);
   const t12 = Math.pow(t1, 2);
@@ -235,26 +234,25 @@ const findDotsAtSegment = function(p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, t) {
     y,
     m: {
       x: mx,
-      y: my
+      y: my,
     },
     n: {
       x: nx,
-      y: ny
+      y: ny,
     },
     start: {
       x: ax,
-      y: ay
+      y: ay,
     },
     end: {
       x: cx,
-      y: cy
+      y: cy,
     },
-    alpha
+    alpha,
   };
 };
 
-
-const interHelper = function(bez1, bez2, justCount) {
+const interHelper = function (bez1, bez2, justCount) {
   // @ts-ignore
   const bbox1 = bezierBBox(bez1);
   // @ts-ignore
@@ -275,7 +273,7 @@ const interHelper = function(bez1, bez2, justCount) {
     dots1.push({
       x: d.x,
       y: d.y,
-      t: i / n1
+      t: i / n1,
     });
   }
   for (let i = 0; i < n2 + 1; i++) {
@@ -283,7 +281,7 @@ const interHelper = function(bez1, bez2, justCount) {
     dots2.push({
       x: d.x,
       y: d.y,
-      t: i / n2
+      t: i / n2,
     });
   }
   for (let i = 0; i < n1; i++) {
@@ -312,7 +310,7 @@ const interHelper = function(bez1, bez2, justCount) {
               x: is.x,
               y: is.y,
               t1,
-              t2
+              t2,
             });
           }
         }
@@ -322,7 +320,7 @@ const interHelper = function(bez1, bez2, justCount) {
   return res;
 };
 
-const interPathHelper = function(path1, path2, justCount) {
+const interPathHelper = function (path1, path2, justCount) {
   // @ts-ignore
   path1 = path2Curve(path1);
   // @ts-ignore
@@ -393,5 +391,4 @@ const interPathHelper = function(path1, path2, justCount) {
 export default function pathIntersection(path1, path2) {
   // @ts-ignore
   return interPathHelper(path1, path2);
-};
-
+}

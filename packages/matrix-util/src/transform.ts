@@ -1,9 +1,9 @@
-import {each, clone} from '@antv/util';
+import { each, clone } from '@antv/util';
 import mat3 from './mat3';
 
 export default (m, ts) => {
   m = clone(m);
-  each(ts, t => {
+  each(ts, (t) => {
     switch (t[0]) {
       case 't':
         mat3.translate(m, m, [ t[1], t[2] ]);

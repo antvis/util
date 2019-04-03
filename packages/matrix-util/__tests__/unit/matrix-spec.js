@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 import * as All from '../../src';
-import {isNumberEqual} from '@antv/util';
+import { isNumberEqual } from '@antv/util';
 
 const mat3 = All.mat3;
 const vec3 = All.vec3;

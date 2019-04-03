@@ -18,7 +18,7 @@ function ellipsePath(x: number, y: number, rx: number, ry: number, a?: number) {
     const y2 = y + rx * Math.sin(-a * rad);
     res = [
       [ 'M', x1, y1 ],
-      [ 'A', rx, rx, 0, +(a - ry > 180), 0, x2, y2 ]
+      [ 'A', rx, rx, 0, +(a - ry > 180), 0, x2, y2 ],
     ];
   } else {
     res = [
@@ -26,7 +26,7 @@ function ellipsePath(x: number, y: number, rx: number, ry: number, a?: number) {
       [ 'm', 0, -ry ],
       [ 'a', rx, ry, 0, 1, 1, 0, 2 * ry ],
       [ 'a', rx, ry, 0, 1, 1, 0, -2 * ry ],
-      [ 'z' ]
+      [ 'z' ],
     ];
   }
   return res;
@@ -37,7 +37,7 @@ export default function pathToAbsolute(pathString: string): any[][] {
 
   if (!pathArray || !pathArray.length) {
     return [
-      [ 'M', 0, 0 ]
+      [ 'M', 0, 0 ],
     ];
   }
   let res = [];
@@ -155,4 +155,4 @@ export default function pathToAbsolute(pathString: string): any[][] {
   }
 
   return res;
-};
+}

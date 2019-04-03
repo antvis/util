@@ -5,18 +5,18 @@ export default function addEventListener(target: HTMLElement, eventType: string,
       return {
         remove() {
           target.removeEventListener(eventType, callback, false);
-        }
+        },
       };
       // @ts-ignore
-    } else if (typeof target.attachEvent === 'function') {
+    }  if (typeof target.attachEvent === 'function') {
       // @ts-ignore
       target.attachEvent('on' + eventType, callback);
       return {
         remove() {
           // @ts-ignore
           target.detachEvent('on' + eventType, callback);
-        }
+        },
       };
     }
   }
-};
+}

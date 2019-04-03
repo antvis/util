@@ -1,4 +1,4 @@
-import {isArray} from '@antv/util';
+import { isArray } from '@antv/util';
 
 const SPACES = '\x09\x0a\x0b\x0c\x0d\x20\xa0\u1680\u180e\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u202f\u205f\u3000\u2028\u2029';
 const PATH_COMMAND = new RegExp('([a-z])[' + SPACES + ',]*((-?\\d*\\.?\\d*(?:e[\\-+]?\\d+)?[' + SPACES + ']*,?[' + SPACES + ']*)+)', 'ig');
@@ -26,14 +26,14 @@ export default function parsePathString(pathString: string): string[] {
     t: 2,
     v: 1,
     u: 3,
-    z: 0
+    z: 0,
   };
   const data = [];
 
-  String(pathString).replace(PATH_COMMAND, function(a, b, c) {
+  String(pathString).replace(PATH_COMMAND, function (a, b, c) {
     const params = [];
     let name = b.toLowerCase();
-    c.replace(PATH_VALUES, function(a, b) {
+    c.replace(PATH_VALUES, function (a, b) {
       b && params.push(+b);
     });
     if (name === 'm' && params.length > 2) {
@@ -58,4 +58,4 @@ export default function parsePathString(pathString: string): string[] {
   });
 
   return data;
-};
+}

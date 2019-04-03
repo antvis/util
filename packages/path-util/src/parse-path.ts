@@ -1,4 +1,4 @@
-import {each, isArray, isString} from '@antv/util';;
+import { each, isArray, isString } from '@antv/util'; 
 const regexTags = /[MLHVQTCSAZ]([^MLHVQTCSAZ]*)/ig;
 const regexDot = /[^\s\,]+/ig;
 
@@ -21,7 +21,7 @@ function parsePath(p: string): string[] {
         item[0] = tag;
       }
       // @ts-ignore
-      each(item, function(sub, i) {
+      each(item, function (sub, i) {
         if (!isNaN(sub)) {
           // @ts-ignore
           item[i] = +sub;

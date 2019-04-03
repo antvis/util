@@ -14,7 +14,7 @@ export default function rectPath(x: number, y: number, w: number, h: number, r?:
       [ 'a', r, r, 0, 0, 1, -r, -r ],
       [ 'l', 0, r * 2 - h ],
       [ 'a', r, r, 0, 0, 1, r, -r ],
-      [ 'z' ]
+      [ 'z' ],
     ];
   }
   return [
@@ -22,7 +22,7 @@ export default function rectPath(x: number, y: number, w: number, h: number, r?:
     [ 'l', w, 0 ],
     [ 'l', 0, h ],
     [ 'l', -w, 0 ],
-    [ 'z' ]
+    [ 'z' ],
   ];
   // res.parsePathArray = parsePathArray;
-};
+}

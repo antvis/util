@@ -1,6 +1,6 @@
 import path2Absolute from './path-2-absolute';
 
-const a2c = function(
+const a2c = function (
   x1: number, y1: number, rx: number, ry: number,
   angle: number, large_arc_flag: number, sweep_flag: number,
   x2: number, y2: number, recursive: number[]) {
@@ -18,12 +18,12 @@ const a2c = function(
   let f2;
   let cx;
   let cy;
-  const rotate = function(x, y, rad) {
+  const rotate = function (x, y, rad) {
     const X = x * Math.cos(rad) - y * Math.sin(rad);
     const Y = x * Math.sin(rad) + y * Math.cos(rad);
     return {
       x: X,
-      y: Y
+      y: Y,
     };
   };
   if (!recursive) {
@@ -108,12 +108,11 @@ const a2c = function(
 
 };
 
-
-const l2c = function(x1, y1, x2, y2) {
+const l2c = function (x1, y1, x2, y2) {
   return [ x1, y1, x2, y2, x2, y2 ];
 };
 
-const q2c = function(x1, y1, ax, ay, x2, y2) {
+const q2c = function (x1, y1, ax, ay, x2, y2) {
   const _13 = 1 / 3;
   const _23 = 2 / 3;
   return [
@@ -122,7 +121,7 @@ const q2c = function(x1, y1, ax, ay, x2, y2) {
     _13 * x2 + _23 * ax,
     _13 * y2 + _23 * ay,
     x2,
-    y2
+    y2,
   ];
 };
 
@@ -137,7 +136,7 @@ export default function pathTocurve(path, path2) {
     X: 0,
     Y: 0,
     qx: null,
-    qy: null
+    qy: null,
   };
   const attrs2 = {
     x: 0,
@@ -147,21 +146,21 @@ export default function pathTocurve(path, path2) {
     X: 0,
     Y: 0,
     qx: null,
-    qy: null
+    qy: null,
   };
   const pcoms1 = []; // path commands of original path p
   const pcoms2 = []; // path commands of original path p2
   let pfirst = ''; // temporary holder for original path command
   let pcom = ''; // holder for previous path command of original path
   let ii;
-  const processPath = function(path, d, pcom) {
+  const processPath = function (path, d, pcom) {
     let nx,
       ny;
     if (!path) {
       return [ 'C', d.x, d.y, d.x, d.y, d.x, d.y ];
     }!(path[0] in {
       T: 1,
-      Q: 1
+      Q: 1,
     }) && (d.qx = d.qy = null);
     switch (path[0]) {
       case 'M':
@@ -213,7 +212,7 @@ export default function pathTocurve(path, path2) {
     }
     return path;
   };
-  const fixArc = function(pp, i) {
+  const fixArc = function (pp, i) {
     if (pp[i].length > 7) {
       pp[i].shift();
       const pi = pp[i];
@@ -226,7 +225,7 @@ export default function pathTocurve(path, path2) {
       ii = Math.max(p.length, p2 && p2.length || 0);
     }
   };
-  const fixM = function(path1, path2, a1, a2, i) {
+  const fixM = function (path1, path2, a1, a2, i) {
     if (path1 && path2 && path1[i][0] === 'M' && path2[i][0] !== 'M') {
       path2.splice(i, 0, [ 'M', a2.x, a2.y ]);
       a1.bx = 0;
@@ -284,4 +283,4 @@ export default function pathTocurve(path, path2) {
   }
 
   return p2 ? [ p, p2 ] : p;
-};
+}
