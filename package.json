@@ -42,7 +42,7 @@
     "build": "lerna run build",
     "contributor": "git-contributor",
     "link": "lerna link",
-    "lint": "npm run eslint && npm run tslint",
+    "lint": "npm run eslint",
     "tslint": "tslint ./packages/**/*.ts",
     "tslint-fix": "tslint ./packages/**/*.ts --fix",
     "eslint": "eslint --ext .html,.js ./packages",

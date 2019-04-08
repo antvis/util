@@ -1,6 +1,6 @@
 {
   "name": "@antv/matrix-util",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "description": "A common util collection for antv projects",
   "main": "lib/index.js",
   "scripts": {
@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/antvis/util#readme",
   "dependencies": {
-    "@antv/util": "~1.4.0",
+    "@antv/util": "~2.0.0",
     "@antv/gl-matrix": "^2.7.1"
   }
 }
