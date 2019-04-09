@@ -18,7 +18,6 @@ each(arr, (item, idx) => {
 const x = get(obj, 'a.b', '');
 ```
 
-
 ## API 文档
 
 > 目前使用到的、且推荐使用的 API 文档，不在文档内的不建议使用。
@@ -31,14 +30,23 @@ const x = get(obj, 'a.b', '');
 
 
 > 推荐使用的 API 文档如下：
-
  - array
     - [contains](#contains)
     - [difference](#)
     - [map](#)
     - [find](#)
+    - [findIndex](#)
+    - firstValue
     - [filter](#)
     - [flatten](#)
+    - flattenDeep
+    - getRange
+    - pull
+    - pullAt
+    - sortBy
+    - valuesOfKey
+    - head
+    - last
     - [reduce](#)
     - [remove](#)
     - [sortBy](#)
@@ -51,39 +59,55 @@ const x = get(obj, 'a.b', '');
     - [endsWith](#)
     - [every](#)
     - [some](#)
- - dom
-    - [addEventListener](#)
-    - [create-dom](#)
-    - ...
+    - indexOf
+
  - event
     - [getWrapBehavior](#)
     - [wrapBehavior](#)
+
  - object
     - [clone](#)
+    - has
+    - hasKey
+    - keys
+    - isMatch
     - [forIn](#)
+    - values
     - [mapValues](#)
     - [mapKeys](#)
     - [get](#)
     - [set](#)
     - [groupBy](#)
     - [isEqual](#)
+    - isEqualWith
     - [pick](#)
  - string
     - [lowerCase](#)
     - [upperCase](#)
+    - substitute
+    - upperFirst
+    - lowerFirst
     - [toString](#)
     - [uniqueId](#)
  - type
     - [getType](#)
+    - isArguments
     - [isArray](#)
+    - isArrayLike
     - [isBoolean](#)
     - [isDate](#)
+    - isError
     - [isFunction](#)
     - [isFinite](#)
     - [isNil](#)
     - [isNull](#)
     - [isNumber](#)
     - [isObject](#)
+    - isObjectLike
+    - isPlainObject
+    - isPrototype
+    - isType
+    - isElement
     - [isRegExp](#)
     - [isString](#)
     - [isUndefined](#)
@@ -94,8 +118,38 @@ const x = get(obj, 'a.b', '');
     - [noop](#)
     - [identity](#)
     - [memoize](#)
-
-
+    - noop
+    - size
+- format
+    - number2color
+    - parseRadius: 将数值转换成矩形四个角对应的 radius
+    - toArray
+    - toString
+- math
+    - clamp
+    - fixedBase
+    - isDecimal
+    - isEven
+    - isInteger
+    - isNegative
+    - isNumberEqual
+    - isOdd
+    - isPositive
+    - maxBy
+    - minBy
+    - toDegree
+    - toInteger
+    - toRadian
+- animate
+    - requestAnimationFrame
+    - clearAnimationFrame
+- other
+    - augment
+    - debounce
+    - mix
+    - deepMix
+    - each
+    - extend
 ## 实例
 
 > TODO 完善上述各个方法的使用实例。

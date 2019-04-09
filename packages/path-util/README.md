@@ -9,36 +9,20 @@
 
 ```js
 // 所有的 api 是都这么引入，名字不同而已
-import { parsePath, path2Curve } from '@antv/path-util';
-
-
+import { parsePathString, path2Curve } from '@antv/path-util';
 ```
 
 
 ## API 文档
-
-> 目前使用到的、且推荐使用的 API 文档，不在文档内的不建议使用。
-
-后续方法添加到文档需要经过审核：
-
-1. ts 类型定义是否完善
-2. 单测是否覆盖
-3. 文档实例是否覆盖全部能力
-
-
-> 推荐使用的 API 文档如下：
-
-* parsePath
-* catmullRom2Bezier
-* fillPath
-* fillPathByDiff
-* formatPath
-* pathIntersection
-* parsePathArray
-* parsePathString
-* path2Curve
-* path2Absolute
-* reactPath
+* catmullRom2Bezier(arr, closed): 将点的数组转成曲线
+* fillPath(source, target): 动画前填充path
+* fillPathByDiff(source, target): 左右平移动画前的填充 path
+* pathIntersection(path1, path2): 两条线的交点
+* parsePathArray(arr) `String` ： 将数组转成字符串
+* parsePathString(str)`String[]`: 将字符串转换成数组
+* path2Curve(arr|str) `String[]`: 转曲
+* path2Absolute(arr|str) `String[]`: 都转换成大写绝对路径的写法
+* reactPath(x, y, w, h, r) `String[]`: 支持圆角的矩形
 
 ## 实例
 

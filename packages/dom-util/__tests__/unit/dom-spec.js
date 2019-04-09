@@ -4,11 +4,11 @@ import * as DOMUtil from '../../src';
 describe('DomUtils', () => {
   const nodeNotExist = null;
 
-  it('getBoundingClientRect(node, defaultValue)', () => {
-    expect(() => {
-      DOMUtil.getBoundingClientRect(nodeNotExist);
-    }).to.not.throw();
-  });
+  // it('getBoundingClientRect(node, defaultValue)', () => {
+  //   expect(() => {
+  //     DOMUtil.getBoundingClientRect(nodeNotExist);
+  //   }).to.not.throw();
+  // });
 
   it('getStyle(node, name, defaultValue)', () => {
     expect(() => {

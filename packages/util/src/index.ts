@@ -19,6 +19,12 @@ export { default as head } from './head';
 export { default as last } from './last';
 export { default as startsWith } from './starts-with';
 export { default as endsWith } from './ends-with';
+export { default as filter } from './filter';
+export { default as every } from './every';
+export { default as some } from './some';
+export { default as group } from './group';
+export { default as groupBy } from './group-by';
+export { default as groupToMap } from './group-to-map';
 
 
 // event
@@ -85,6 +91,9 @@ export { default as isType } from './is-type';
 export { default as isUndefined } from './is-undefined';
 export { default as isElement } from './is-element';
 
+export { default as requestAnimationFrame } from './request-animation-frame';
+export { default as clearAnimationFrame } from './request-animation-frame';
+
 // other
 export { default as augment } from './augment';
 export { default as clone } from './clone';
@@ -93,12 +102,6 @@ export { default as memoize } from './memoize';
 export { default as deepMix } from './deep-mix';
 export { default as each } from './each';
 export { default as extend } from './extend';
-export { default as filter } from './filter';
-export { default as every } from './every';
-export { default as some } from './some';
-export { default as group } from './group';
-export { default as groupBy } from './group-by';
-export { default as groupToMap } from './group-to-map';
 export { default as indexOf } from './index-of';
 export { default as isEmpty } from './is-empty';
 export { default as isEqual } from './is-equal';
