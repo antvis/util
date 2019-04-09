@@ -92,7 +92,7 @@ export { default as isUndefined } from './is-undefined';
 export { default as isElement } from './is-element';
 
 export { default as requestAnimationFrame } from './request-animation-frame';
-export { default as clearAnimationFrame } from './request-animation-frame';
+export { default as clearAnimationFrame } from './clear-animation-frame';
 
 // other
 export { default as augment } from './augment';

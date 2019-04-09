@@ -1,4 +1,4 @@
-export default function cancelAnimationFrame(fn: FrameRequestCallback) {
+export default function cancelAnimationFrame(handler: number) {
   const method = window.cancelAnimationFrame ||
     window.webkitCancelAnimationFrame ||
     // @ts-ignore
@@ -7,5 +7,5 @@ export default function cancelAnimationFrame(fn: FrameRequestCallback) {
     window.msCancelAnimationFrame ||
     clearTimeout;
 
-  return method(fn);
+  method(handler);
 };
