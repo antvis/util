@@ -1,6 +1,6 @@
 {
   "name": "@antv/util",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A common util collection for antv projects",
   "main": "lib/index.js",
   "scripts": {
@@ -8,7 +8,6 @@
     "coverage": "npm run coverage-generator && npm run coverage-viewer",
     "coverage-generator": "torch --coverage --compile --source-pattern src/*.js,src/**/*.js --opts __tests__/mocha.opts",
     "coverage-viewer": "torch-coverage",
-    "postinstall": "npm run build",
     "test": "torch --renderer --compile --opts __tests__/mocha.opts",
     "test-live": "torch --compile --interactive --opts __tests__/mocha.opts",
     "tsc": "tsc --noEmit",
@@ -23,6 +22,12 @@
     "antv",
     "g"
   ],
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "https://github.com/orgs/antvis/people",
   "license": "ISC",
   "bugs": {
