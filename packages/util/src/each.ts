@@ -1,15 +1,7 @@
 import isArray from './is-array';
 import isObject from './is-object';
 
-export interface ObjectType<T> {
-  readonly [key: string]: T;
-}
-
-// override type define
-function each <T>(elements: ObjectType<T>, func: (v: T, k: string) => any): void;
-function each <T>(elements: T[], func: (v: T, k: number) => any): void;
-
-function each <T>(elements: T[] | ObjectType<T>, func: (v: T, k: any) => any): void {
+function each (elements: any[] | object, func: (v: any, k: string|number) => any): void {
   if (!elements) {
     return;
   }
