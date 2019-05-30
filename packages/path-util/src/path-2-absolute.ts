@@ -1,38 +1,6 @@
 import parsePathString from './parse-path-string';
-import catmullRom2Bezier from './catmull-rom-2-bezier';
-
-function ellipsePath(x: number, y: number, rx: number, ry: number, a?: number) {
-  let res = [];
-  if (a === null && ry === null) {
-    ry = rx;
-  }
-  x = +x;
-  y = +y;
-  rx = +rx;
-  ry = +ry;
-  if (a !== null) {
-    const rad = Math.PI / 180;
-    const x1 = x + rx * Math.cos(-ry * rad);
-    const x2 = x + rx * Math.cos(-a * rad);
-    const y1 = y + rx * Math.sin(-ry * rad);
-    const y2 = y + rx * Math.sin(-a * rad);
-    res = [
-      [ 'M', x1, y1 ],
-      [ 'A', rx, rx, 0, +(a - ry > 180), 0, x2, y2 ],
-    ];
-  } else {
-    res = [
-      [ 'M', x, y ],
-      [ 'm', 0, -ry ],
-      [ 'a', rx, ry, 0, 1, 1, 0, 2 * ry ],
-      [ 'a', rx, ry, 0, 1, 1, 0, -2 * ry ],
-      [ 'z' ],
-    ];
-  }
-  return res;
-}
-
-export default function pathToAbsolute(pathString: string): any[][] {
+const REGEX_MD = /[a-z]/;
+export default function pathToAbsolute(pathString: string) {
   const pathArray = parsePathString(pathString);
 
   if (!pathArray || !pathArray.length) {
@@ -40,6 +8,20 @@ export default function pathToAbsolute(pathString: string): any[][] {
       [ 'M', 0, 0 ],
     ];
   }
+  let hasRaltive = false;
+  for (let i = 0; i < pathArray.length; i++) {
+    // 如果存在相对位置的命令，则中断返回
+    if (REGEX_MD.test(pathArray[i][0])) {
+      hasRaltive = true;
+      break;
+    }
+  }
+  // 如果不存在相对命令，则直接返回
+  // 如果在业务上都写绝对路径，这种方式最快，仅做了一次检测
+  if (!hasRaltive) {
+    return pathArray;
+  }
+
   let res = [];
   let x = 0;
   let y = 0;
@@ -48,25 +30,25 @@ export default function pathToAbsolute(pathString: string): any[][] {
   let start = 0;
   let pa0;
   let dots;
-  if (pathArray[0][0] === 'M') {
-    x = +pathArray[0][1];
-    y = +pathArray[0][2];
+  const first = pathArray[0];
+  if (first[0] === 'M' || first[0] === 'm') {
+    x = +first[1];
+    y = +first[2];
     mx = x;
     my = y;
     start++;
     res[0] = [ 'M', x, y ];
   }
-  const crz = pathArray.length === 3 &&
-    pathArray[0][0] === 'M' &&
-    pathArray[1][0].toUpperCase() === 'R' &&
-    pathArray[2][0].toUpperCase() === 'Z';
-  for (let r, pa, i = start, ii = pathArray.length; i < ii; i++) {
-    res.push(r = []);
-    pa = pathArray[i];
-    pa0 = pa[0];
-    if (pa0 !== pa0.toUpperCase()) {
-      r[0] = pa0.toUpperCase();
-      switch (r[0]) {
+
+  for (let i = start, ii = pathArray.length; i < ii; i++) {
+    const pa = pathArray[i];
+    let r = [];
+    const isRelative = REGEX_MD; 
+    const cmd = pa[0];
+    const upCmd = cmd.toUpperCase();
+    if (cmd !== upCmd) {
+      r[0] = upCmd;
+      switch (upCmd) {
         case 'A':
           r[1] = pa[1];
           r[2] = pa[2];
@@ -82,26 +64,6 @@ export default function pathToAbsolute(pathString: string): any[][] {
         case 'H':
           r[1] = +pa[1] + x;
           break;
-        case 'R':
-          dots = [ x, y ].concat(pa.slice(1));
-          for (let j = 2, jj = dots.length; j < jj; j++) {
-            dots[j] = +dots[j] + x;
-            dots[++j] = +dots[j] + y;
-          }
-          res.pop();
-          res = res.concat(catmullRom2Bezier(dots, crz));
-          break;
-        case 'O':
-          res.pop();
-          dots = ellipsePath(x, y, pa[1], pa[2]);
-          dots.push(dots[0]);
-          res = res.concat(dots);
-          break;
-        case 'U':
-          res.pop();
-          res = res.concat(ellipsePath(x, y, pa[1], pa[2], pa[3]));
-          r = [ 'U' ].concat(res[res.length - 1].slice(-2));
-          break;
         case 'M':
           mx = +pa[1] + x;
           my = +pa[2] + y;
@@ -111,47 +73,30 @@ export default function pathToAbsolute(pathString: string): any[][] {
             r[j] = +pa[j] + ((j % 2) ? x : y);
           }
       }
-    } else if (pa0 === 'R') {
-      dots = [ x, y ].concat(pa.slice(1));
-      res.pop();
-      res = res.concat(catmullRom2Bezier(dots, crz));
-      r = [ 'R' ].concat(pa.slice(-2));
-    } else if (pa0 === 'O') {
-      res.pop();
-      dots = ellipsePath(x, y, pa[1], pa[2]);
-      dots.push(dots[0]);
-      res = res.concat(dots);
-    } else if (pa0 === 'U') {
-      res.pop();
-      res = res.concat(ellipsePath(x, y, pa[1], pa[2], pa[3]));
-      r = [ 'U' ].concat(res[res.length - 1].slice(-2));
-    } else {
-      for (let k = 0, kk = pa.length; k < kk; k++) {
-        r[k] = pa[k];
-      }
+    } else { // 如果本来已经大写，则不处理
+      r = pathArray[i];
     }
-    pa0 = pa0.toUpperCase();
-    if (pa0 !== 'O') {
-      switch (r[0]) {
-        case 'Z':
-          x = +mx;
-          y = +my;
-          break;
-        case 'H':
-          x = r[1];
-          break;
-        case 'V':
-          y = r[1];
-          break;
-        case 'M':
-          mx = r[r.length - 2];
-          my = r[r.length - 1];
-          break; // for lint
-        default:
-          x = r[r.length - 2];
-          y = r[r.length - 1];
-      }
+    // 需要在外面统一做
+    switch (upCmd) {
+      case 'Z':
+        x = +mx;
+        y = +my;
+        break;
+      case 'H':
+        x = r[1];
+        break;
+      case 'V':
+        y = r[1];
+        break;
+      case 'M':
+        mx = r[r.length - 2];
+        my = r[r.length - 1];
+        break; // for lint
+      default:
+        x = r[r.length - 2];
+        y = r[r.length - 1];
     }
+    res.push(r);
   }
 
   return res;

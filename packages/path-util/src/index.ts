@@ -6,6 +6,6 @@ export { default as formatPath } from './format-path';
 export { default as pathIntersection } from './path-intersection';
 export { default as parsePathArray } from './parse-path-array';
 export { default as parsePathString } from './parse-path-string';
-export { default as path2Curve } from './path-2-absolute';
-export { default as path2Absolute } from './path-2-curve';
+export { default as path2Curve } from './path-2-curve';
+export { default as path2Absolute } from './path-2-absolute';
 export { default as reactPath } from './rect-path';

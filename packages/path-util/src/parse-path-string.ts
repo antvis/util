@@ -5,7 +5,7 @@ const PATH_COMMAND = new RegExp('([a-z])[' + SPACES + ',]*((-?\\d*\\.?\\d*(?:e[\
 const PATH_VALUES = new RegExp('(-?\\d*\\.?\\d*(?:e[\\-+]?\\d+)?)[' + SPACES + ']*,?[' + SPACES + ']*', 'ig');
 
 // Parses given path string into an array of arrays of path segments
-export default function parsePathString(pathString: string): string[] {
+export default function parsePathString(pathString: string) {
   if (!pathString) {
     return null;
   }
