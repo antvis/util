@@ -1,4 +1,7 @@
-import { each, isArray, isString } from '@antv/util'; 
+import each from '@antv/util/lib/each';
+import isArray from '@antv/util/lib/is-array';
+import isString from '@antv/util/lib/is-string';
+
 const regexTags = /[MLHVQTCSAZ]([^MLHVQTCSAZ]*)/ig;
 const regexDot = /[^\s\,]+/ig;
 

@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-import { each } from '@antv/util';
+import each from '@antv/util/lib/each';
 import * as PathUtil from '../../src';
 
 describe('PathUtil', () => {

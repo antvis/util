@@ -1,4 +1,4 @@
-import { isEqual } from '@antv/util';
+import isEqual from '@antv/util/lib/is-equal';
 
 export interface DiffType {
   type: string;
