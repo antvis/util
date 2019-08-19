@@ -1,8 +1,9 @@
 {
   "name": "@antv/util",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "A common util collection for antv projects",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "rm -rf lib && tsc",
     "coverage": "npm run coverage-generator && npm run coverage-viewer",
@@ -38,6 +39,5 @@
     "less": "^3.9.0"
   },
   "homepage": "https://github.com/antvis/util#readme",
-  "dependencies": {
-  }
+  "dependencies": {}
 }
