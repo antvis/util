@@ -1,17 +1,25 @@
 import path2Absolute from './path-2-absolute';
 
 const a2c = function (
-  x1: number, y1: number, rx: number, ry: number,
-  angle: number, large_arc_flag: number, sweep_flag: number,
-  x2: number, y2: number, recursive: number[]) {
+  x1: number,
+  y1: number,
+  rx: number,
+  ry: number,
+  angle: number,
+  large_arc_flag: number,
+  sweep_flag: number,
+  x2: number,
+  y2: number,
+  recursive: number[],
+) {
   // for more information of where this math came from visit:
   // http://www.w3.org/TR/SVG11/implnote.html#ArcImplementationNotes
   if (rx === ry) {
     rx += 1;
   }
 
-  const _120 = Math.PI * 120 / 180;
-  const rad = Math.PI / 180 * (+angle || 0);
+  const _120 = (Math.PI * 120) / 180;
+  const rad = (Math.PI / 180) * (+angle || 0);
   let res = [];
   let xy;
   let f1;
@@ -33,7 +41,8 @@ const a2c = function (
     xy = rotate(x2, y2, -rad);
     x2 = xy.x;
     y2 = xy.y;
-    if (x1 === x2 && y1 === y2) { // 若弧的起始点和终点重叠则错开一点
+    if (x1 === x2 && y1 === y2) {
+      // 若弧的起始点和终点重叠则错开一点
       x2 += 1;
       y2 += 1;
     }
@@ -49,10 +58,11 @@ const a2c = function (
     }
     const rx2 = rx * rx;
     const ry2 = ry * ry;
-    const k = (large_arc_flag === sweep_flag ? -1 : 1) *
+    const k =
+      (large_arc_flag === sweep_flag ? -1 : 1) *
       Math.sqrt(Math.abs((rx2 * ry2 - rx2 * y * y - ry2 * x * x) / (rx2 * y * y + ry2 * x * x)));
-    cx = k * rx * y / ry + (x1 + x2) / 2;
-    cy = k * -ry * x / rx + (y1 + y2) / 2;
+    cx = (k * rx * y) / ry + (x1 + x2) / 2;
+    cy = (k * -ry * x) / rx + (y1 + y2) / 2;
     f1 = Math.asin(Number(((y1 - cy) / ry).toFixed(9)));
     f2 = Math.asin(Number(((y2 - cy) / ry).toFixed(9)));
 
@@ -88,8 +98,8 @@ const a2c = function (
   const c2 = Math.cos(f2);
   const s2 = Math.sin(f2);
   const t = Math.tan(df / 4);
-  const hx = 4 / 3 * rx * t;
-  const hy = 4 / 3 * ry * t;
+  const hx = (4 / 3) * rx * t;
+  const hy = (4 / 3) * ry * t;
   const m1 = [ x1, y1 ];
   const m2 = [ x1 + hx * s1, y1 - hy * c1 ];
   const m3 = [ x2 + hx * s2, y2 - hy * c2 ];
@@ -99,13 +109,15 @@ const a2c = function (
   if (recursive) {
     return [ m2, m3, m4 ].concat(res);
   }
-  res = [ m2, m3, m4 ].concat(res).join().split(',');
+  res = [ m2, m3, m4 ]
+    .concat(res)
+    .join()
+    .split(',');
   const newres = [];
   for (let i = 0, ii = res.length; i < ii; i++) {
     newres[i] = i % 2 ? rotate(res[i - 1], res[i], rad).y : rotate(res[i], res[i + 1], rad).x;
   }
   return newres;
-
 };
 
 const l2c = function (x1, y1, x2, y2) {
@@ -115,17 +127,10 @@ const l2c = function (x1, y1, x2, y2) {
 const q2c = function (x1, y1, ax, ay, x2, y2) {
   const _13 = 1 / 3;
   const _23 = 2 / 3;
-  return [
-    _13 * x1 + _23 * ax,
-    _13 * y1 + _23 * ay,
-    _13 * x2 + _23 * ax,
-    _13 * y2 + _23 * ay,
-    x2,
-    y2,
-  ];
+  return [ _13 * x1 + _23 * ax, _13 * y1 + _23 * ay, _13 * x2 + _23 * ax, _13 * y2 + _23 * ay, x2, y2 ];
 };
 
-export default function pathTocurve(path, path2) {
+export default function pathTocurve(path: any, path2?: any) {
   const p = path2Absolute(path);
   const p2 = path2 && path2Absolute(path2);
   const attrs = {
@@ -154,14 +159,17 @@ export default function pathTocurve(path, path2) {
   let pcom = ''; // holder for previous path command of original path
   let ii;
   const processPath = function (path, d, pcom) {
-    let nx,
-      ny;
+    let nx, ny;
     if (!path) {
       return [ 'C', d.x, d.y, d.x, d.y, d.x, d.y ];
-    }!(path[0] in {
-      T: 1,
-      Q: 1,
-    }) && (d.qx = d.qy = null);
+    }
+    !(
+      path[0] in
+        {
+          T: 1,
+          Q: 1,
+        }
+    ) && (d.qx = d.qy = null);
     switch (path[0]) {
       case 'M':
         d.X = path[1];
@@ -171,20 +179,24 @@ export default function pathTocurve(path, path2) {
         path = [ 'C' ].concat(a2c.apply(0, [ d.x, d.y ].concat(path.slice(1))));
         break;
       case 'S':
-        if (pcom === 'C' || pcom === 'S') { // In "S" case we have to take into account, if the previous command is C/S.
+        if (pcom === 'C' || pcom === 'S') {
+          // In "S" case we have to take into account, if the previous command is C/S.
           nx = d.x * 2 - d.bx; // And reflect the previous
           ny = d.y * 2 - d.by; // command's control point relative to the current point.
-        } else { // or some else or nothing
+        } else {
+          // or some else or nothing
           nx = d.x;
           ny = d.y;
         }
         path = [ 'C', nx, ny ].concat(path.slice(1));
         break;
       case 'T':
-        if (pcom === 'Q' || pcom === 'T') { // In "T" case we have to take into account, if the previous command is Q/T.
+        if (pcom === 'Q' || pcom === 'T') {
+          // In "T" case we have to take into account, if the previous command is Q/T.
           d.qx = d.x * 2 - d.qx; // And make a reflection similar
           d.qy = d.y * 2 - d.qy; // to case "S".
-        } else { // or something else or nothing
+        } else {
+          // or something else or nothing
           d.qx = d.x;
           d.qy = d.y;
         }
@@ -222,7 +234,7 @@ export default function pathTocurve(path, path2) {
         pp.splice(i++, 0, [ 'C' ].concat(pi.splice(0, 6)));
       }
       pp.splice(i, 1);
-      ii = Math.max(p.length, p2 && p2.length || 0);
+      ii = Math.max(p.length, (p2 && p2.length) || 0);
     }
   };
   const fixM = function (path1, path2, a1, a2, i) {
@@ -232,15 +244,15 @@ export default function pathTocurve(path, path2) {
       a1.by = 0;
       a1.x = path1[i][1];
       a1.y = path1[i][2];
-      ii = Math.max(p.length, p2 && p2.length || 0);
+      ii = Math.max(p.length, (p2 && p2.length) || 0);
     }
   };
-  ii = Math.max(p.length, p2 && p2.length || 0);
+  ii = Math.max(p.length, (p2 && p2.length) || 0);
   for (let i = 0; i < ii; i++) {
-
     p[i] && (pfirst = p[i][0]); // save current path command
 
-    if (pfirst !== 'C') { // C is not saved yet, because it may be result of conversion
+    if (pfirst !== 'C') {
+      // C is not saved yet, because it may be result of conversion
       pcoms1[i] = pfirst; // Save current path command
       i && (pcom = pcoms1[i - 1]); // Get previous path command pcom
     }
@@ -252,7 +264,8 @@ export default function pathTocurve(path, path2) {
 
     fixArc(p, i); // fixArc adds also the right amount of A:s to pcoms1
 
-    if (p2) { // the same procedures is done to p2
+    if (p2) {
+      // the same procedures is done to p2
       p2[i] && (pfirst = p2[i][0]);
       if (pfirst !== 'C') {
         pcoms2[i] = pfirst;
