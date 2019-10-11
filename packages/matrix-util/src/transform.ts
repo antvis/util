@@ -2,6 +2,7 @@ import { each, clone } from '@antv/util';
 import mat3 from './mat3';
 
 export default (m, ts) => {
+  // 上层使用时会传入为 null 的 matrix，此时按照单位矩阵处理
   const matrix = m ? clone(m) : [ 1, 0, 0, 0, 1, 0, 0, 0, 1 ];
   each(ts, (t) => {
     switch (t[0]) {
