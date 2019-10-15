@@ -53,7 +53,8 @@
     "lib": [
       "dom",
       "es7"
-    ]
+    ],
+    "types": ["mocha"]
   },
   "exclude": [
     "node_modules",
