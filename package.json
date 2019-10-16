@@ -65,6 +65,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/mocha": "^5.2.7",
     "@antv/istanbul": "0.0.0",
     "@antv/torch": "^1.0.0"
   }
