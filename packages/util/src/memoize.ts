@@ -1,5 +1,4 @@
 import isFunction from './is-function';
-import Cache from './cache';
 
 /**
  * _.memoize(calColor);
