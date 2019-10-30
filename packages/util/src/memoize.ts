@@ -26,7 +26,7 @@ export default (f: Function, resolver?: (...args: any[]) => string) => {
     return result
   };
 
-  memoized.cache = new Cache();
+  memoized.cache = new Map();
 
   return memoized
 }
