@@ -98,7 +98,7 @@ const toRGB = (color: string): string => {
  * @return 颜色值
  */
 const gradient = (colors: string | string[]) => {
-  const colorArray = isString(colors) ? colors.split('-') : colors;
+  const colorArray = isString(colors) ? (colors as string).split('-') : colors;
 
   const points = map(colorArray, (color) => {
     return rgb2arr(color.indexOf('#') === -1 ? toRGB(color) : color);
