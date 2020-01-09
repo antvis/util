@@ -1,6 +1,6 @@
 {
   "name": "@antv/color-util",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A common util collection for antv projects",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
