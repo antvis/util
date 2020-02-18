@@ -28,4 +28,14 @@ describe('color util test', function() {
     expect(gradient(1.2)).equal('#0000ff'); // larger than 1
     expect(gradient(0.5)).equal('#800080');
   });
+
+  it('toCSSGradient', () => {
+    const linearGradient = colorUtil.toCSSGradient('l(90) 0:#ffffff 0.5:#7ec2f3 1:#1890ff');
+    expect(linearGradient).equal('linear-gradient(180deg, #ffffff 0%, #7ec2f3 50%, #1890ff 100%)');
+
+    const radialGradient = colorUtil.toCSSGradient('r(0.5, 0.5, 0.1) 0:#ffffff 0.3:#7ec2f3 1:#1890ff');
+    expect(radialGradient).equal('radial-gradient(#ffffff 0%, #7ec2f3 30%, #1890ff 100%)');
+
+    expect(colorUtil.toCSSGradient('#1890ff')).equal('#1890ff');
+  });
 });
