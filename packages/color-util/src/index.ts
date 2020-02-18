@@ -1,6 +1,11 @@
-import { map, memoize, isString } from '@antv/util';
+import { map, memoize, isString, each } from '@antv/util';
 
 const RGB_REG = /rgba?\(([\s.,0-9]+)\)/;
+const regexLG = /^l\s*\(\s*([\d.]+)\s*\)\s*(.*)/i;
+const regexRG = /^r\s*\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\s*\)\s*(.*)/i;
+const regexColorStop = /[\d.]+:(#[^\s]+|[^\)]+\))/gi;
+
+const isGradientColor = (val) => /^[r,R,L,l]{1}[\s]*\(/.test(val);
 
 // 创建辅助 tag 取颜色
 const createTmp = (): HTMLElement => {
@@ -110,8 +115,44 @@ const gradient = (colors: string | string[]) => {
   };
 };
 
+const toCSSGradient = (gradientColor) => {
+  if (isGradientColor(gradientColor)) {
+    let cssColor;
+    let steps;
+    if (gradientColor[0] === 'l') {
+      // 线性渐变
+      const arr = regexLG.exec(gradientColor);
+      const angle = +arr[1] + 90; // css 和 g 的渐变起始角度不同
+      steps = arr[2];
+
+      cssColor = `linear-gradient(${angle}deg, `;
+    } else if (gradientColor[0] === 'r') {
+      // 径向渐变
+      cssColor = 'radial-gradient(';
+      const arr = regexRG.exec(gradientColor);
+      steps = arr[4];
+    }
+
+    const colorStops: string[] = steps.match(regexColorStop);
+    each(colorStops, (item, index) => {
+      const itemArr = item.split(':');
+      cssColor += `${itemArr[1]} ${itemArr[0] * 100}%`;
+      if (index !== (colorStops.length - 1)) {
+        cssColor += ', ';
+      }
+    });
+
+    cssColor += ')';
+
+    return cssColor;
+  }
+
+  return gradientColor;
+};
+
 export default {
   rgb2arr,
   gradient,
   toRGB: memoize(toRGB),
+  toCSSGradient,
 };
