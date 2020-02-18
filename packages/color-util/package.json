@@ -22,7 +22,8 @@
     "test": "torch --renderer --compile --opts __tests__/mocha.opts",
     "test-live": "torch --compile --interactive --opts __tests__/mocha.opts",
     "tsc": "tsc --noEmit",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm-run-all --parallel test build"
   },
   "repository": {
     "type": "git",
