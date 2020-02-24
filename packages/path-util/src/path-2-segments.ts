@@ -113,7 +113,7 @@ export default function getSegments(path) {
       }
     } else if (command === 'A') {
       let d = 0.001;
-      const { rx, ry, xRotation, arcFlag, sweepFlag, startAngle, endAngle } = segment['arcParams'] || {};
+      const { rx = 0, ry = 0, xRotation = 0, arcFlag = 0, sweepFlag = 0, startAngle = 0, endAngle = 0 } = segment['arcParams'] || {};
       if (sweepFlag === 0) {
         d *= -1;
       }
