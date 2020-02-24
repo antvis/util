@@ -1,4 +1,4 @@
-import { isArray } from '@antv/util'; 
+import { isArray } from '@antv/util';
 
 import rectPath from './rect-path';
 import path2Curve from './path-2-curve';
@@ -10,7 +10,7 @@ const base3 = function (t: number, p1: number, p2: number, p3: number, p4: numbe
 };
 
 const bezlen = function (x1: number, y1: number, x2: number, y2: number,
-                        x3: number, y3: number, x4: number, y4: number, z: number): number {
+                         x3: number, y3: number, x4: number, y4: number, z: number): number {
   if (z === null) {
     z = 1;
   }
@@ -41,7 +41,7 @@ export interface BoundPoint {
 }
 
 const curveDim = function (x0: number, y0: number, x1: number, y1: number,
-                          x2: number, y2: number, x3: number, y3: number): BoundPoint {
+                           x2: number, y2: number, x3: number, y3: number): BoundPoint {
   const tvalues = [];
   const bounds = [
     [],
@@ -116,7 +116,7 @@ const curveDim = function (x0: number, y0: number, x1: number, y1: number,
 };
 
 const intersect = function (x1: number, y1: number, x2: number, y2: number,
-                           x3: number, y3: number, x4: number, y4: number): Point {
+                            x3: number, y3: number, x4: number, y4: number): Point {
   if (
     Math.max(x1, x2) < Math.min(x3, x4) ||
     Math.min(x1, x2) > Math.max(x3, x4) ||
