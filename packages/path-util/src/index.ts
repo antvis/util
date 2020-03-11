@@ -11,3 +11,6 @@ export { default as path2Absolute } from './path-2-absolute';
 export { default as reactPath } from './rect-path';
 export { default as getArcParams } from './get-arc-params';
 export { default as path2Segments } from './path-2-segments';
+export { default as getLineIntersect } from './get-line-intersect';
+export { default as isPolygonsIntersect } from './is-polygons-intersect';
+export { default as isPointInPolygon } from './point-in-polygon';
