@@ -2,5 +2,16 @@
   "packages": [
     "packages/*"
   ],
-  "version": "independent"
+  "version": "independent",
+  "command": {
+    "bootstrap": {
+      "ci": false,
+      "npmClientArgs": [
+        "--no-package-lock"
+      ]
+    },
+    "publish": {
+      "commitHooks": false
+    }
+  }
 }
