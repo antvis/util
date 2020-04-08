@@ -1,4 +1,3 @@
-import each from './each';
 import isArray from './is-array';
 import isFunction from './is-function';
 
@@ -20,16 +19,17 @@ function groupBy<T>(data: T[], condition: ((item: T) => string) | string): Objec
   const predicate = isFunction(condition) ? condition : (item) => item[condition];
 
   let key: string;
-  each(data, function(item) {
+  for (let i = 0; i < data.length; i++) {
+    const item = data[i];
     key = predicate(item);
     if (hasOwnProperty.call(result, key)) {
       result[key].push(item);
     } else {
       result[key] = [ item ];
     }
-  });
+  }
+
   return result;
 }
 
 export default groupBy;
-

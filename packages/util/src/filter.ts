@@ -1,4 +1,3 @@
-import each from './each';
 import isArrayLike from './is-array-like';
 
 const filter = function <T>(arr: T[], func: (v: T, idx: number) => boolean): T[] {
@@ -6,11 +5,13 @@ const filter = function <T>(arr: T[], func: (v: T, idx: number) => boolean): T[]
     return arr;
   }
   const result: T[] = [];
-  each(arr, function(value, index) {
+  for (let index = 0; index < arr.length; index++) {
+    const value = arr[index];
     if (func(value, index)) {
       result.push(value);
     }
-  });
+  }
+
   return result;
 };
 

@@ -1,4 +1,3 @@
-import each from './each';
 import isArrayLike from './is-array-like';
 
 const map = <T, G> (arr: T[], func: (v: T, idx: number) => G): G[] => {
@@ -8,9 +7,10 @@ const map = <T, G> (arr: T[], func: (v: T, idx: number) => G): G[] => {
   }
   const result: G[] = [];
 
-  each(arr, function(value: any, index: number) {
+  for (let index = 0; index < arr.length; index++) {
+    const value = arr[index];
     result.push(func(value, index));
-  });
+  }
   return result;
 };
 
