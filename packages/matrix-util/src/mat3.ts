@@ -1,4 +1,4 @@
-import * as mat3 from '@antv/gl-matrix/lib/gl-matrix/mat3';
+import * as mat3 from 'gl-matrix/mat3';
 
 mat3.translate = function (out, a, v) {
   const transMat = new Array(9);

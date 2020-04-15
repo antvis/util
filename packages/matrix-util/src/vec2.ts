@@ -1,4 +1,4 @@
-import * as vec2 from '@antv/gl-matrix/lib/gl-matrix/vec2';
+import * as vec2 from 'gl-matrix/vec2';
 import { clamp } from '@antv/util';
 
 vec2.angle = function (v1, v2) {
