@@ -1,5 +1,5 @@
+import * as vec2 from '@antv/gl-matrix/lib/gl-matrix/vec2';
 import { clamp } from '@antv/util';
-import * as vec2 from 'gl-matrix/vec2';
 
 vec2.angle = function (v1, v2) {
   const theta = vec2.dot(v1, v2) / (vec2.length(v1) * vec2.length(v2));
