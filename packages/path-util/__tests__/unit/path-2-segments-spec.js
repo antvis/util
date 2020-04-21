@@ -29,4 +29,13 @@ describe('test path to segements', () => {
     expect(seg4[3].prePoint).eqls([ 8, 8 ]);
     expect(seg4[3].currentPoint).eqls([ 1, 1 ]);
   });
+
+  it('endTangent should be correct', () => {
+    const p = [ [ 'M', 150, 50 ], [ 'A', 509.99999999999983, 509.99999999999983, 0, 0, 1, 350, 250 ] ];
+    const segments = path2Segments(p);
+    expect(segments[0].startTangent).eqls(null);
+    expect(segments[0].endTangent).eqls(null);
+    expect(segments[1].startTangent).eqls([ -0.44660548951873125, -0.24625904055812953 ]);
+    expect(segments[1].endTangent).eqls([ 245.97232286640832, 63.51742221861292 ]);
+  });
 });
