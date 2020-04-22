@@ -4,10 +4,7 @@ import parsePath from './parse-path';
 
 // 点对称
 function toSymmetry(point, center) {
-  return {
-    x: center.x + (center.x - point.x),
-    y: center.y + (center.y - point.y),
-  };
+  return [ center[0] + (center[0] - point[0]), center[1] + (center[1] - point[1]) ];
 }
 
 export default function getSegments(path) {
@@ -113,17 +110,24 @@ export default function getSegments(path) {
       }
     } else if (command === 'A') {
       let d = 0.001;
-      const { rx = 0, ry = 0, xRotation = 0, arcFlag = 0, sweepFlag = 0, startAngle = 0, endAngle = 0 } = segment['arcParams'] || {};
+      const {
+        cx = 0,
+        cy = 0,
+        rx = 0,
+        ry = 0,
+        sweepFlag = 0,
+        startAngle = 0,
+        endAngle = 0,
+      } = segment['arcParams'] || {};
       if (sweepFlag === 0) {
         d *= -1;
       }
-      const dx1 = xRotation * Math.cos(startAngle - d) + rx;
-      const dy1 = arcFlag * Math.sin(startAngle - d) + ry;
+      const dx1 = rx * Math.cos(startAngle - d) + cx;
+      const dy1 = ry * Math.sin(startAngle - d) + cy;
       segment.startTangent = [ dx1 - startMovePoint[0], dy1 - startMovePoint[1] ];
-
-      const dx2 = xRotation * Math.cos(startAngle + endAngle + d) + rx;
-      const dy2 = arcFlag * Math.sin(startAngle + endAngle - d) + ry;
-      segment.endTangent = [ prePoint.x - dx2, prePoint.y - dy2 ];
+      const dx2 = rx * Math.cos(startAngle + endAngle + d) + cx;
+      const dy2 = ry * Math.sin(startAngle + endAngle - d) + cy;
+      segment.endTangent = [ prePoint[0] - dx2, prePoint[1] - dy2 ];
     }
     segments.push(segment);
   }
