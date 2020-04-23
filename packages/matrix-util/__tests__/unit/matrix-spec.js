@@ -5,7 +5,6 @@ import { isNumberEqual } from '@antv/util';
 const mat3 = All.mat3;
 const vec3 = All.vec3;
 const vec2 = All.vec2;
-const transform = All.transform;
 
 describe('Matrix', () => {
   it('vec2.direction(v1, v2)', () => {
@@ -62,18 +61,18 @@ describe('Matrix', () => {
 describe('transform', () => {
   const m = [ 1, 0, 0, 0, 1, 0, 0, 0, 1 ];
   it('translate', () => {
-    const matrix = transform(m, [
+    const matrix = mat3.transform(m, [
       [ 't', 100, 100 ]
     ]);
     expect(matrix).eqls([ 1, 0, 0, 0, 1, 0, 100, 100, 1 ]);
-    const matrix1 = transform(null, [
+    const matrix1 = mat3.transform(null, [
       [ 't', 100, 100 ]
     ]);
     expect(matrix1).eqls([ 1, 0, 0, 0, 1, 0, 100, 100, 1 ]);
   });
 
   it('rotate', () => {
-    const matrix = transform(m, [
+    const matrix = mat3.transform(m, [
       [ 'r', Math.PI ]
     ]);
     expect(matrix[0]).eqls(-1);
@@ -81,7 +80,7 @@ describe('transform', () => {
   });
 
   it('scale', () => {
-    const matrix = transform(m, [
+    const matrix = mat3.transform(m, [
       [ 's', 2, 3 ]
     ]);
     expect(matrix).eqls([ 2, 0, 0, 0, 3, 0, 0, 0, 1 ]);
@@ -89,7 +88,7 @@ describe('transform', () => {
 
   it('matrix', () => {
     const m1 = [ 2, 0, 0, 0, 3, 0, 0, 0, 1 ];
-    const matrix = transform(m, [
+    const matrix = mat3.transform(m, [
       [ 'm', m1 ]
     ]);
     expect(matrix).eqls(m1);
