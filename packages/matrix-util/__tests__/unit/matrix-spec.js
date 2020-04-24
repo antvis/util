@@ -93,4 +93,31 @@ describe('transform', () => {
     ]);
     expect(matrix).eqls(m1);
   });
+
+  it('center rotate', () => {
+    const radian = Math.PI / 4;
+    const matrix = mat3.transform(null, [
+      [ 't', -40, -40 ],
+      [ 'r', radian ],
+      [ 't', 50, 50 ]
+    ]);
+
+    let out = [];
+    out = mat3.translate(out, m, [ 50, 50 ]);
+    out = mat3.rotate(out, out, radian);
+    out = mat3.translate(out, out, [ -40, -40 ]);
+
+    expect(matrix).eqls(out);
+
+    const m1 = [ 2, 0, 0, 0, 3, 0, 0, 0, 1 ];
+    const matrix1 = mat3.transform(null, [
+      [ 'm', m1 ],
+      [ 'm', matrix ]
+    ]);
+
+    let out1 = [];
+    out1 = mat3.multiply(out1, matrix, m1);
+
+    expect(matrix1).eqls(out1);
+  });
 });
