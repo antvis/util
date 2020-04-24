@@ -9,13 +9,13 @@ import { angle } from 'gl-matrix/vec2';
  */
 export function direction(v1: number[], v2: number[]): number {
   return v1[0] * v2[1] - v2[0] * v1[1];
-};
+}
 
 /**
- * 
- * @param v1 
- * @param v2 
- * @param direct 
+ *
+ * @param v1
+ * @param v2
+ * @param direct
  */
 export function angleTo(v1: number[], v2: number[], direct: boolean): number {
   const ang = angle(v1, v2);
@@ -31,13 +31,13 @@ export function angleTo(v1: number[], v2: number[], direct: boolean): number {
     return ang;
   }
   return Math.PI * 2 - ang;
-};
+}
 
 /**
- * 
- * @param out 
- * @param v 
- * @param flag 
+ *
+ * @param out
+ * @param v
+ * @param flag
  */
 export function vertical(out: number[], v: number[], flag: boolean): number[] {
   if (flag) {
@@ -49,4 +49,4 @@ export function vertical(out: number[], v: number[], flag: boolean): number[] {
   }
 
   return out;
-};
+}
