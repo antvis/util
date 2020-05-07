@@ -1,6 +1,6 @@
 {
   "name": "@antv/color-util",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "A common util collection for antv projects",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -46,7 +46,7 @@
   },
   "homepage": "https://github.com/antvis/util#readme",
   "dependencies": {
-    "@antv/util": "^2.0.7",
+    "@antv/util": "^2.0.9",
     "tslib": "^1.10.0"
   }
 }
