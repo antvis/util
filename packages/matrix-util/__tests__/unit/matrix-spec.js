@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-import { vec2, vec3, mat3, direction, angleTo, transform } from '../../src';
+import { vec2, vec3, mat3, ext } from '../../src';
 import { isNumberEqual } from '@antv/util';
 
 
@@ -7,7 +7,7 @@ describe('Matrix', () => {
   it('direction(v1, v2)', () => {
     const v1 = vec2.fromValues(0, 1);
     const v2 = vec2.fromValues(1, 0);
-    const direct = direction(v1, v2);
+    const direct = ext.direction(v1, v2);
     expect(direct < 0).to.be.true;
   });
   it('vec2.angle(v1, v2)', () => {
@@ -19,12 +19,12 @@ describe('Matrix', () => {
   it('angleTo(v1, v2)', () => {
     const v1 = vec2.fromValues(0, -1);
     const v2 = vec2.fromValues(1, 0);
-    expect(isNumberEqual(angleTo(v1, v2), Math.PI / 2)).to.be.true;
+    expect(isNumberEqual(ext.angleTo(v1, v2), Math.PI / 2)).to.be.true;
   });
   it('angleTo(v1, v2, true)', () => {
     const v1 = vec2.fromValues(0, 1);
     const v2 = vec2.fromValues(-1, 0);
-    expect(isNumberEqual(angleTo(v1, v2, true), Math.PI / 2 * 3)).to.be.true;
+    expect(isNumberEqual(ext.angleTo(v1, v2, true), Math.PI / 2 * 3)).to.be.true;
   });
   it('mat3.translate(out, a, v)', () => {
     const m = mat3.create();
@@ -57,18 +57,18 @@ describe('Matrix', () => {
 describe('transform', () => {
   const m = [ 1, 0, 0, 0, 1, 0, 0, 0, 1 ];
   it('translate', () => {
-    const matrix = transform(m, [
+    const matrix = ext.transform(m, [
       [ 't', 100, 100 ]
     ]);
     expect(matrix).eqls([ 1, 0, 0, 0, 1, 0, 100, 100, 1 ]);
-    const matrix1 = transform(null, [
+    const matrix1 = ext.transform(null, [
       [ 't', 100, 100 ]
     ]);
     expect(matrix1).eqls([ 1, 0, 0, 0, 1, 0, 100, 100, 1 ]);
   });
 
   it('rotate', () => {
-    const matrix = transform(m, [
+    const matrix = ext.transform(m, [
       [ 'r', Math.PI ]
     ]);
     expect(matrix[0]).eqls(-1);
@@ -76,7 +76,7 @@ describe('transform', () => {
   });
 
   it('scale', () => {
-    const matrix = transform(m, [
+    const matrix = ext.transform(m, [
       [ 's', 2, 3 ]
     ]);
     expect(matrix).eqls([ 2, 0, 0, 0, 3, 0, 0, 0, 1 ]);
@@ -84,7 +84,7 @@ describe('transform', () => {
 
   it('matrix', () => {
     const m1 = [ 2, 0, 0, 0, 3, 0, 0, 0, 1 ];
-    const matrix = transform(m, [
+    const matrix = ext.transform(m, [
       [ 'm', m1 ]
     ]);
     expect(matrix).eqls(m1);
@@ -92,7 +92,7 @@ describe('transform', () => {
 
   it('center rotate', () => {
     const radian = Math.PI / 4;
-    const matrix = transform(null, [
+    const matrix = ext.transform(null, [
       [ 't', -40, -40 ],
       [ 'r', radian ],
       [ 't', 50, 50 ]
@@ -106,7 +106,7 @@ describe('transform', () => {
     expect(matrix).eqls(out);
 
     const m1 = [ 2, 0, 0, 0, 3, 0, 0, 0, 1 ];
-    const matrix1 = transform(null, [
+    const matrix1 = ext.transform(null, [
       [ 'm', m1 ],
       [ 'm', matrix ]
     ]);
