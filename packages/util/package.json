@@ -15,6 +15,7 @@
     "build": "npm run clean && run-p build:*",
     "build:esm": "tsc -p tsconfig.json --target ES5 --module ESNext --outDir esm",
     "build:cjs": "tsc -p tsconfig.json --target ES5 --module commonjs --outDir lib",
+    "build:umd": "webpack --config webpack.config.js",
     "clean": "rm -rf lib && rm -rf esm",
     "coverage": "npm run coverage-generator && npm run coverage-viewer",
     "coverage-generator": "torch --coverage --compile --source-pattern src/*.js,src/**/*.js --opts __tests__/mocha.opts",
