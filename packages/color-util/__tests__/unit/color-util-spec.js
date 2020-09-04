@@ -11,6 +11,7 @@ describe('color util test', function() {
   it('color to rgb with rgb(r,g,b)', () => {
     expect(colorUtil.toRGB('rgb(255,0, 0)')).equal('#ff0000');
     expect(colorUtil.toRGB('rgba(255,0, 0, 1)')).equal('#ff0000');
+    expect(colorUtil.toRGB('transparent')).equal('#000000');
   });
 
   it('gradient white black', () => {

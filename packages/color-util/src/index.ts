@@ -89,6 +89,11 @@ const toRGB = (color: string): string => {
 
   let rst = document.defaultView.getComputedStyle(iEl, '').getPropertyValue('color');
 
+  // ie下rst的值为transparent
+  if (rst === 'transparent') {
+    rst = 'rgba(0, 0, 0, 0)';
+  }
+
   const matches = RGB_REG.exec(rst) as string[] ;
   const cArray: number[] = matches[1].split(/\s*,\s*/).map((s) => Number(s));
 
