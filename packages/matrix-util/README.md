@@ -12,6 +12,15 @@
 import { vec2, vec3 } from '@antv/matrix-util';
 
 vec2.angle(v1, v2);
+
+import { ext } from '@antv/matrix-util';
+
+ext.transform(m, [
+    ['t', 100, 200],
+    ['r', 40],
+    ['s', 2, 2]
+]);
+
 ```
 
 
@@ -28,9 +37,9 @@ vec2.angle(v1, v2);
     + translate(out, m, v)
     + rotate(out, m, rad)
     + scale(out, m, v)
-* transform(m, [])
+* ext.transform(m, []) 
 ```js
-transform(m, [
+ext.transform(m, [
     ['t', 100, 200],
     ['r', 40],
     ['s', 2, 2]
