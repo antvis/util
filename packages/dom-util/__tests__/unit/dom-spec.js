@@ -58,4 +58,10 @@ describe('DomUtils', () => {
       DOMUtil.addEventListener(nodeNotExist, 'click', () => {});
     }).to.not.throw();
   });
+
+  it('getEventPath(event)', () => {
+    expect(() => {
+      DOMUtil.getEventPath(nodeNotExist);
+    }).to.not.throw();
+  });
 });

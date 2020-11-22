@@ -1,6 +1,7 @@
 // dom
 export { default as addEventListener } from './add-event-listener';
 export { default as createDom } from './create-dom';
+export { default as getEventPath } from './get-event-path';
 export { default as getHeight } from './get-height';
 export { default as getOuterHeight } from './get-outer-height';
 export { default as getOuterWidth } from './get-outer-width';
