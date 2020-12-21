@@ -1,6 +1,6 @@
 {
   "name": "@antv/matrix-util",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "A common util collection for antv projects",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -48,6 +48,6 @@
   "dependencies": {
     "@antv/util": "^2.0.9",
     "gl-matrix": "^3.3.0",
-    "tslib": "^1.10.0"
+    "tslib": "^2.0.3"
   }
 }

@@ -1,5 +1,4 @@
-import mod from '@antv/util/lib/mod';
-import toRadian from '@antv/util/lib/to-radian';
+import { mod, toRadian } from '@antv/util';
 
 // 向量长度
 function vMag(v) {

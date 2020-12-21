@@ -1,6 +1,6 @@
 {
   "name": "@antv/dom-util",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "A common util collection for antv projects",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -46,6 +46,6 @@
   },
   "homepage": "https://github.com/antvis/util#readme",
   "dependencies": {
-    "tslib": "^1.10.0"
+    "tslib": "^2.0.3"
   }
 }
