@@ -114,6 +114,7 @@ export { default as mix, default as assign } from './mix';
 export { default as get } from './get';
 export { default as set } from './set';
 export { default as pick } from './pick';
+export { default as omit } from './omit';
 export { default as throttle } from './throttle';
 export { default as toArray } from './to-array';
 export { default as toString } from './to-string';
