@@ -11,6 +11,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.10.0
+      - name: install
+        run: |
+          npm i
       - name: bootstrap
         run: |
           npm run bootstrap
