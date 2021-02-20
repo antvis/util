@@ -1,14 +1,14 @@
-import contains from './contains';
-import each from './each';
+export default function uniq(arr: any[], cache = new Map()) {
+  const r = [];
 
-const uniq = function(arr) {
-  const resultArr = [];
-  each(arr, item => {
-    if (!contains(resultArr, item)) {
-      resultArr.push(item);
+  if (Array.isArray(arr)) {
+    for (const item of arr) {
+      // 加一个 cache，提升性能
+      if (!cache.has(item)) {
+        r.push(item);
+        cache.set(item, true);
+      }
     }
-  });
-  return resultArr;
-};
-
-export default uniq;
+  }
+  return r;
+}
