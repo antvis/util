@@ -22,11 +22,7 @@ export default (arr: number[]): number | undefined => {
   if (!isArray(arr)) {
     return undefined;
   }
-  let min = arr[0];
-  each(arr, (val) => {
-    if (val < min) {
-      min = val;
-    }
-  });
-  return min;
+  return arr.reduce((prev, curr) => {
+    return Math.min(prev, curr)
+  }, arr[0]);
 };
