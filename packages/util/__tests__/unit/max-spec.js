@@ -10,6 +10,10 @@ describe('max', () => {
     expect(max([])).to.be.equal(undefined);
   });
 
+  it('max string', () => {
+    expect(max(['1', '2'])).to.be.equal(2);
+  });
+
   it('large arrays', () => {
     const data = new Array(1250010).fill(1).map((d, idx) => idx);
     expect(max(data)).to.be.equal(1250009);

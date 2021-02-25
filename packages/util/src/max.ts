@@ -22,11 +22,7 @@ export default (arr: number[]): number | undefined => {
   if (!isArray(arr)) {
     return undefined;
   }
-  let max = arr[0];
-  each(arr, val => {
-    if (val > max) {
-      max = val;
-    }
-  });
-  return max;
+  return arr.reduce((prev, curr) => {
+    return Math.max(prev, curr)
+  }, arr[0]);
 };
