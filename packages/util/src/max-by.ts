@@ -19,24 +19,19 @@ export default <T>(arr: T[], fn: ((v: T) => number) | string): T | undefined => 
   if (!isArray(arr)) {
     return undefined;
   }
-  let max = arr[0];
-  let maxData;
-  if (isFunction(fn)) {
-    maxData = fn(arr[0]);
-  } else {
-    maxData = arr[0][fn];
+
+  let maxItem;
+  let max = -Infinity;
+
+  for (let i = 0; i < arr.length; i++) {
+    const item = arr[i];
+    const v = isFunction(fn) ? fn(item) : item[fn];
+    
+    if (v > max) {
+      maxItem = item;
+      max = v;
+    }
   }
-  let data;
-  each(arr, val => {
-    if (isFunction(fn)) {
-      data = fn(val);
-    } else {
-      data = val[fn];
-    }
-    if (data > maxData) {
-      max = val;
-      maxData = data;
-    }
-  });
-  return max;
+
+  return maxItem;
 };

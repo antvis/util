@@ -20,24 +20,19 @@ export default <T>(arr: T[], fn: ((v: T) => number) | string): T | undefined => 
   if (!isArray(arr)) {
     return undefined;
   }
-  let min = arr[0];
-  let minData;
-  if (isFunction(fn)) {
-    minData = fn(arr[0]);
-  } else {
-    minData = arr[0][fn];
+
+  let minItem;
+  let min = Infinity;
+
+  for (let i = 0; i < arr.length; i++) {
+    const item = arr[i];
+    const v = isFunction(fn) ? fn(item) : item[fn];
+    
+    if (v < min) {
+      minItem = item;
+      min = v;
+    }
   }
-  let data;
-  each(arr, val => {
-    if (isFunction(fn)) {
-      data = fn(val);
-    } else {
-      data = val[fn];
-    }
-    if (data < minData) {
-      min = val;
-      minData = data;
-    }
-  });
-  return min;
+
+  return minItem;
 };
