@@ -95,6 +95,14 @@ export default function getSegments(path) {
       const cp2 = [ params[3], params[4] ];
       segment.startTangent = [ prePoint[0] - cp1[0], prePoint[1] - cp1[1] ];
       segment.endTangent = [ currentPoint[0] - cp2[0], currentPoint[1] - cp2[1] ];
+
+      // horizontal line, eg. ['C', 100, 100, 100, 100, 200, 200]
+      if (segment.startTangent[0] === 0 && segment.startTangent[1] === 0) {
+        segment.startTangent = [cp1[0] - cp2[0], cp1[1] - cp2[1]];
+      }
+      if (segment.endTangent[0] === 0 && segment.endTangent[1] === 0) {
+        segment.endTangent = [cp2[0] - cp1[0], cp2[1] - cp1[1]];
+      }
     } else if (command === 'S') {
       const preSegment = segments[i - 1];
       const cp1 = toSymmetry(preSegment.currentPoint, prePoint);

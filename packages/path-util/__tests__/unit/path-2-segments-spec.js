@@ -38,4 +38,13 @@ describe('test path to segements', () => {
     expect(segments[1].startTangent).eqls([ -0.44660548951873125, -0.24625904055812953 ]);
     expect(segments[1].endTangent).eqls([ 245.97232286640832, 63.51742221861292 ]);
   });
+
+  it('should calc startTangent of a horizontal line instead of [0,0]', () => {
+    const p = 'M 100,100 C 100,100, 100, 100, 200, 200';
+    const segments = path2Segments(p);
+    expect(segments[0].startTangent).eqls(null);
+    expect(segments[0].endTangent).eqls(null);
+    expect(segments[1].startTangent).eqls([0, 0]);
+    expect(segments[1].endTangent).eqls([100, 100]);
+  });
 });
