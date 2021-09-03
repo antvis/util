@@ -25,6 +25,17 @@ describe('DomUtils', () => {
     }).to.not.throw();
   });
 
+  it('modifyCSS(invalidNode, css)', () => {
+    expect(() => {
+      DOMUtil.modifyCSS(
+        {},
+        {
+          marginBottom: '10px',
+        }
+      );
+    }).to.not.throw();
+  });
+
   it('getWidth(node, defaultValue)', () => {
     expect(() => {
       DOMUtil.getWidth(nodeNotExist, 500);
