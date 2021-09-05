@@ -76,6 +76,8 @@ export default function pathToAbsolute(pathString: string) {
         case 'M':
           mx = +pa[1] + x;
           my = +pa[2] + y;
+          r[1] = mx;
+          r[2] = my;
           break; // for lint
         default:
           for (let j = 1, jj = pa.length; j < jj; j++) {

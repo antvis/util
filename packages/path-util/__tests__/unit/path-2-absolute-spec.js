@@ -43,4 +43,10 @@ describe('test path to absolute', () => {
     expect(PathUtil.path2Absolute(str1)).eqls(PathUtil.path2Absolute(str2));
   });
 
+  it('m', () => {
+    const str = [ [ 'M', 10, 10 ], [ 'm', 10, 10 ], [ 'L', 100, 100 ], [ 'l', 10, 10 ], [ 'h', 20 ], [ 'v', 20 ] ];
+    const arr = PathUtil.path2Absolute(str);
+    expect(arr).eqls([ [ 'M', 10, 10 ], [ 'M', 20, 20 ], [ 'L', 100, 100 ], [ 'L', 110, 110 ], [ 'L', 130, 110 ], [ 'L', 130, 130 ] ]);
+  });
+
 });
