@@ -26,7 +26,6 @@ export { default as group } from './group';
 export { default as groupBy } from './group-by';
 export { default as groupToMap } from './group-to-map';
 
-
 // event
 export { default as getWrapBehavior } from './get-wrap-behavior';
 export { default as wrapBehavior } from './wrap-behavior';
@@ -79,7 +78,7 @@ export { default as isBoolean } from './is-boolean';
 export { default as isDate } from './is-date';
 export { default as isError } from './is-error';
 export { default as isFunction } from './is-function';
-export { default as isFinite } from './is-finite'
+export { default as isFinite } from './is-finite';
 export { default as isNil } from './is-nil';
 export { default as isNull } from './is-null';
 export { default as isNumber } from './is-number';
@@ -122,6 +121,10 @@ export { default as uniqueId } from './unique-id';
 export { default as noop } from './noop';
 export { default as identity } from './identity';
 export { default as size } from './size';
+
+// text
+export { default as measureTextWidth } from './measure-text-width';
+export { default as getEllipsisText } from './get-ellipsis-text';
 
 // 不知道为什么，需要把这个 export，不然 ts 会报类型错误
 export { default as Cache } from './cache';
