@@ -23,8 +23,16 @@ export function segmentToCubic(segment: PathCommand, params: ProcessParams): Pat
       params.qy = s2 as number;
       return ['C'].concat(quadToCubic.apply(0, [params.x1, params.y1].concat(segment.slice(1) as number[]))) as PathCommand;
     case 'L':
+      // @ts-ignore
       return ['C'].concat(lineToCubic(params.x1, params.y1, segment[1], segment[2])) as PathCommand;
+    case 'H':
+      // @ts-ignore
+      return ['C'].concat(lineToCubic(params.x1, params.y1, segment[1], params.y1)) as PathCommand;
+    case 'V':
+      // @ts-ignore
+      return ['C'].concat(lineToCubic(params.x1, params.y1, params.x1, segment[1])) as PathCommand;
     case 'Z':
+      // @ts-ignore
       return ['C'].concat(lineToCubic(params.x1, params.y1, params.x, params.y)) as PathCommand;
     default:
   }

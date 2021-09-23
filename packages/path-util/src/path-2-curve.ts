@@ -2,7 +2,7 @@ import path2Absolute from './path-2-absolute';
 import { segmentToCubic } from './process/segment-2-cubic';
 import type { PathCommand, ProcessParams } from './types';
 
-export default function pathToCurve(path: PathCommand[] | string) {
+export default function pathToCurve(path: PathCommand[] | string, needZCommandIndexes = false) {
   const pathArray = path2Absolute(path as string) as PathCommand[];
 
   const params: ProcessParams = {
@@ -13,6 +13,7 @@ export default function pathToCurve(path: PathCommand[] | string) {
   let ii = pathArray.length;
   let segment: PathCommand;
   let seglen: number;
+  let zCommandIndexes: number[] = [];
 
   for (let i = 0; i < ii; i += 1) {
     if (pathArray[i]) [pathCommand] = pathArray[i];
@@ -23,6 +24,12 @@ export default function pathToCurve(path: PathCommand[] | string) {
     fixArc(pathArray, allPathCommands, i);
     ii = pathArray.length; // solves curveArrays ending in Z
 
+    // keep Z command account for lineJoin
+    // @see https://github.com/antvis/util/issues/68
+    if (pathCommand === 'Z') {
+      zCommandIndexes.push(i);
+    }
+
     segment = pathArray[i];
     seglen = segment.length;
 
@@ -31,8 +38,11 @@ export default function pathToCurve(path: PathCommand[] | string) {
     params.x2 = +(segment[seglen - 4]) || params.x1;
     params.y2 = +(segment[seglen - 3]) || params.y1;
   }
-  // return roundPath(pathArray, round);
-  return pathArray;
+  if (needZCommandIndexes) {
+    return [pathArray, zCommandIndexes];
+  } else {
+    return pathArray;
+  }
 }
 
 function fixArc(pathArray: PathCommand[], allPathCommands: string[], i: number) {
