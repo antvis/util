@@ -126,7 +126,7 @@ const arcToBezier = ({
   const curves = []
 
   if (rx === 0 || ry === 0) {
-    return []
+    return [{ x1: 0, y1: 0, x2: 0, y2: 0, x: cx, y: cy }];
   }
 
   const sinphi = Math.sin(xAxisRotation * TAU / 360)
@@ -136,7 +136,7 @@ const arcToBezier = ({
   const pyp = -sinphi * (px - cx) / 2 + cosphi * (py - cy) / 2
 
   if (pxp === 0 && pyp === 0) {
-    return []
+    return [{ x1: 0, y1: 0, x2: 0, y2: 0, x: cx, y: cy }];
   }
 
   rx = Math.abs(rx)

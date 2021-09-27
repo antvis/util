@@ -29,6 +29,21 @@ describe('test path to curve', () => {
     expect(zCommandIndexes).eqls([3, 7]);
   });
 
+  it('should convert invalid arc', () => {
+    const pathArray = PathUtil.path2Curve(
+      [
+        ['M', 0, 0],
+        ['A', 0, 0, 0, 1, 0, 0, 0],
+        ['A', 0, 0, 0, 1, 0, 0, 0],
+      ]
+    );
+    expect(pathArray).eqls([
+      ['M', 0, 0],
+      ['C', 0, 0, 0, 0, 0, 0],
+      ['C', 0, 0, 0, 0, 0, 0],
+    ]);
+  });
+
   it('should parse Line correctly', () => {
     expect(PathUtil.path2Curve([
       [ 'M', 0, 0 ],
