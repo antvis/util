@@ -7,10 +7,10 @@ import { Font, default as measureTextWidth } from './measure-text-width';
  * 算法（减少每次 measureText 的长度，measureText 的性能跟字符串时间相关）：
  * 1. 先通过 STEP 逐步计算，找到最后一个小于 maxWidth 的字符串
  * 2. 然后对最后这个字符串二分计算
- * @param text 需要计算的文本, 由于历史原因 除了支持string，还支持空值,number和数组等
- * @param maxWidth 最大宽度
- * @param font 字体
- * @param str 要替换的文本
+ * @param {string} text 需要计算的文本, 由于历史原因 除了支持string，还支持空值,number和数组等
+ * @param {number} maxWidth 最大宽度
+ * @param {string} font 字体
+ * @param {string} str 要替换的文本
  */
 export default (text: string | number, maxWidth: number, font?: Font, str: string = '...') => {
   const STEP = 16; // 每次 16，调参工程师
@@ -20,11 +20,11 @@ export default (text: string | number, maxWidth: number, font?: Font, str: strin
   let leftWidth = maxWidth;
 
   const r = []; // 最终的分段字符串
-  let currentText;
-  let currentWidth;
+  let currentText: string;
+  let currentWidth: number;
 
   if (measureTextWidth(text, font) <= maxWidth) {
-    return text;
+    return String(text);
   }
 
   // 首先通过 step 计算，找出最大的未超出长度的
