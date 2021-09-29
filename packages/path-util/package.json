@@ -47,6 +47,7 @@
   },
   "homepage": "https://github.com/antvis/util#readme",
   "dependencies": {
+    "@antv/matrix-util": "^3.0.4",
     "@antv/util": "^2.0.9",
     "tslib": "^2.0.3"
   }
