@@ -82,7 +82,7 @@
     "url": "git@gitlab.alipay-inc.com:datavis/eva-engine.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@types/mocha": "^5.2.7",
     "@antv/istanbul": "0.0.0",
