@@ -10,6 +10,14 @@ describe('DomUtils', () => {
   //   }).to.not.throw();
   // });
 
+  it('createDom', () => {
+    expect(() => DOMUtil.createDom('<div></div>')).to.not.throw();
+    expect(() => DOMUtil.createDom('\\n')).to.not.throw();
+    expect(() => DOMUtil.createDom(4)).to.not.throw();
+    expect(() => DOMUtil.createDom()).to.not.throw();
+    expect(() => DOMUtil.createDom(null)).to.not.throw();
+  });
+
   it('getStyle(node, name, defaultValue)', () => {
     expect(() => {
       DOMUtil.getStyle(nodeNotExist, 'width');
