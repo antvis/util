@@ -36,9 +36,11 @@ export default function createDom(str:string): any {
     name = '*';
   }
   const container = CONTAINERS[name];
-  str = str.replace(/(^\s*)|(\s*$)/g, '');
+  str = typeof str === 'string' ? str.replace(/(^\s*)|(\s*$)/g, '') : str;
   container.innerHTML = '' + str;
   const dom = container.childNodes[0];
-  container.removeChild(dom);
+  if (dom && container.contains(dom)) {
+    container.removeChild(dom);
+  }
   return dom;
 }
