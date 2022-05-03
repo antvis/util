@@ -1,6 +1,6 @@
 {
   "name": "@antv/path-util",
-  "version": "2.0.15",
+  "version": "3.0.1",
   "description": "A common util collection for antv projects",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -40,6 +40,8 @@
     "url": "https://github.com/antvis/util/issues"
   },
   "devDependencies": {
+    "@types/gl-matrix": "^2.4.5",
+    "@types/lodash-es": "^4.17.6",
     "@antv/torch": "^1.0.0",
     "chai": "^4.2.0",
     "less": "^3.9.0",
@@ -47,8 +49,8 @@
   },
   "homepage": "https://github.com/antvis/util#readme",
   "dependencies": {
-    "@antv/matrix-util": "^3.0.4",
-    "@antv/util": "^2.0.9",
+    "gl-matrix": "^3.1.0",
+    "lodash-es": "^4.17.21",
     "tslib": "^2.0.3"
   }
 }

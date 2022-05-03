@@ -47,7 +47,6 @@
   },
   "homepage": "https://github.com/antvis/util#readme",
   "dependencies": {
-    "@antv/util": "^2.0.9",
     "gl-matrix": "^3.3.0",
     "tslib": "^2.0.3"
   }

@@ -1,10 +1,10 @@
-import { each, isArray, isString } from '@antv/util';
+import { each, isArray, isString } from 'lodash-es';
 
-const regexTags = /[MLHVQTCSAZ]([^MLHVQTCSAZ]*)/ig;
-const regexDot = /[^\s\,]+/ig;
+const regexTags = /[MLHVQTCSAZ]([^MLHVQTCSAZ]*)/gi;
+const regexDot = /[^\s\,]+/gi;
 
 function parsePath(p: string): string[] {
-  let path = p || [] as string | string[];
+  let path = p || ([] as string | string[]);
   if (isArray(path)) {
     return path;
   }
@@ -23,6 +23,7 @@ function parsePath(p: string): string[] {
       }
       // @ts-ignore
       each(item, function (sub, i) {
+        // @ts-ignore
         if (!isNaN(sub)) {
           // @ts-ignore
           item[i] = +sub;

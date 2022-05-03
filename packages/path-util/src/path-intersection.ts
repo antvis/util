@@ -1,4 +1,4 @@
-import { isArray } from '@antv/util';
+import { isArray } from 'lodash-es';
 
 import rectPath from './rect-path';
 import path2Curve from './path-2-curve';
@@ -9,16 +9,27 @@ const base3 = function (t: number, p1: number, p2: number, p3: number, p4: numbe
   return t * t2 - 3 * p1 + 3 * p2;
 };
 
-const bezlen = function (x1: number, y1: number, x2: number, y2: number,
-                         x3: number, y3: number, x4: number, y4: number, z: number): number {
+const bezlen = function (
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+  x3: number,
+  y3: number,
+  x4: number,
+  y4: number,
+  z: number
+): number {
   if (z === null) {
     z = 1;
   }
   z = z > 1 ? 1 : z < 0 ? 0 : z;
   const z2 = z / 2;
   const n = 12;
-  const Tvalues = [ -0.1252, 0.1252, -0.3678, 0.3678, -0.5873, 0.5873, -0.7699, 0.7699, -0.9041, 0.9041, -0.9816, 0.9816 ];
-  const Cvalues = [ 0.2491, 0.2491, 0.2335, 0.2335, 0.2032, 0.2032, 0.1601, 0.1601, 0.1069, 0.1069, 0.0472, 0.0472 ];
+  const Tvalues = [
+    -0.1252, 0.1252, -0.3678, 0.3678, -0.5873, 0.5873, -0.7699, 0.7699, -0.9041, 0.9041, -0.9816, 0.9816,
+  ];
+  const Cvalues = [0.2491, 0.2491, 0.2335, 0.2335, 0.2032, 0.2032, 0.1601, 0.1601, 0.1069, 0.1069, 0.0472, 0.0472];
   let sum = 0;
   for (let i = 0; i < n; i++) {
     const ct = z2 * Tvalues[i] + z2;
@@ -40,13 +51,18 @@ export interface BoundPoint {
   max: Point;
 }
 
-const curveDim = function (x0: number, y0: number, x1: number, y1: number,
-                           x2: number, y2: number, x3: number, y3: number): BoundPoint {
+const curveDim = function (
+  x0: number,
+  y0: number,
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+  x3: number,
+  y3: number
+): BoundPoint {
   const tvalues = [];
-  const bounds = [
-    [],
-    [],
-  ];
+  const bounds = [[], []];
   let a;
   let b;
   let c;
@@ -93,8 +109,8 @@ const curveDim = function (x0: number, y0: number, x1: number, y1: number,
   while (j--) {
     t = tvalues[j];
     mt = 1 - t;
-    bounds[0][j] = (mt * mt * mt * x0) + (3 * mt * mt * t * x1) + (3 * mt * t * t * x2) + (t * t * t * x3);
-    bounds[1][j] = (mt * mt * mt * y0) + (3 * mt * mt * t * y1) + (3 * mt * t * t * y2) + (t * t * t * y3);
+    bounds[0][j] = mt * mt * mt * x0 + 3 * mt * mt * t * x1 + 3 * mt * t * t * x2 + t * t * t * x3;
+    bounds[1][j] = mt * mt * mt * y0 + 3 * mt * mt * t * y1 + 3 * mt * t * t * y2 + t * t * t * y3;
   }
 
   bounds[0][jlen] = x0;
@@ -115,8 +131,16 @@ const curveDim = function (x0: number, y0: number, x1: number, y1: number,
   };
 };
 
-const intersect = function (x1: number, y1: number, x2: number, y2: number,
-                            x3: number, y3: number, x4: number, y4: number): Point {
+const intersect = function (
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+  x3: number,
+  y3: number,
+  x4: number,
+  y4: number
+): Point {
   if (
     Math.max(x1, x2) < Math.min(x3, x4) ||
     Math.min(x1, x2) > Math.max(x3, x4) ||
@@ -155,10 +179,7 @@ const intersect = function (x1: number, y1: number, x2: number, y2: number,
 };
 
 const isPointInsideBBox = function (bbox, x, y) {
-  return x >= bbox.x &&
-    x <= bbox.x + bbox.width &&
-    y >= bbox.y &&
-    y <= bbox.y + bbox.height;
+  return x >= bbox.x && x <= bbox.x + bbox.width && y >= bbox.y && y <= bbox.y + bbox.height;
 };
 
 const box = function (x, y, width, height) {
@@ -186,7 +207,7 @@ const box = function (x, y, width, height) {
     r2: Math.max(width, height) / 2,
     r0: Math.sqrt(width * width + height * height) / 2,
     path: rectPath(x, y, width, height),
-    vb: [ x, y, width, height ].join(' '),
+    vb: [x, y, width, height].join(' '),
   };
 };
 
@@ -195,20 +216,26 @@ const isBBoxIntersect = function (bbox1, bbox2) {
   bbox1 = box(bbox1);
   // @ts-ignore
   bbox2 = box(bbox2);
-  return isPointInsideBBox(bbox2, bbox1.x, bbox1.y) || isPointInsideBBox(bbox2, bbox1.x2, bbox1.y) || isPointInsideBBox(bbox2, bbox1.x, bbox1.y2) || isPointInsideBBox(bbox2, bbox1.x2, bbox1.y2) || isPointInsideBBox(bbox1, bbox2.x, bbox2.y) || isPointInsideBBox(bbox1, bbox2.x2, bbox2.y) || isPointInsideBBox(bbox1, bbox2.x, bbox2.y2) || isPointInsideBBox(bbox1, bbox2.x2, bbox2.y2) || (bbox1.x < bbox2.x2 && bbox1.x > bbox2.x || bbox2.x < bbox1.x2 && bbox2.x > bbox1.x) && (bbox1.y < bbox2.y2 && bbox1.y > bbox2.y || bbox2.y < bbox1.y2 && bbox2.y > bbox1.y);
+  return (
+    isPointInsideBBox(bbox2, bbox1.x, bbox1.y) ||
+    isPointInsideBBox(bbox2, bbox1.x2, bbox1.y) ||
+    isPointInsideBBox(bbox2, bbox1.x, bbox1.y2) ||
+    isPointInsideBBox(bbox2, bbox1.x2, bbox1.y2) ||
+    isPointInsideBBox(bbox1, bbox2.x, bbox2.y) ||
+    isPointInsideBBox(bbox1, bbox2.x2, bbox2.y) ||
+    isPointInsideBBox(bbox1, bbox2.x, bbox2.y2) ||
+    isPointInsideBBox(bbox1, bbox2.x2, bbox2.y2) ||
+    (((bbox1.x < bbox2.x2 && bbox1.x > bbox2.x) || (bbox2.x < bbox1.x2 && bbox2.x > bbox1.x)) &&
+      ((bbox1.y < bbox2.y2 && bbox1.y > bbox2.y) || (bbox2.y < bbox1.y2 && bbox2.y > bbox1.y)))
+  );
 };
 
 const bezierBBox = function (p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y) {
   if (!isArray(p1x)) {
-    p1x = [ p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y ];
+    p1x = [p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y];
   }
   const bbox = curveDim.apply(null, p1x);
-  return box(
-    bbox.min.x,
-    bbox.min.y,
-    bbox.max.x - bbox.min.x,
-    bbox.max.y - bbox.min.y,
-  );
+  return box(bbox.min.x, bbox.min.y, bbox.max.x - bbox.min.x, bbox.max.y - bbox.min.y);
 };
 
 const findDotsAtSegment = function (p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, t) {
@@ -227,7 +254,7 @@ const findDotsAtSegment = function (p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, t) {
   const ay = t1 * p1y + t * c1y;
   const cx = t1 * c2x + t * p2x;
   const cy = t1 * c2y + t * p2y;
-  const alpha = (90 - Math.atan2(mx - nx, my - ny) * 180 / Math.PI);
+  const alpha = 90 - (Math.atan2(mx - nx, my - ny) * 180) / Math.PI;
   // (mx > nx || my < ny) && (alpha += 180);
   return {
     x,
@@ -343,11 +370,11 @@ const interPathHelper = function (path1, path2, justCount) {
       y1 = y1m = pi[2];
     } else {
       if (pi[0] === 'C') {
-        bez1 = [ x1, y1 ].concat(pi.slice(1));
+        bez1 = [x1, y1].concat(pi.slice(1));
         x1 = bez1[6];
         y1 = bez1[7];
       } else {
-        bez1 = [ x1, y1, x1, y1, x1m, y1m, x1m, y1m ];
+        bez1 = [x1, y1, x1, y1, x1m, y1m, x1m, y1m];
         x1 = x1m;
         y1 = y1m;
       }
@@ -358,11 +385,11 @@ const interPathHelper = function (path1, path2, justCount) {
           y2 = y2m = pj[2];
         } else {
           if (pj[0] === 'C') {
-            bez2 = [ x2, y2 ].concat(pj.slice(1));
+            bez2 = [x2, y2].concat(pj.slice(1));
             x2 = bez2[6];
             y2 = bez2[7];
           } else {
-            bez2 = [ x2, y2, x2, y2, x2m, y2m, x2m, y2m ];
+            bez2 = [x2, y2, x2, y2, x2m, y2m, x2m, y2m];
             x2 = x2m;
             y2 = y2m;
           }
