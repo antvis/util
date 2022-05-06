@@ -4,7 +4,6 @@
 
 
 [![Build Status](https://github.com/antvis/util/workflows/build/badge.svg)](https://github.com/antvis/util/actions)
-[![Coverage Status](https://coveralls.io/repos/github/antvis/util/badge.svg?branch=master)](https://coveralls.io/github/antvis/util?branch=master)
 [![npm Version](https://img.shields.io/npm/v/@antv/util.svg)](https://www.npmjs.com/package/@antv/util)
 [![npm Download](https://img.shields.io/npm/dm/@antv/util.svg)](https://www.npmjs.com/package/@antv/util)
 [![npm License](https://img.shields.io/npm/l/@antv/util.svg)](https://www.npmjs.com/package/@antv/util)
