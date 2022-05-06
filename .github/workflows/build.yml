@@ -1,0 +1,19 @@
+name: build
+
+on: ["push", "pull_request"]
+
+jobs:
+  build:
+
+    runs-on: macOS-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 12
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12
+      - name: ci
+        run: |
+          npm install
+          npm run ci
