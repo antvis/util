@@ -2,9 +2,9 @@
   "name": "@antv/util",
   "version": "3.0.0",
   "license": "MIT",
+  "sideEffects": false,
   "main": "lib/index.js",
   "module": "esm/index.js",
-  "browser": "dist/util.min.js",
   "types": "lib/index.d.ts",
   "files": [
     "src",
