@@ -3,10 +3,10 @@ import { isPointInPolygon } from '../../../src';
 describe('point in polygon', () => {
   it('in polygon', () => {
     const points = [
-      [ 0, 0 ],
-      [ 0, 100 ],
-      [ 30, 100 ],
-      [ 30, 0 ]
+      [0, 0],
+      [0, 100],
+      [30, 100],
+      [30, 0],
     ];
 
     expect(isPointInPolygon(points, 0, 0)).toEqual(true); // 顶点
@@ -20,14 +20,13 @@ describe('point in polygon', () => {
 
   it('other polygon', () => {
     const points = [
-      [ 0, 0 ],
-      [ 100, 0 ],
-      [ 0, 100 ],
-      [ 100, 100 ]
+      [0, 0],
+      [100, 0],
+      [0, 100],
+      [100, 100],
     ];
     expect(isPointInPolygon(points, 50, 50)).toEqual(true);
     expect(isPointInPolygon(points, 50, 40)).toEqual(true);
     expect(isPointInPolygon(points, 40, 50)).toEqual(false);
   });
 });
-

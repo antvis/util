@@ -13,7 +13,6 @@ type Point = {
 
 const isBetween = (value: number, min: number, max: number) => value >= min && value <= max;
 
-
 export function getLineIntersect(p0: Point, p1: Point, p2: Point, p3: Point): Point | null {
   const tolerance = 0.001;
   const E: Point = {
@@ -44,4 +43,4 @@ export function getLineIntersect(p0: Point, p1: Point, p2: Point, p3: Point): Po
     }
   }
   return point;
-};
+}

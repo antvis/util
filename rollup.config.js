@@ -1,6 +1,8 @@
 import { uglify } from 'rollup-plugin-uglify';
-import resolve from 'rollup-plugin-node-resolve';
+import resolve from '@rollup/plugin-node-resolve';
 import typescript from 'rollup-plugin-typescript';
+import commonjs from '@rollup/plugin-commonjs';
+
 
 module.exports = [{
   input: 'src/index.ts',
@@ -13,6 +15,7 @@ module.exports = [{
   plugins: [
     resolve(),
     typescript(),
+    commonjs(),
     uglify(),
   ],
 }];

@@ -66,11 +66,11 @@ export function getArcParams(startPoint, params) {
   const cy = (y1 + y2) / 2.0 + Math.sin(xRotation) * cxp + Math.cos(xRotation) * cyp;
 
   // 起始点的单位向量
-  const u = [ (xp - cxp) / rx, (yp - cyp) / ry ];
+  const u = [(xp - cxp) / rx, (yp - cyp) / ry];
   // 终止点的单位向量
-  const v = [ (-1 * xp - cxp) / rx, (-1 * yp - cyp) / ry ];
+  const v = [(-1 * xp - cxp) / rx, (-1 * yp - cyp) / ry];
   // 计算起始点和圆心的连线，与 x 轴正方向的夹角
-  const theta = vAngle([ 1, 0 ], u);
+  const theta = vAngle([1, 0], u);
 
   // 计算圆弧起始点和终止点与椭圆圆心连线的夹角
   let dTheta = vAngle(u, v);
@@ -91,8 +91,8 @@ export function getArcParams(startPoint, params) {
     cx,
     cy,
     // 弧形的起点和终点相同时，长轴和短轴的长度按 0 处理
-    rx: isSamePoint(startPoint, [ x2, y2 ]) ? 0 : rx,
-    ry: isSamePoint(startPoint, [ x2, y2 ]) ? 0 : ry,
+    rx: isSamePoint(startPoint, [x2, y2]) ? 0 : rx,
+    ry: isSamePoint(startPoint, [x2, y2]) ? 0 : ry,
     startAngle: theta,
     endAngle: theta + dTheta,
     xRotation,

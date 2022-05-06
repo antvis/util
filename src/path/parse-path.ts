@@ -1,8 +1,8 @@
-const regexTags = /[MLHVQTCSAZ]([^MLHVQTCSAZ]*)/ig;
-const regexDot = /[^\s\,]+/ig;
+const regexTags = /[MLHVQTCSAZ]([^MLHVQTCSAZ]*)/gi;
+const regexDot = /[^\s,]+/gi;
 
 export function parsePath(p: string): string[] {
-  let path = p || [] as string | string[];
+  let path = p || ([] as string | string[]);
   if (Array.isArray(path)) {
     return path;
   }

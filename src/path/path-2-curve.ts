@@ -6,14 +6,21 @@ export function path2Curve(path: PathCommand[] | string, needZCommandIndexes = f
   const pathArray = path2Absolute(path as string) as PathCommand[];
 
   const params: ProcessParams = {
-    x1: 0, y1: 0, x2: 0, y2: 0, x: 0, y: 0, qx: null, qy: null,
+    x1: 0,
+    y1: 0,
+    x2: 0,
+    y2: 0,
+    x: 0,
+    y: 0,
+    qx: null,
+    qy: null,
   };
   const allPathCommands = [];
   let pathCommand = '';
   let ii = pathArray.length;
   let segment: PathCommand;
   let seglen: number;
-  let zCommandIndexes: number[] = [];
+  const zCommandIndexes: number[] = [];
 
   for (let i = 0; i < ii; i += 1) {
     if (pathArray[i]) [pathCommand] = pathArray[i];
@@ -35,8 +42,8 @@ export function path2Curve(path: PathCommand[] | string, needZCommandIndexes = f
 
     params.x1 = +segment[seglen - 2];
     params.y1 = +segment[seglen - 1];
-    params.x2 = +(segment[seglen - 4]) || params.x1;
-    params.y2 = +(segment[seglen - 3]) || params.y1;
+    params.x2 = +segment[seglen - 4] || params.x1;
+    params.y2 = +segment[seglen - 3] || params.y1;
   }
   if (needZCommandIndexes) {
     return [pathArray, zCommandIndexes];
@@ -55,7 +62,7 @@ function fixArc(pathArray: PathCommand[], allPathCommands: string[], i: number) 
       // if created multiple C:s, their original seg is saved
       allPathCommands[i] = 'A';
       // @ts-ignore
-      pathArray.splice(ni += 1, 0, ['C'].concat(pi.splice(0, 6)));
+      pathArray.splice((ni += 1), 0, ['C'].concat(pi.splice(0, 6)));
     }
     pathArray.splice(i, 1);
   }

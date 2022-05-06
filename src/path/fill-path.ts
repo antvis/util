@@ -15,7 +15,10 @@ function decasteljau(points, t) {
         if (i === points.length - 2) {
           right.push(points[i + 1]);
         }
-        middlePoints[i] = [ (1 - t) * points[i][0] + t * points[i + 1][0], (1 - t) * points[i][1] + t * points[i + 1][1] ];
+        middlePoints[i] = [
+          (1 - t) * points[i][0] + t * points[i + 1][0],
+          (1 - t) * points[i][1] + t * points[i + 1][1],
+        ];
       }
       recurse(middlePoints, t);
     }
@@ -27,21 +30,21 @@ function decasteljau(points, t) {
 }
 
 function splitCurve(start, end, count) {
-  const points = [ [ start[1], start[2] ] ];
+  const points = [[start[1], start[2]]];
   count = count || 2;
   const segments = [];
   if (end[0] === 'A') {
     points.push(end[6]);
     points.push(end[7]);
   } else if (end[0] === 'C') {
-    points.push([ end[1], end[2] ]);
-    points.push([ end[3], end[4] ]);
-    points.push([ end[5], end[6] ]);
+    points.push([end[1], end[2]]);
+    points.push([end[3], end[4]]);
+    points.push([end[5], end[6]]);
   } else if (end[0] === 'S' || end[0] === 'Q') {
-    points.push([ end[1], end[2] ]);
-    points.push([ end[3], end[4] ]);
+    points.push([end[1], end[2]]);
+    points.push([end[3], end[4]]);
   } else {
-    points.push([ end[1], end[2] ]);
+    points.push([end[1], end[2]]);
   }
 
   let leftSegments = points;
@@ -77,7 +80,7 @@ function splitCurve(start, end, count) {
 
 function splitSegment(start, end, count) {
   if (count === 1) {
-    return [ [].concat(start) ];
+    return [[].concat(start)];
   }
   let segments = [];
   if (end[0] === 'L' || end[0] === 'C' || end[0] === 'Q') {
@@ -117,7 +120,7 @@ export function fillPath(source, target) {
       return filled.concat(source[sourceLen]);
     }
     return filled.concat(splitSegment(source[i], source[i + 1], count));
-  },                                   []);
+  }, []);
   filled.unshift(source[0]);
   if (target[targetLen] === 'Z' || target[targetLen] === 'z') {
     filled.push('Z');

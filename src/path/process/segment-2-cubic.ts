@@ -1,7 +1,7 @@
+import type { PathCommand, ProcessParams } from '../types';
 import { arcToCubic } from './arc-2-cubic';
 import { quadToCubic } from './quad-2-cubic';
 import { lineToCubic } from './line-2-cubic';
-import type { PathCommand, ProcessParams } from '../types';
 
 export function segmentToCubic(segment: PathCommand, params: ProcessParams): PathCommand {
   if ('TQ'.indexOf(segment[0]) < 0) {
@@ -17,11 +17,15 @@ export function segmentToCubic(segment: PathCommand, params: ProcessParams): Pat
       params.y = s2 as number;
       return segment;
     case 'A':
-      return ['C'].concat(arcToCubic.apply(0, [params.x1, params.y1].concat(segment.slice(1) as number[]))) as PathCommand;
+      return ['C'].concat(
+        arcToCubic.apply(0, [params.x1, params.y1].concat(segment.slice(1) as number[])),
+      ) as PathCommand;
     case 'Q':
       params.qx = s1 as number;
       params.qy = s2 as number;
-      return ['C'].concat(quadToCubic.apply(0, [params.x1, params.y1].concat(segment.slice(1) as number[]))) as PathCommand;
+      return ['C'].concat(
+        quadToCubic.apply(0, [params.x1, params.y1].concat(segment.slice(1) as number[])),
+      ) as PathCommand;
     case 'L':
       // @ts-ignore
       return ['C'].concat(lineToCubic(params.x1, params.y1, segment[1], segment[2])) as PathCommand;

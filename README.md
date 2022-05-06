@@ -22,6 +22,7 @@ import { gradient } from '@antv/util';
 
 - util 只有一个 npm 包，按照目录来组织不同类型的方法，避免 monorepo 互相依赖
 - 内容和 AntV 强相关，避免做和 lodash 等相同的工具库
+- 不使用的方法，及时删除，并保持新增方法可以按需引入
 - 旧版本的不维护，如果 AntV 技术栈的旧版本需要迭代，请升级到 v3
 
 

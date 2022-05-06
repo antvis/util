@@ -29,8 +29,7 @@ function getMinDiff(del: number, add: number, modify: number): DiffType {
 const levenshteinDistance = function (source: string, target: string): DiffType[][] {
   const sourceLen = source.length;
   const targetLen = target.length;
-  let sourceSegment,
-    targetSegment;
+  let sourceSegment, targetSegment;
   let temp = 0;
   if (sourceLen === 0 || targetLen === 0) {
     return null;
@@ -103,7 +102,7 @@ export function fillPathByDiff(source: string, target: string) {
   // source尾部补齐
   sourceLen = source.length;
   if (sourceLen < targetLen) {
-    for (let i = 0; i < (targetLen - sourceLen); i++) {
+    for (let i = 0; i < targetLen - sourceLen; i++) {
       if (source[sourceLen - 1][0] === 'z' || source[sourceLen - 1][0] === 'Z') {
         // @ts-ignore
         source.splice(sourceLen - 2, 0, source[sourceLen - 2]);
@@ -111,7 +110,6 @@ export function fillPathByDiff(source: string, target: string) {
         // @ts-ignore
         source.push(source[sourceLen - 1]);
       }
-
     }
   }
   return source;

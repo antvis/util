@@ -8,38 +8,37 @@ function _getSegmentPoints(segment: any[]): number[][] {
   const points = [];
   switch (segment[0]) {
     case 'M':
-      points.push([ segment[1], segment[2] ]);
+      points.push([segment[1], segment[2]]);
       break;
     case 'L':
-      points.push([ segment[1], segment[2] ]);
+      points.push([segment[1], segment[2]]);
       break;
     case 'A':
-      points.push([ segment[6], segment[7] ]);
+      points.push([segment[6], segment[7]]);
       break;
     case 'Q':
-      points.push([ segment[3], segment[4] ]);
-      points.push([ segment[1], segment[2] ]);
+      points.push([segment[3], segment[4]]);
+      points.push([segment[1], segment[2]]);
       break;
     case 'T':
-      points.push([ segment[1], segment[2] ]);
+      points.push([segment[1], segment[2]]);
       break;
     case 'C':
-      points.push([ segment[5], segment[6] ]);
-      points.push([ segment[1], segment[2] ]);
-      points.push([ segment[3], segment[4] ]);
+      points.push([segment[5], segment[6]]);
+      points.push([segment[1], segment[2]]);
+      points.push([segment[3], segment[4]]);
       break;
     case 'S':
-      points.push([ segment[3], segment[4] ]);
-      points.push([ segment[1], segment[2] ]);
+      points.push([segment[3], segment[4]]);
+      points.push([segment[1], segment[2]]);
       break;
     case 'H':
-      points.push([ segment[1], segment[1] ]);
+      points.push([segment[1], segment[1]]);
       break;
     case 'V':
-      points.push([ segment[1], segment[1] ]);
+      points.push([segment[1], segment[1]]);
       break;
     default:
-
   }
   return points;
 }
@@ -54,9 +53,12 @@ function _splitPoints(points: number[][], former: any[], count: number) {
     t *= i;
     index = Math.floor(points.length * t);
     if (index === 0) {
-      result.unshift([ formerEnd[0] * t + points[index][0] * (1 - t), formerEnd[1] * t + points[index][1] * (1 - t) ]);
+      result.unshift([formerEnd[0] * t + points[index][0] * (1 - t), formerEnd[1] * t + points[index][1] * (1 - t)]);
     } else {
-      result.splice(index, 0, [ formerEnd[0] * t + points[index][0] * (1 - t), formerEnd[1] * t + points[index][1] * (1 - t) ]);
+      result.splice(index, 0, [
+        formerEnd[0] * t + points[index][0] * (1 - t),
+        formerEnd[1] * t + points[index][1] * (1 - t),
+      ]);
     }
   }
   return result;
@@ -73,10 +75,10 @@ export function formatPath(fromPath: any[][], toPath: any[][]): any[][] {
       points = _getSegmentPoints(fromPath[i]);
       switch (toPath[i][0]) {
         case 'M':
-          fromPath[i] = [ 'M' ].concat(points[0]);
+          fromPath[i] = ['M'].concat(points[0]);
           break;
         case 'L':
-          fromPath[i] = [ 'L' ].concat(points[0]);
+          fromPath[i] = ['L'].concat(points[0]);
           break;
         case 'A':
           fromPath[i] = [].concat(toPath[i]);
@@ -92,10 +94,14 @@ export function formatPath(fromPath: any[][], toPath: any[][]): any[][] {
               break;
             }
           }
-          fromPath[i] = [ 'Q' ].concat(points.reduce((arr, i) => { return arr.concat(i); }, []));
+          fromPath[i] = ['Q'].concat(
+            points.reduce((arr, i) => {
+              return arr.concat(i);
+            }, []),
+          );
           break;
         case 'T':
-          fromPath[i] = [ 'T' ].concat(points[0]);
+          fromPath[i] = ['T'].concat(points[0]);
           break;
         case 'C':
           if (points.length < 3) {
@@ -106,7 +112,11 @@ export function formatPath(fromPath: any[][], toPath: any[][]): any[][] {
               break;
             }
           }
-          fromPath[i] = [ 'C' ].concat(points.reduce((arr, i) => { return arr.concat(i); }, []));
+          fromPath[i] = ['C'].concat(
+            points.reduce((arr, i) => {
+              return arr.concat(i);
+            }, []),
+          );
           break;
         case 'S':
           if (points.length < 2) {
@@ -117,7 +127,11 @@ export function formatPath(fromPath: any[][], toPath: any[][]): any[][] {
               break;
             }
           }
-          fromPath[i] = [ 'S' ].concat(points.reduce((arr, i) => { return arr.concat(i); }, []));
+          fromPath[i] = ['S'].concat(
+            points.reduce((arr, i) => {
+              return arr.concat(i);
+            }, []),
+          );
           break;
         default:
           fromPath[i] = toPath[i];

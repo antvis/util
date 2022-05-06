@@ -21,8 +21,7 @@
 // }
 
 export function lineToCubic(x1: number, y1: number, x2: number, y2: number) {
-
-  return [ x1, y1, x2, y2, x2, y2 ];
+  return [x1, y1, x2, y2, x2, y2];
   // const t = 0.5;
   // const p0 = [x1, y1];
   // const p1 = [x2, y2];
