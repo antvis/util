@@ -4,7 +4,7 @@ import { pathLengthFactory } from './path-length-factory';
 /**
  * Returns the bounding box of a shape.
  */
-export function getPathBBox(path: PathArray): PathBBox {
+export function getPathBBox(path: string | PathArray): PathBBox {
   if (!path) {
     return {
       x: 0,

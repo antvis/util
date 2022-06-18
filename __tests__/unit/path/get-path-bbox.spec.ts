@@ -1,8 +1,13 @@
-import { getPathBBox, PathArray } from '../../../src';
+import { getPathBBox, getPathBBoxTotalLength, PathArray } from '../../../src';
 import { parsePathString } from '../../../src/path/parser/parse-path-string';
 import { getCirclePath } from './util';
 
 describe('get path bbox', () => {
+  it('should calc empty path correctly', () => {
+    const bbox = getPathBBox('');
+    expect(bbox).toEqual({ cx: 0, cy: 0, cz: 0, height: 0, width: 0, x: 0, x2: 0, y: 0, y2: 0 });
+  });
+
   it('should calc rect path correctly', () => {
     const str: PathArray = [['M', 0, 0], ['L', 100, 0], ['L', 100, 100], ['L', 0, 100], ['Z']];
     const bbox = getPathBBox(str);
@@ -21,5 +26,8 @@ describe('get path bbox', () => {
     const segments = parsePathString('M2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2z') as PathArray;
     const bbox = getPathBBox(segments);
     expect(bbox).toEqual({ cx: 8, cy: 8, cz: 24, height: 16, width: 16, x: 0, x2: 16, y: 0, y2: 16 });
+
+    const { length, ...rest } = getPathBBoxTotalLength(segments);
+    expect(rest).toEqual({ cx: 8, cy: 8, cz: 24, height: 16, width: 16, x: 0, x2: 16, y: 0, y2: 16 });
   });
 });

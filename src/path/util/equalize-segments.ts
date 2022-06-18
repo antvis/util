@@ -1,4 +1,4 @@
-import type { CurveArray } from '../types';
+import type { CurveArray, PathArray } from '../types';
 import { midPoint } from './mid-point';
 import { segmentCubicFactory } from './segment-cubic-factory';
 
@@ -25,7 +25,7 @@ function splitCubic(
   ];
 }
 
-function getCurveArray(segments: CurveArray) {
+function getCurveArray(segments: PathArray) {
   return segments.map((segment, i, pathArray) => {
     // @ts-ignore
     const segmentData = i && pathArray[i - 1].slice(-2).concat(segment.slice(1));
@@ -49,7 +49,7 @@ function getCurveArray(segments: CurveArray) {
   });
 }
 
-export function equalizeSegments(path1: CurveArray, path2: CurveArray, TL?: number): CurveArray[] {
+export function equalizeSegments(path1: PathArray, path2: PathArray, TL?: number): CurveArray[] {
   const c1 = getCurveArray(path1);
   const c2 = getCurveArray(path2);
   const L1 = c1.length;
