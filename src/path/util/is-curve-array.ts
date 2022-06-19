@@ -1,5 +1,5 @@
-import { isNormalizedArray } from './is-normalized-array';
 import type { PathArray } from '../types';
+import { isNormalizedArray } from './is-normalized-array';
 
 /**
  * Iterates an array to check if it's a `PathArray`

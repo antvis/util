@@ -1,9 +1,9 @@
 import type { Point, PathArray, PointProperties } from '../types';
+import { parsePathString } from '../parser/parse-path-string';
+import { normalizePath } from '../process/normalize-path';
 import { getPointAtLength } from './get-point-at-length';
 import { getPropertiesAtLength } from './get-properties-at-length';
 import { getTotalLength } from './get-total-length';
-import { parsePathString } from '../parser/parse-path-string';
-import { normalizePath } from '../process/normalize-path';
 
 /**
  * Returns the point and segment in path closest to a given point as well as

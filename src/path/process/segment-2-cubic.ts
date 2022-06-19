@@ -1,7 +1,7 @@
+import type { PathSegment, ParserParams, CSegment, MSegment } from '../types';
 import { arcToCubic } from './arc-2-cubic';
 import { quadToCubic } from './quad-2-cubic';
 import { lineToCubic } from './line-2-cubic';
-import type { PathSegment, ParserParams, CSegment, MSegment } from '../types';
 
 export function segmentToCubic(segment: PathSegment, params: ParserParams): CSegment | MSegment {
   const [pathCommand] = segment;

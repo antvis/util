@@ -1,5 +1,5 @@
-import { isPathArray } from './is-path-array';
 import type { PathArray, AbsoluteArray } from '../types';
+import { isPathArray } from './is-path-array';
 
 /**
  * Iterates an array to check if it's a `PathArray`

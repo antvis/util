@@ -1,9 +1,9 @@
 import { isNormalizedArray } from '../util/is-normalized-array';
 import { paramsParser } from '../parser/params-parser';
 import { path2Absolute } from '../convert/path-2-absolute';
+import type { PathArray, NormalArray } from '../types';
 import { clonePath } from './clone-path';
 import { normalizeSegment } from './normalize-segment';
-import type { PathArray, NormalArray } from '../types';
 
 /**
  * @example

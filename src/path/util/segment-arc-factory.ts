@@ -1,6 +1,6 @@
+import type { Point, LengthFactory } from '../types';
 import { segmentLineFactory } from './segment-line-factory';
 import { distanceSquareRoot } from './distance-square-root';
-import type { Point, LengthFactory } from '../types';
 
 function angleBetween(v0: Point, v1: Point) {
   const { x: v0x, y: v0y } = v0;

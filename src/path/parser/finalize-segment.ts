@@ -1,6 +1,6 @@
+import type { PathCommand } from '../types';
 import { paramsCount } from './params-count';
 import type { PathParser } from './path-parser';
-import type { PathCommand } from '../types';
 
 /**
  * Breaks the parsing of a pathString once a segment is finalized.

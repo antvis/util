@@ -1,9 +1,9 @@
 import { normalizePath } from '../process/normalize-path';
+import type { PathCommand, PathArray, LengthFactory } from '../types';
 import { segmentLineFactory } from './segment-line-factory';
 import { segmentArcFactory } from './segment-arc-factory';
 import { segmentCubicFactory } from './segment-cubic-factory';
 import { segmentQuadFactory } from './segment-quad-factory';
-import type { PathCommand, PathArray, LengthFactory } from '../types';
 
 /**
  * Returns a {x,y} point at a given length

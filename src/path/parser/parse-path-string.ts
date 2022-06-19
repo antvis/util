@@ -1,9 +1,9 @@
-import { scanSegment } from './scan-segment';
-import { skipSpaces } from './skip-spaces';
 import { clonePath } from '../process/clone-path';
-import { PathParser } from './path-parser';
 import { isPathArray } from '../util/is-path-array';
 import type { PathArray } from '../types';
+import { scanSegment } from './scan-segment';
+import { skipSpaces } from './skip-spaces';
+import { PathParser } from './path-parser';
 
 /**
  * Parses a path string value and returns an array
