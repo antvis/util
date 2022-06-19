@@ -1,44 +1,45 @@
-import type { PathCommand, ProcessParams } from '../types';
+import type { PathSegment, ParserParams, CSegment, MSegment } from '../types';
 import { arcToCubic } from './arc-2-cubic';
 import { quadToCubic } from './quad-2-cubic';
 import { lineToCubic } from './line-2-cubic';
 
-export function segmentToCubic(segment: PathCommand, params: ProcessParams): PathCommand {
-  if ('TQ'.indexOf(segment[0]) < 0) {
+export function segmentToCubic(segment: PathSegment, params: ParserParams): CSegment | MSegment {
+  const [pathCommand] = segment;
+  const values = segment.slice(1).map(Number);
+  const [x, y] = values;
+  let args: any[];
+  const { x1: px1, y1: py1, x: px, y: py } = params;
+
+  if (!'TQ'.includes(pathCommand)) {
     params.qx = null;
     params.qy = null;
   }
 
-  const [s1, s2] = segment.slice(1);
-
-  switch (segment[0]) {
+  switch (pathCommand) {
     case 'M':
-      params.x = s1 as number;
-      params.y = s2 as number;
+      params.x = x;
+      params.y = y;
       return segment;
     case 'A':
-      return ['C'].concat(
-        arcToCubic.apply(0, [params.x1, params.y1].concat(segment.slice(1) as number[])),
-      ) as PathCommand;
+      args = [px1, py1, ...values];
+      // @ts-ignore
+      return ['C', ...arcToCubic(...args)] as CubicSegment;
     case 'Q':
-      params.qx = s1 as number;
-      params.qy = s2 as number;
-      return ['C'].concat(
-        quadToCubic.apply(0, [params.x1, params.y1].concat(segment.slice(1) as number[])),
-      ) as PathCommand;
+      params.qx = x;
+      params.qy = y;
+      args = [px1, py1, ...values];
+      // @ts-ignore
+      return ['C', ...quadToCubic(...args)] as CubicSegment;
     case 'L':
-      // @ts-ignore
-      return ['C'].concat(lineToCubic(params.x1, params.y1, segment[1], segment[2])) as PathCommand;
-    case 'H':
-      // @ts-ignore
-      return ['C'].concat(lineToCubic(params.x1, params.y1, segment[1], params.y1)) as PathCommand;
-    case 'V':
-      // @ts-ignore
-      return ['C'].concat(lineToCubic(params.x1, params.y1, params.x1, segment[1])) as PathCommand;
+      return ['C', ...lineToCubic(px1, py1, x, y)] as CSegment;
     case 'Z':
-      // @ts-ignore
-      return ['C'].concat(lineToCubic(params.x1, params.y1, params.x, params.y)) as PathCommand;
+      // prevent NaN from divide 0
+      if (px1 === px && py1 === py) {
+        return ['C', px1, py1, px, py, px, py];
+      }
+
+      return ['C', ...lineToCubic(px1, py1, px, py)] as CSegment;
     default:
   }
-  return segment;
+  return segment as CSegment;
 }

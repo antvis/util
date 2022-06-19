@@ -1,33 +1,32 @@
-import { path2Absolute } from '../../../src';
+import { path2Absolute, PathArray } from '../../../src';
 
-describe('test path to absolute', () => {
-  it('m, l, h, v', () => {
-    const str = [
+describe('path to absolute', () => {
+  it('commands: m, l, h, v', () => {
+    const str: PathArray = [
       ['M', 10, 10],
       ['L', 100, 100],
       ['l', 10, 10],
       ['h', 20],
       ['v', 20],
     ];
-    const arr = path2Absolute(str as any);
+    const arr = path2Absolute(str);
     expect(arr).toEqual([
       ['M', 10, 10],
       ['L', 100, 100],
       ['L', 110, 110],
-      ['L', 130, 110],
-      ['L', 130, 130],
+      ['H', 130],
+      ['V', 130],
     ]);
-    // 如果已经是 absolute 不再转换
-    expect(path2Absolute(arr as any)).toEqual(arr);
+    expect(path2Absolute(arr)).toEqual(arr);
   });
 
-  it('c, q', () => {
+  it('commands: c, q', () => {
     const str = 'M 10 10 q 20 20 30 30 c 35 35 45 43 50 50 z';
     const arr = path2Absolute(str);
     expect(arr).toEqual([['M', 10, 10], ['Q', 30, 30, 40, 40], ['C', 75, 75, 85, 83, 90, 90], ['Z']]);
   });
 
-  it('a', () => {
+  it('commands: a', () => {
     const str = 'M 10, 10 a 20, 20, 0, 0, 0, 30, 30 A 30 30 0 0 1 50 50';
     const arr = path2Absolute(str);
     expect(arr).toEqual([
@@ -37,20 +36,39 @@ describe('test path to absolute', () => {
     ]);
   });
 
-  it('s', () => {
+  it('commands: s', () => {
     const str1 = 'M10 80 Q 52.5 10, 95 80 T 180 80';
     const str2 = 'M10 80 Q 52.5 10, 95 80 Q 137.5 150 180 80';
-    expect(path2Absolute(str1)).toEqual(path2Absolute(str2));
+
+    expect(path2Absolute(str1)).toEqual([
+      ['M', 10, 80],
+      ['Q', 52.5, 10, 95, 80],
+      ['T', 180, 80],
+    ]);
+    expect(path2Absolute(str2)).toEqual([
+      ['M', 10, 80],
+      ['Q', 52.5, 10, 95, 80],
+      ['Q', 137.5, 150, 180, 80],
+    ]);
   });
 
-  it('t', () => {
+  it('commands: t', () => {
     const str1 = 'M10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80';
     const str2 = 'M10 80 C 40 10, 65 10, 95 80  C 125 150, 150 150, 180 80';
-    expect(path2Absolute(str1)).toEqual(path2Absolute(str2));
+    expect(path2Absolute(str1)).toEqual([
+      ['M', 10, 80],
+      ['C', 40, 10, 65, 10, 95, 80],
+      ['S', 150, 150, 180, 80],
+    ]);
+    expect(path2Absolute(str2)).toEqual([
+      ['M', 10, 80],
+      ['C', 40, 10, 65, 10, 95, 80],
+      ['C', 125, 150, 150, 150, 180, 80],
+    ]);
   });
 
-  it('m', () => {
-    const str = [
+  it('commands: m', () => {
+    const str: PathArray = [
       ['M', 10, 10],
       ['m', 10, 10],
       ['L', 100, 100],
@@ -58,14 +76,52 @@ describe('test path to absolute', () => {
       ['h', 20],
       ['v', 20],
     ];
-    const arr = path2Absolute(str as any);
+    const arr = path2Absolute(str);
     expect(arr).toEqual([
       ['M', 10, 10],
       ['M', 20, 20],
       ['L', 100, 100],
       ['L', 110, 110],
-      ['L', 130, 110],
-      ['L', 130, 130],
+      ['H', 130],
+      ['V', 130],
+    ]);
+  });
+
+  it('camera path', () => {
+    const arr = path2Absolute(
+      'M2 4a2 2 0 0 0 -2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-6a2 2 0 0 0 -2 -2h-1.172a2 2 0 0 1 -1.414 -0.586l-0.828 -0.828a2 2 0 0 0 -1.414 -0.586h-2.344a2 2 0 0 0 -1.414 0.586l-0.828 0.828a2 2 0 0 1 -1.414 0.586h-1.172zM10.5 8.5a2.5 2.5 0 0 0 -5 0a2.5 2.5 0 1 0 5 0zM2.5 6a0.5 0.5 0 0 1 0 -1a0.5 0.5 0 1 1 0 1zM11.5 8.5a3.5 3.5 0 1 1 -7 0a3.5 3.5 0 0 1 7 0z',
+    );
+    expect(arr).toEqual([
+      ['M', 2, 4],
+      ['A', 2, 2, 0, 0, 0, 0, 6],
+      ['V', 12],
+      ['A', 2, 2, 0, 0, 0, 2, 14],
+      ['H', 14],
+      ['A', 2, 2, 0, 0, 0, 16, 12],
+      ['V', 6],
+      ['A', 2, 2, 0, 0, 0, 14, 4],
+      ['H', 12.828],
+      ['A', 2, 2, 0, 0, 1, 11.414, 3.414],
+      ['L', 10.586, 2.5860000000000003],
+      ['A', 2, 2, 0, 0, 0, 9.172, 2.0000000000000004],
+      ['H', 6.828000000000001],
+      ['A', 2, 2, 0, 0, 0, 5.4140000000000015, 2.5860000000000003],
+      ['L', 4.586000000000001, 3.414],
+      ['A', 2, 2, 0, 0, 1, 3.1720000000000015, 4],
+      ['H', 2.0000000000000018],
+      ['Z'],
+      ['M', 10.5, 8.5],
+      ['A', 2.5, 2.5, 0, 0, 0, 5.5, 8.5],
+      ['A', 2.5, 2.5, 0, 1, 0, 10.5, 8.5],
+      ['Z'],
+      ['M', 2.5, 6],
+      ['A', 0.5, 0.5, 0, 0, 1, 2.5, 5],
+      ['A', 0.5, 0.5, 0, 1, 1, 2.5, 6],
+      ['Z'],
+      ['M', 11.5, 8.5],
+      ['A', 3.5, 3.5, 0, 1, 1, 4.5, 8.5],
+      ['A', 3.5, 3.5, 0, 0, 1, 11.5, 8.5],
+      ['Z'],
     ]);
   });
 });
