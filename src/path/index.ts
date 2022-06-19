@@ -12,7 +12,6 @@ export { getPathArea } from './util/get-path-area';
 export { getDrawDirection } from './util/get-draw-direction';
 export { getPointAtLength } from './util/get-point-at-length';
 export { isPointInStroke } from './util/is-point-in-stroke';
-export { pathLengthFactory } from './util/path-length-factory';
 export { distanceSquareRoot } from './util/distance-square-root';
 export { equalizeSegments } from './util/equalize-segments';
 

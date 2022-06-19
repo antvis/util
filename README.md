@@ -20,7 +20,7 @@ import { gradient } from '@antv/util';
 - 不使用的方法，及时删除，并保持新增方法可以按需引入
 - 旧版本的不维护，如果 AntV 技术栈的旧版本需要迭代，请升级到 v3
 
-## Path
+## API
 
 提供以下 Path 工具方法，包含转换、几何计算等。
 
@@ -114,6 +114,79 @@ const pathArray: CurveArray = [
 ];
 
 const reversed = reverseCurve(pathArray);
+```
+
+### getPathBBox
+
+获取几何定义下的包围盒，形如：
+
+```js
+export interface PathBBox {
+  width: number;
+  height: number;
+  x: number;
+  y: number;
+  x2: number;
+  y2: number;
+  cx: number;
+  cy: number;
+  cz: number;
+}
+```
+
+```js
+const bbox = getPathBBox([['M', 0, 0], ['L', 100, 0], ['L', 100, 100], ['L', 0, 100], ['Z']]);
+
+expect(bbox).toEqual({ cx: 50, cy: 50, cz: 150, height: 100, width: 100, x: 0, x2: 100, y: 0, y2: 100 });
+```
+
+### getTotalLength
+
+获取路径总长度。
+
+```js
+const length = getTotalLength([['M', 0, 0], ['L', 100, 0], ['L', 100, 100], ['L', 0, 100], ['Z']]);
+
+expect(length).toEqual(400);
+```
+
+### getPointAtLength
+
+获取路径上从起点出发，到指定距离的点。
+
+```js
+const point = getPointAtLength([['M', 0, 0], ['L', 100, 0], ['L', 100, 100], ['L', 0, 100], ['Z']], 0);
+expect(point).toEqual({ x: 0, y: 0 });
+```
+
+### getPathArea
+
+计算路径包围的面积。内部实现中首先通过 [path2Curve](#path2Curve) 转曲，再计算 cubic curve 面积，[详见](https://stackoverflow.com/a/15845996)。
+
+### isPointInStroke
+
+判断一个点是否在路径上，仅通过几何定义，不考虑其他样式属性例如线宽、lineJoin、miter 等。
+
+```js
+const result = isPointInStroke(segments, { x: 10, y: 10 });
+```
+
+### distanceSquareRoot
+
+计算两点之间的距离。
+
+方法签名如下：
+
+```js
+distanceSquareRoot(a: [number, number], b: [number, number]): number;
+```
+
+### equalizeSegments
+
+将两条路径处理成段数相同，用于形变动画前的分割操作。
+
+```js
+const [formattedPath1, formattedPath2] = equalizeSegments(path1, path2);
 ```
 
 ## License

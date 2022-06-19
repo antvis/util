@@ -34,4 +34,25 @@ describe('get total length', () => {
     );
     expect(length).toBeCloseTo(60.56635625960637);
   });
+
+  it('should calc the length of rounded rect correctly', () => {
+    const length = getTotalLength(
+      parsePathString('M2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2z') as PathArray,
+    );
+    expect(length).toBeCloseTo(60.56635625960637);
+  });
+
+  it('should calc the length of Q commands correctly', () => {
+    const reversed: PathArray = [
+      ['M', 190, 50],
+      ['Q', 175, 75, 160, 50],
+      ['Q', 145, 25, 130, 50],
+      ['Q', 115, 75, 100, 50],
+      ['Q', 85, 25, 70, 50],
+      ['Q', 55, 75, 40, 50],
+      ['Q', 25, 25, 10, 50],
+    ];
+    const length = getTotalLength(reversed);
+    expect(length).toBeCloseTo(244.25304624817215);
+  });
 });

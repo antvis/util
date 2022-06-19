@@ -1,9 +1,9 @@
 import { arcToCubic } from './arc-2-cubic';
 import { quadToCubic } from './quad-2-cubic';
 import { lineToCubic } from './line-2-cubic';
-import type { PathSegment, ParserParams, CubicSegment, MSegment } from '../types';
+import type { PathSegment, ParserParams, CSegment, MSegment } from '../types';
 
-export function segmentToCubic(segment: PathSegment, params: ParserParams): CubicSegment | MSegment {
+export function segmentToCubic(segment: PathSegment, params: ParserParams): CSegment | MSegment {
   const [pathCommand] = segment;
   const values = segment.slice(1).map(Number);
   const [x, y] = values;
@@ -31,15 +31,15 @@ export function segmentToCubic(segment: PathSegment, params: ParserParams): Cubi
       // @ts-ignore
       return ['C', ...quadToCubic(...args)] as CubicSegment;
     case 'L':
-      return ['C', ...lineToCubic(px1, py1, x, y)] as CubicSegment;
+      return ['C', ...lineToCubic(px1, py1, x, y)] as CSegment;
     case 'Z':
       // prevent NaN from divide 0
       if (px1 === px && py1 === py) {
         return ['C', px1, py1, px, py, px, py];
       }
 
-      return ['C', ...lineToCubic(px1, py1, px, py)] as CubicSegment;
+      return ['C', ...lineToCubic(px1, py1, px, py)] as CSegment;
     default:
   }
-  return segment as CubicSegment;
+  return segment as CSegment;
 }

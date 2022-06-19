@@ -4,12 +4,15 @@ import { fixArc } from '../process/fix-arc';
 import { normalizePath } from '../process/normalize-path';
 import { isCurveArray } from '../util/is-curve-array';
 import { segmentToCubic } from '../process/segment-2-cubic';
-import type { PathArray } from '../types';
+import type { CurveArray, PathArray } from '../types';
 // import { fixPath } from '../process/fix-path';
 
-export function path2Curve(pathInput: string | PathArray, needZCommandIndexes = false) {
+export function path2Curve(
+  pathInput: string | PathArray,
+  needZCommandIndexes = false,
+): CurveArray | [CurveArray, number[]] {
   if (isCurveArray(pathInput)) {
-    const cloned = clonePath(pathInput);
+    const cloned = clonePath(pathInput) as CurveArray;
     if (needZCommandIndexes) {
       return [cloned, []];
     } else {
@@ -19,7 +22,7 @@ export function path2Curve(pathInput: string | PathArray, needZCommandIndexes = 
 
   // fixPath will remove 'Z' command
   // const path = fixPath(normalizePath(pathInput));
-  const path = normalizePath(pathInput) as PathArray;
+  const path = normalizePath(pathInput) as CurveArray;
 
   const params = { ...paramsParser };
   const allPathCommands = [];

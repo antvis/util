@@ -1,4 +1,4 @@
-import { getPathBBox, getPathBBoxTotalLength, PathArray } from '../../../src';
+import { getPathBBox, getPathBBoxTotalLength, PathArray } from '../../../src/path';
 import { parsePathString } from '../../../src/path/parser/parse-path-string';
 import { getCirclePath } from './util';
 
