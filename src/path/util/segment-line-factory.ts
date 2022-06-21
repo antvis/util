@@ -10,9 +10,8 @@ export function segmentLineFactory(x1: number, y1: number, x2: number, y2: numbe
   const length = distanceSquareRoot([x1, y1], [x2, y2]);
   let point = { x: 0, y: 0 };
 
-  /* istanbul ignore else */
   if (typeof distance === 'number') {
-    if (distance === 0) {
+    if (distance <= 0) {
       point = { x: x1, y: y1 };
     } else if (distance >= length) {
       point = { x: x2, y: y2 };
