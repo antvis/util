@@ -163,9 +163,21 @@ expect(point).toEqual({ x: 0, y: 0 });
 
 计算路径包围的面积。内部实现中首先通过 [path2Curve](#path2Curve) 转曲，再计算 cubic curve 面积，[详见](https://stackoverflow.com/a/15845996)。
 
+方法签名如下：
+
+```js
+function getPathArea(path: PathArray): number;
+```
+
 ### isPointInStroke
 
-判断一个点是否在路径上，仅通过几何定义，不考虑其他样式属性例如线宽、lineJoin、miter 等。
+判断一个点是否在路径上，仅通过几何定义计算，不考虑其他样式属性例如线宽、lineJoin、miter 等。
+
+方法签名如下：
+
+```js
+isPointInStroke(pathInput: string | PathArray, point: Point): boolean;
+```
 
 ```js
 const result = isPointInStroke(segments, { x: 10, y: 10 });
