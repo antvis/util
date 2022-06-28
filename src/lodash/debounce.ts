@@ -1,10 +1,9 @@
-
 function debounce(func: Function, wait?: number, immediate?: boolean) {
   let timeout;
-  return function() {
+  return function () {
     const context = this,
       args = arguments;
-    const later = function() {
+    const later = function () {
       timeout = null;
       if (!immediate) {
         func.apply(context, args);

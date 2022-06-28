@@ -10,7 +10,7 @@ import isArray from './is-array';
  *
  * flattenDeep([1, [2, [3, [4]], 5]]);  // => [1, 2, 3, 4, 5]
  */
-const flattenDeep = function(arr: any[], result: any[] = []): any[] {
+const flattenDeep = function (arr: any[], result: any[] = []): any[] {
   if (!isArray(arr)) {
     result.push(arr);
   } else {

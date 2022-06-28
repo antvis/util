@@ -1,6 +1,6 @@
 import isArrayLike from './is-array-like';
 
-const map = <T, G> (arr: T[], func: (v: T, idx: number) => G): G[] => {
+const map = <T, G>(arr: T[], func: (v: T, idx: number) => G): G[] => {
   if (!isArrayLike(arr)) {
     // @ts-ignore
     return arr;

@@ -1,7 +1,7 @@
 /**
  * k-v 存储
  */
-export default class <T> {
+export default class<T> {
   map: { [key: string]: T } = {};
 
   has(key: string): boolean {

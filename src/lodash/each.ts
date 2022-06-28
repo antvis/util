@@ -1,7 +1,7 @@
 import isArray from './is-array';
 import isObject from './is-object';
 
-function each (elements: any[] | object, func: (v: any, k: any) => any): void {
+function each(elements: any[] | object, func: (v: any, k: any) => any): void {
   if (!elements) {
     return;
   }

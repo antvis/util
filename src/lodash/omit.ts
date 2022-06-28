@@ -10,6 +10,6 @@ export default <T>(obj: ObjectType<T>, keys: string[]): ObjectType<T> => {
       }
       return r;
     },
-    {}
+    {},
   );
-}
+};

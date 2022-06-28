@@ -1,6 +1,6 @@
 import isArray from './is-array';
 
-const clone = function(obj) {
+const clone = function (obj) {
   if (typeof obj !== 'object' || obj === null) {
     return obj;
   }

@@ -23,7 +23,7 @@ export default <T>(object: ObjectType<T>, keys: string[]): ObjectType<T> => {
     return {};
   }
   const result: ObjectType<T> = {};
-  each(keys, key => {
+  each(keys, (key) => {
     if (hasOwnProperty.call(object, key)) {
       result[key] = object[key];
     }

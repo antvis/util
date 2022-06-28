@@ -1,6 +1,6 @@
 import isNumber from './is-number';
 
-const isOdd = function(num: any): boolean {
+const isOdd = function (num: any): boolean {
   return isNumber(num) && num % 2 !== 0;
 };
 

@@ -6,7 +6,7 @@
  */
 import isType from './is-type';
 
-const isError = function(value: any): value is Error {
+const isError = function (value: any): value is Error {
   return isType(value, 'Error');
 };
 

@@ -23,6 +23,6 @@ export default (arr: number[]): number | undefined => {
     return undefined;
   }
   return arr.reduce((prev, curr) => {
-    return Math.min(prev, curr)
+    return Math.min(prev, curr);
   }, arr[0]);
 };

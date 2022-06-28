@@ -4,8 +4,8 @@ import groupBy from './group-by';
 
 /**
  * 将数据分组成 map
- * @param data 
- * @param condition 
+ * @param data
+ * @param condition
  */
 export default function groupToMap(data: any, condition: string[] | string | ((row: any) => string)) {
   if (!condition) {
@@ -18,7 +18,7 @@ export default function groupToMap(data: any, condition: string[] | string | ((r
     const paramscondition = isArray(condition) ? condition : condition.replace(/\s+/g, '').split('*');
     condition = function (row) {
       let unique = '_'; // 避免出现数字作为Key的情况，会进行按照数字的排序
-      
+
       // 根据字段列表的值，拼接成 key
       for (let i = 0, l = paramscondition.length; i < l; i++) {
         unique += row[paramscondition[i]] && row[paramscondition[i]].toString();

@@ -14,5 +14,5 @@ export default (obj: any, key: string | any[], defaultValue?: any): any => {
     obj = obj[keyArr[p++]];
   }
 
-  return (obj === undefined || p < keyArr.length) ? defaultValue : obj;
-}
+  return obj === undefined || p < keyArr.length ? defaultValue : obj;
+};

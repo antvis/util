@@ -29,7 +29,7 @@ function _deepMix(dist, src, level?, maxLevel?) {
 }
 
 // todo 重写
-const deepMix = function(rst:any, ...args:any[]) {
+const deepMix = function (rst: any, ...args: any[]) {
   for (let i = 0; i < args.length; i += 1) {
     _deepMix(rst, args[i]);
   }

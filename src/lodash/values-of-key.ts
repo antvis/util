@@ -12,7 +12,7 @@ export default (data: any[], name: string): any[] => {
     if (!isNil(value)) {
       // flatten
       if (!isArray(value)) {
-        value = [ value ];
+        value = [value];
       }
       for (let j = 0; j < value.length; j++) {
         const val = value[j];

@@ -1,4 +1,4 @@
-const mod = function(n: number, m: number): number {
+const mod = function (n: number, m: number): number {
   return ((n % m) + m) % m;
 };
 

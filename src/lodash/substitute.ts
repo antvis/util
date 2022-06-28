@@ -2,7 +2,7 @@ export interface ObjectType<T> {
   [key: string]: T;
 }
 
-function substitute <T>(str: string, o: ObjectType<T>) {
+function substitute<T>(str: string, o: ObjectType<T>) {
   if (!str || !o) {
     return str;
   }
@@ -10,7 +10,7 @@ function substitute <T>(str: string, o: ObjectType<T>) {
     if (match.charAt(0) === '\\') {
       return match.slice(1);
     }
-    return (o[name] === undefined) ? '' : o[name];
+    return o[name] === undefined ? '' : o[name];
   });
 }
 

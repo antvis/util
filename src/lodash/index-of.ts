@@ -1,6 +1,6 @@
 import isArrayLike from './is-array-like';
 
-const indexOf = function<T> (arr: T[], obj: T): number {
+const indexOf = function <T>(arr: T[], obj: T): number {
   if (!isArrayLike(arr)) {
     return -1;
   }

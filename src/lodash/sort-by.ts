@@ -6,11 +6,11 @@ export interface ObjectType<T> {
   [key: string]: T;
 }
 
-function sortBy<T> (arr: ObjectType<T>[], key: Function): ObjectType<T>[];
-function sortBy<T> (arr: ObjectType<T>[], key: string): ObjectType<T>[];
-function sortBy<T> (arr: ObjectType<T>[], key: string[]): ObjectType<T>[];
+function sortBy<T>(arr: ObjectType<T>[], key: Function): ObjectType<T>[];
+function sortBy<T>(arr: ObjectType<T>[], key: string): ObjectType<T>[];
+function sortBy<T>(arr: ObjectType<T>[], key: string[]): ObjectType<T>[];
 
-function sortBy<T> (arr: ObjectType<T>[], key: Function | string | string[]): ObjectType<T>[] {
+function sortBy<T>(arr: ObjectType<T>[], key: Function | string | string[]): ObjectType<T>[] {
   let comparer;
   if (isFunction(key)) {
     comparer = (a, b) => key(a) - key(b);

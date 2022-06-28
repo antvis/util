@@ -1,4 +1,3 @@
-
 /**
  * 封装事件，便于使用上下文this,和便于解除事件时使用
  * @protected
@@ -10,7 +9,7 @@ function wrapBehavior(obj: object, action: string): Function {
   if (obj['_wrap_' + action]) {
     return obj['_wrap_' + action];
   }
-  const method = e => {
+  const method = (e) => {
     obj[action](e);
   };
   obj['_wrap_' + action] = method;

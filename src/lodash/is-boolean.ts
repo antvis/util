@@ -6,7 +6,7 @@
  */
 import isType from './is-type';
 
-const isBoolean = function(value: any): value is boolean {
+const isBoolean = function (value: any): value is boolean {
   return isType(value, 'Boolean');
 };
 

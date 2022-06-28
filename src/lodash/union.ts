@@ -1,6 +1,6 @@
 import uniq from './uniq';
 
-const union = function(...sources) {
+const union = function (...sources) {
   return uniq([].concat(...sources));
 };
 

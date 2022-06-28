@@ -1,4 +1,4 @@
-const isNull = function(value): value is null {
+const isNull = function (value): value is null {
   return value === null;
 };
 

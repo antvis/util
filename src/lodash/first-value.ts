@@ -1,7 +1,7 @@
 import isNil from './is-nil';
 import isArray from './is-array';
 
-const firstValue = function(data: object[], name: string): any {
+const firstValue = function (data: object[], name: string): any {
   let rst = null;
   for (let i = 0; i < data.length; i++) {
     const obj = data[i];

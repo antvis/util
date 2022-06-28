@@ -1,6 +1,6 @@
 import isNumber from './is-number';
 
-const isNegative = function(num: any): boolean {
+const isNegative = function (num: any): boolean {
   return isNumber(num) && num < 0;
 };
 

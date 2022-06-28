@@ -4,8 +4,6 @@
  */
 import isNumber from './is-number';
 
-export default function(value: any) : value is number {
-    return isNumber(value) && isFinite(value)
+export default function (value: any): value is number {
+  return isNumber(value) && isFinite(value);
 }
-
-

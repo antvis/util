@@ -14,7 +14,7 @@ function find<T>(arr: T[], predicate: Function | object): T {
     _predicate = predicate;
   }
   if (isPlainObject(predicate)) {
-    _predicate = a => isMatch(a, predicate);
+    _predicate = (a) => isMatch(a, predicate);
   }
   if (_predicate) {
     for (let i = 0; i < arr.length; i += 1) {

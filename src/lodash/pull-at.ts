@@ -2,7 +2,7 @@ import isArrayLike from './is-array-like';
 
 const splice = Array.prototype.splice;
 
-const pullAt = function pullAt <T>(arr: T[], indexes: number[]): T[] {
+const pullAt = function pullAt<T>(arr: T[], indexes: number[]): T[] {
   if (!isArrayLike(arr)) {
     return [];
   }

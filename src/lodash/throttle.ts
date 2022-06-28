@@ -4,21 +4,18 @@ export interface OptionsType {
 }
 
 export default (func: Function, wait: number, options: OptionsType): Function => {
-  let timeout,
-    context,
-    args,
-    result;
+  let timeout, context, args, result;
   let previous = 0;
   if (!options) options = {};
 
-  const later = function() {
+  const later = function () {
     previous = options.leading === false ? 0 : Date.now();
     timeout = null;
     result = func.apply(context, args);
     if (!timeout) context = args = null;
   };
 
-  const throttled = function() {
+  const throttled = function () {
     const now = Date.now();
     if (!previous && options.leading === false) previous = now;
     const remaining = wait - (now - previous);
@@ -38,11 +35,11 @@ export default (func: Function, wait: number, options: OptionsType): Function =>
     return result;
   };
 
-  throttled.cancel = function() {
+  throttled.cancel = function () {
     clearTimeout(timeout);
     previous = 0;
     timeout = context = args = null;
   };
 
   return throttled;
-}
+};

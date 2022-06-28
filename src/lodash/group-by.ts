@@ -25,7 +25,7 @@ function groupBy<T>(data: T[], condition: ((item: T) => string) | string): Objec
     if (hasOwnProperty.call(result, key)) {
       result[key].push(item);
     } else {
-      result[key] = [ item ];
+      result[key] = [item];
     }
   }
 

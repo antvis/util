@@ -38,7 +38,7 @@ function parseRadius(radius: number | number[]): RadiusType {
     r1,
     r2,
     r3,
-    r4
+    r4,
   };
 }
 

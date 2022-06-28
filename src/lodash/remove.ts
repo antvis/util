@@ -1,7 +1,7 @@
 import isArrayLike from './is-array-like';
 import pullAt from './pull-at';
 
-const remove = function<T>(arr: T[], predicate: (value: T, idx: number, arr?: T[]) => boolean): T[] {
+const remove = function <T>(arr: T[], predicate: (value: T, idx: number, arr?: T[]) => boolean): T[] {
   /**
    * const arr = [1, 2, 3, 4]
    * const evens = remove(arr, n => n % 2 == 0)

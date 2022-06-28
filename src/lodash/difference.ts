@@ -10,7 +10,7 @@ import contains from './contains';
  * @example
  * difference([2, 1], [2, 3]);  // => [1]
  */
-const difference = function<T>(arr: T[], values: T[] = []): T[] {
+const difference = function <T>(arr: T[], values: T[] = []): T[] {
   return filter(arr, (value: any) => !contains(values, value));
 };
 

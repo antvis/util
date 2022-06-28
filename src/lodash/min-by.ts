@@ -27,7 +27,7 @@ export default <T>(arr: T[], fn: ((v: T) => number) | string): T | undefined => 
   for (let i = 0; i < arr.length; i++) {
     const item = arr[i];
     const v = isFunction(fn) ? fn(item) : item[fn];
-    
+
     if (v < min) {
       minItem = item;
       min = v;

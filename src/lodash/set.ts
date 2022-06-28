@@ -19,11 +19,11 @@ export default (obj: any, path: string | any[], value: any): any => {
       if (!isObject(o[key])) {
         o[key] = isNumber(keyArr[idx + 1]) ? [] : {};
       }
-      o = o[key]
+      o = o[key];
     } else {
       o[key] = value;
     }
   });
 
   return obj;
-}
+};

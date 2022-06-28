@@ -6,7 +6,7 @@
  */
 import isType from './is-type';
 
-const isArguments = function(value: any): boolean {
+const isArguments = function (value: any): boolean {
   return isType(value, 'Arguments');
 };
 
