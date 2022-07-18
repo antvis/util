@@ -53,7 +53,7 @@ export function segmentCubicFactory(
   }
 
   // bad perf when size = 300
-  const sampleSize = 20;
+  const sampleSize = 30;
   for (let j = 0; j <= sampleSize; j += 1) {
     t = j / sampleSize;
 
@@ -62,7 +62,7 @@ export function segmentCubicFactory(
     LENGTH += distanceSquareRoot(cur, [x, y]);
     cur = [x, y];
 
-    if (distanceIsNumber && LENGTH > distance && distance > prev[2]) {
+    if (distanceIsNumber && LENGTH >= distance && distance > prev[2]) {
       const dv = (LENGTH - distance) / (LENGTH - prev[2]);
 
       POINT = {
