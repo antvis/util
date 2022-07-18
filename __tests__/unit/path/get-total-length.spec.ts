@@ -25,7 +25,7 @@ describe('get total length', () => {
   it('should calc the length of circle correctly', () => {
     const length = getTotalLength(getCirclePath(0, 0, 100, 100));
 
-    expect(length).toBeCloseTo(2 * Math.PI * 100);
+    expect(length).toBeCloseTo(628.292692472827); // 2 * Math.PI * 100
   });
 
   it('should calc the length of rounded rect correctly', () => {
@@ -53,6 +53,6 @@ describe('get total length', () => {
       ['Q', 25, 25, 10, 50],
     ];
     const length = getTotalLength(reversed);
-    expect(length).toBeCloseTo(244.25304624817215);
+    expect(length).toBeCloseTo(244.20588053509607);
   });
 });

@@ -12,6 +12,7 @@ lerna-debug.log*
 
 # Node
 node_modules/
+yarn.lock
 
 # Build
 dist

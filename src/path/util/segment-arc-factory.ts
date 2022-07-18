@@ -147,7 +147,8 @@ export function segmentArcFactory(
     POINT = { x, y };
   }
 
-  const sampleSize = 300;
+  // bad perf when size = 300
+  const sampleSize = 100;
   for (let j = 0; j <= sampleSize; j += 1) {
     t = j / sampleSize;
 
@@ -156,7 +157,7 @@ export function segmentArcFactory(
     LENGTH += distanceSquareRoot(cur, [x, y]);
     cur = [x, y];
 
-    if (distanceIsNumber && LENGTH > distance && distance > prev[2]) {
+    if (distanceIsNumber && LENGTH >= distance && distance > prev[2]) {
       const dv = (LENGTH - distance) / (LENGTH - prev[2]);
 
       POINT = {
