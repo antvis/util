@@ -58,7 +58,7 @@ export function segmentCubicFactory(
     t = j / sampleSize;
 
     ({ x, y } = getPointAtCubicSegmentLength(x1, y1, c1x, c1y, c2x, c2y, x2, y2, t));
-    POINTS = [...POINTS, { x, y }];
+    POINTS = POINTS.concat({ x, y });
     LENGTH += distanceSquareRoot(cur, [x, y]);
     cur = [x, y];
 

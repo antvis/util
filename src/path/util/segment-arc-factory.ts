@@ -153,7 +153,7 @@ export function segmentArcFactory(
     t = j / sampleSize;
 
     ({ x, y } = getPointAtArcSegmentLength(X1, Y1, RX, RY, angle, LAF, SF, X2, Y2, t));
-    POINTS = [...POINTS, { x, y }];
+    POINTS = POINTS.concat({ x, y });
     LENGTH += distanceSquareRoot(cur, [x, y]);
     cur = [x, y];
 

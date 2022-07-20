@@ -55,7 +55,7 @@ export function segmentQuadFactory(
     t = j / sampleSize;
 
     ({ x, y } = getPointAtQuadSegmentLength(x1, y1, qx, qy, x2, y2, t));
-    POINTS = [...POINTS, { x, y }];
+    POINTS = POINTS.concat({ x, y });
     LENGTH += distanceSquareRoot(cur, [x, y]);
     cur = [x, y];
 
