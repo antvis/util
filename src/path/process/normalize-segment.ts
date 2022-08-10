@@ -25,13 +25,13 @@ export function normalizeSegment(segment: PathSegment, params: any): NormalSegme
     const y1 = py1 * 2 - py2;
     params.x1 = x1;
     params.y1 = y1;
-    result = ['C', x1, y1, ...values] as CSegment;
+    result = ['C', x1, y1].concat(values) as CSegment;
   } else if (pathCommand === 'T') {
     const qx = px1 * 2 - params.qx;
     const qy = py1 * 2 - params.qy;
     params.qx = qx;
     params.qy = qy;
-    result = ['Q', qx, qy, ...values] as QSegment;
+    result = ['Q', qx, qy].concat(values) as QSegment;
   } else if (pathCommand === 'Q') {
     const [nqx, nqy] = values;
     params.qx = nqx;

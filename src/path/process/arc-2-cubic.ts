@@ -105,9 +105,12 @@ export function arcToCubic(
   m2[0] = 2 * m1[0] - m2[0];
   m2[1] = 2 * m1[1] - m2[1];
   if (recursive) {
-    return [...m2, ...m3, ...m4, ...res];
+    return m2.concat(m3, m4, res);
+    // return [...m2, ...m3, ...m4, ...res];
   }
-  res = [...m2, ...m3, ...m4, ...res];
+
+  res = m2.concat(m3, m4, res);
+  // res = [...m2, ...m3, ...m4, ...res];
   const newres = [];
   for (let i = 0, ii = res.length; i < ii; i += 1) {
     newres[i] = i % 2 ? rotateVector(res[i - 1], res[i], rad).y : rotateVector(res[i], res[i + 1], rad).x;

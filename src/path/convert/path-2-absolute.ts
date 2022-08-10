@@ -57,11 +57,13 @@ export function path2Absolute(pathInput: string | PathArray): AbsoluteArray {
           // https://stackoverflow.com/a/50753272/803358
           const absValues = values.map((n, j) => n + (j % 2 ? y : x));
           // for n, l, c, s, q, t
-          absoluteSegment = [absCommand, ...absValues] as AbsoluteSegment;
+          // @ts-ignore
+          absoluteSegment = [absCommand].concat(absValues) as AbsoluteSegment;
         }
       }
     } else {
-      absoluteSegment = [absCommand, ...values] as AbsoluteSegment;
+      // @ts-ignore
+      absoluteSegment = [absCommand].concat(values) as AbsoluteSegment;
     }
 
     const segLength = absoluteSegment.length;

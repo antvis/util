@@ -48,7 +48,9 @@ export function getPathArea(path: PathArray) {
           return 0;
         default:
           // @ts-ignore
-          len = getCubicSegArea(x, y, ...seg.slice(1));
+          const [c1x, c1y, c2x, c2y, x2, y2] = seg.slice(1);
+
+          len = getCubicSegArea(x, y, c1x, c1y, c2x, c2y, x2, y2);
           [x, y] = seg.slice(-2);
           return len;
       }

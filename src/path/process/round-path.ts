@@ -17,6 +17,7 @@ export function roundPath(path: PathArray, round: number | 'off'): PathArray {
       .slice(1)
       .map(Number)
       .map((n) => (round ? Math.round(n * pow) / pow : Math.round(n)));
-    return [pi[0], ...values];
+    // @ts-ignore
+    return [pi[0]].concat(values);
   }) as PathArray;
 }
