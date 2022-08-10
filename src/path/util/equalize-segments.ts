@@ -31,7 +31,19 @@ function getCurveArray(segments: PathArray) {
     const segmentData = i && pathArray[i - 1].slice(-2).concat(segment.slice(1));
 
     // @ts-ignore
-    const curveLength = i ? segmentCubicFactory(...segmentData).length : 0;
+    const curveLength = i
+      ? segmentCubicFactory(
+          segmentData[0],
+          segmentData[1],
+          segmentData[2],
+          segmentData[3],
+          segmentData[4],
+          segmentData[5],
+          segmentData[6],
+          segmentData[7],
+          segmentData[8],
+        ).length
+      : 0;
 
     let subsegs;
     if (i) {

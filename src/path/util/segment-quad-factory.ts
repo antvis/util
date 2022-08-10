@@ -79,12 +79,24 @@ export function segmentQuadFactory(
     length: LENGTH,
     point: POINT,
     min: {
-      x: Math.min(...POINTS.map((n) => n.x)),
-      y: Math.min(...POINTS.map((n) => n.y)),
+      x: Math.min.apply(
+        null,
+        POINTS.map((n) => n.x),
+      ),
+      y: Math.min.apply(
+        null,
+        POINTS.map((n) => n.y),
+      ),
     },
     max: {
-      x: Math.max(...POINTS.map((n) => n.x)),
-      y: Math.max(...POINTS.map((n) => n.y)),
+      x: Math.max.apply(
+        null,
+        POINTS.map((n) => n.x),
+      ),
+      y: Math.max.apply(
+        null,
+        POINTS.map((n) => n.y),
+      ),
     },
   };
 }

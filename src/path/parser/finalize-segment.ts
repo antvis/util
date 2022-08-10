@@ -15,12 +15,12 @@ export function finalizeSegment(path: PathParser) {
     // https://github.com/rveciana/svg-path-properties/blob/master/src/parse.ts
     if (LK === 'm' && data.length > 2) {
       // @ts-ignore
-      path.segments.push([pathCommand, ...data.splice(0, 2)]);
+      path.segments.push([pathCommand].concat(data.splice(0, 2)));
       LK = 'l';
       pathCommand = pathCommand === 'm' ? 'l' : 'L';
     } else {
       // @ts-ignore
-      path.segments.push([pathCommand, ...data.splice(0, paramsCount[LK])]);
+      path.segments.push([pathCommand].concat(data.splice(0, paramsCount[LK])));
     }
 
     if (!paramsCount[LK]) {

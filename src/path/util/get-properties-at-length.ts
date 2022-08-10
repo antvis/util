@@ -13,7 +13,7 @@ export function getPropertiesAtLength(pathInput: string | PathArray, distance?: 
     throw TypeError(pathArray);
   }
 
-  let pathTemp: PathArray = [...pathArray];
+  let pathTemp: PathArray = pathArray.slice() as PathArray;
   let pathLength = getTotalLength(pathTemp);
   let index = pathTemp.length - 1;
   let lengthAtSegment = 0;

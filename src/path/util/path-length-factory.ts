@@ -34,7 +34,7 @@ export function pathLengthFactory(pathInput: string | PathArray, distance?: numb
     seg = path[i];
     [pathCommand] = seg;
     isM = pathCommand === 'M';
-    data = !isM ? [x, y, ...seg.slice(1)] : data;
+    data = !isM ? [x, y].concat(seg.slice(1)) : data;
 
     // this segment is always ZERO
     /* istanbul ignore else */
@@ -49,29 +49,53 @@ export function pathLengthFactory(pathInput: string | PathArray, distance?: numb
         POINT = min;
       }
     } else if (pathCommand === 'L') {
-      // @ts-ignore
-      ({ length, min, max, point } = segmentLineFactory(...data, (distance || 0) - LENGTH));
+      ({ length, min, max, point } = segmentLineFactory(data[0], data[1], data[2], data[3], (distance || 0) - LENGTH));
     } else if (pathCommand === 'A') {
-      // @ts-ignore
-      ({ length, min, max, point } = segmentArcFactory(...data, (distance || 0) - LENGTH));
+      ({ length, min, max, point } = segmentArcFactory(
+        data[0],
+        data[1],
+        data[2],
+        data[3],
+        data[4],
+        data[5],
+        data[6],
+        data[7],
+        data[8],
+        (distance || 0) - LENGTH,
+      ));
     } else if (pathCommand === 'C') {
-      // @ts-ignore
-      ({ length, min, max, point } = segmentCubicFactory(...data, (distance || 0) - LENGTH));
+      ({ length, min, max, point } = segmentCubicFactory(
+        data[0],
+        data[1],
+        data[2],
+        data[3],
+        data[4],
+        data[5],
+        data[6],
+        data[7],
+        (distance || 0) - LENGTH,
+      ));
     } else if (pathCommand === 'Q') {
-      // @ts-ignore
-      ({ length, min, max, point } = segmentQuadFactory(...data, (distance || 0) - LENGTH));
+      ({ length, min, max, point } = segmentQuadFactory(
+        data[0],
+        data[1],
+        data[2],
+        data[3],
+        data[4],
+        data[5],
+        (distance || 0) - LENGTH,
+      ));
     } else if (pathCommand === 'Z') {
       data = [x, y, mx, my];
-      // @ts-ignore
-      ({ length, min, max, point } = segmentLineFactory(...data, (distance || 0) - LENGTH));
+      ({ length, min, max, point } = segmentLineFactory(data[0], data[1], data[2], data[3], (distance || 0) - LENGTH));
     }
 
     if (distanceIsNumber && LENGTH < distance && LENGTH + length >= distance) {
       POINT = point;
     }
 
-    MAX = [...MAX, max];
-    MIN = [...MIN, min];
+    MAX.push(max);
+    MIN.push(min);
     LENGTH += length;
 
     [x, y] = pathCommand !== 'Z' ? seg.slice(-2) : [mx, my];
@@ -87,12 +111,24 @@ export function pathLengthFactory(pathInput: string | PathArray, distance?: numb
     length: LENGTH,
     point: POINT,
     min: {
-      x: Math.min(...MIN.map((n) => n.x)),
-      y: Math.min(...MIN.map((n) => n.y)),
+      x: Math.min.apply(
+        null,
+        MIN.map((n) => n.x),
+      ),
+      y: Math.min.apply(
+        null,
+        MIN.map((n) => n.y),
+      ),
     },
     max: {
-      x: Math.max(...MAX.map((n) => n.x)),
-      y: Math.max(...MAX.map((n) => n.y)),
+      x: Math.max.apply(
+        null,
+        MAX.map((n) => n.x),
+      ),
+      y: Math.max.apply(
+        null,
+        MAX.map((n) => n.y),
+      ),
     },
   };
 }
