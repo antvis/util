@@ -1,5 +1,5 @@
 import { normalizePath } from '../process/normalize-path';
-import type { PathCommand, PathArray, LengthFactory } from '../types';
+import type { PathCommand, PathArray, LengthFactory, PathLengthFactoryOptions } from '../types';
 import { segmentLineFactory } from './segment-line-factory';
 import { segmentArcFactory } from './segment-arc-factory';
 import { segmentCubicFactory } from './segment-cubic-factory';
@@ -10,7 +10,11 @@ import { segmentQuadFactory } from './segment-quad-factory';
  * of a shape, the shape total length and
  * the shape minimum and maximum {x,y} coordinates.
  */
-export function pathLengthFactory(pathInput: string | PathArray, distance?: number): LengthFactory {
+export function pathLengthFactory(
+  pathInput: string | PathArray,
+  distance?: number,
+  options?: Partial<PathLengthFactoryOptions>,
+): LengthFactory {
   const path = normalizePath(pathInput);
   const distanceIsNumber = typeof distance === 'number';
   let isM: boolean;
@@ -62,6 +66,7 @@ export function pathLengthFactory(pathInput: string | PathArray, distance?: numb
         data[7],
         data[8],
         (distance || 0) - LENGTH,
+        options || {},
       ));
     } else if (pathCommand === 'C') {
       ({ length, min, max, point } = segmentCubicFactory(
@@ -74,6 +79,7 @@ export function pathLengthFactory(pathInput: string | PathArray, distance?: numb
         data[6],
         data[7],
         (distance || 0) - LENGTH,
+        options || {},
       ));
     } else if (pathCommand === 'Q') {
       ({ length, min, max, point } = segmentQuadFactory(
@@ -84,6 +90,7 @@ export function pathLengthFactory(pathInput: string | PathArray, distance?: numb
         data[4],
         data[5],
         (distance || 0) - LENGTH,
+        options || {},
       ));
     } else if (pathCommand === 'Z') {
       data = [x, y, mx, my];

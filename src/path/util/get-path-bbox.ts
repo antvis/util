@@ -1,10 +1,10 @@
-import type { PathArray, PathBBox } from '../types';
+import type { PathArray, PathBBox, PathLengthFactoryOptions } from '../types';
 import { pathLengthFactory } from './path-length-factory';
 
 /**
  * Returns the bounding box of a shape.
  */
-export function getPathBBox(path: string | PathArray): PathBBox {
+export function getPathBBox(path: string | PathArray, options?: Partial<PathLengthFactoryOptions>): PathBBox {
   if (!path) {
     return {
       x: 0,
@@ -22,7 +22,7 @@ export function getPathBBox(path: string | PathArray): PathBBox {
   const {
     min: { x: xMin, y: yMin },
     max: { x: xMax, y: yMax },
-  } = pathLengthFactory(path);
+  } = pathLengthFactory(path, undefined, { ...options, length: false });
 
   const width = xMax - xMin;
   const height = yMax - yMin;

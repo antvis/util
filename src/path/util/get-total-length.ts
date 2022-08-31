@@ -1,4 +1,4 @@
-import type { PathArray } from '../types';
+import type { PathArray, PathLengthFactoryOptions } from '../types';
 import { pathLengthFactory } from './path-length-factory';
 
 /**
@@ -7,6 +7,6 @@ import { pathLengthFactory } from './path-length-factory';
  * The `normalizePath` version is lighter, faster, more efficient and more accurate
  * with paths that are not `curveArray`.
  */
-export function getTotalLength(pathInput: string | PathArray) {
-  return pathLengthFactory(pathInput).length;
+export function getTotalLength(pathInput: string | PathArray, options?: Partial<PathLengthFactoryOptions>) {
+  return pathLengthFactory(pathInput, undefined, { ...options, bbox: false, length: true }).length;
 }

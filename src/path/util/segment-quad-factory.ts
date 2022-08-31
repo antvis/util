@@ -1,4 +1,4 @@
-import type { LengthFactory } from '../types';
+import type { LengthFactory, PathLengthFactoryOptions } from '../types';
 import { distanceSquareRoot } from './distance-square-root';
 
 /**
@@ -35,7 +35,9 @@ export function segmentQuadFactory(
   x2: number,
   y2: number,
   distance: number,
+  options: Partial<PathLengthFactoryOptions>,
 ): LengthFactory {
+  const { bbox = true, length = true, sampleSize = 10 } = options;
   const distanceIsNumber = typeof distance === 'number';
   let x = x1;
   let y = y1;
@@ -50,13 +52,18 @@ export function segmentQuadFactory(
     POINT = { x, y };
   }
 
-  const sampleSize = 30;
   for (let j = 0; j <= sampleSize; j += 1) {
     t = j / sampleSize;
 
     ({ x, y } = getPointAtQuadSegmentLength(x1, y1, qx, qy, x2, y2, t));
-    POINTS = POINTS.concat({ x, y });
-    LENGTH += distanceSquareRoot(cur, [x, y]);
+
+    if (bbox) {
+      POINTS.push({ x, y });
+    }
+
+    if (length) {
+      LENGTH += distanceSquareRoot(cur, [x, y]);
+    }
     cur = [x, y];
 
     if (distanceIsNumber && LENGTH >= distance && distance > prev[2]) {

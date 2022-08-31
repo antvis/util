@@ -1,4 +1,4 @@
-import type { Point, LengthFactory } from '../types';
+import type { Point, LengthFactory, PathLengthFactoryOptions } from '../types';
 import { segmentLineFactory } from './segment-line-factory';
 import { distanceSquareRoot } from './distance-square-root';
 
@@ -120,6 +120,8 @@ function getPointAtArcSegmentLength(
 /**
  * Returns a {x,y} point at a given length, the total length and
  * the shape minimum and maximum {x,y} coordinates of an A (arc-to) segment.
+ *
+ * For better performance, it can skip calculate bbox or length in some scenario.
  */
 export function segmentArcFactory(
   X1: number,
@@ -132,7 +134,9 @@ export function segmentArcFactory(
   X2: number,
   Y2: number,
   distance: number,
+  options: Partial<PathLengthFactoryOptions>,
 ): LengthFactory {
+  const { bbox = true, length = true, sampleSize = 10 } = options;
   const distanceIsNumber = typeof distance === 'number';
   let x = X1;
   let y = Y1;
@@ -147,14 +151,19 @@ export function segmentArcFactory(
     POINT = { x, y };
   }
 
-  // bad perf when size = 300
-  const sampleSize = 100;
+  // bad perf when size > 100
   for (let j = 0; j <= sampleSize; j += 1) {
     t = j / sampleSize;
 
     ({ x, y } = getPointAtArcSegmentLength(X1, Y1, RX, RY, angle, LAF, SF, X2, Y2, t));
-    POINTS = POINTS.concat({ x, y });
-    LENGTH += distanceSquareRoot(cur, [x, y]);
+
+    if (bbox) {
+      POINTS.push({ x, y });
+    }
+
+    if (length) {
+      LENGTH += distanceSquareRoot(cur, [x, y]);
+    }
     cur = [x, y];
 
     if (distanceIsNumber && LENGTH >= distance && distance > prev[2]) {
