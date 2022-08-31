@@ -18,15 +18,9 @@ export function normalizePath(pathInput: string | PathArray): NormalArray {
 
   const path = path2Absolute(pathInput);
   const params = { ...paramsParser };
-  const allPathCommands = [];
-  const ii = path.length;
-  let pathCommand = '';
 
-  for (let i = 0; i < ii; i += 1) {
-    [pathCommand] = path[i];
-
+  for (let i = 0; i < path.length; i += 1) {
     // Save current path command
-    allPathCommands[i] = pathCommand;
     path[i] = normalizeSegment(path[i], params);
 
     const segment = path[i];

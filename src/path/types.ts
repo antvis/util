@@ -176,6 +176,11 @@ export interface PathBBox {
 export interface PathBBoxTotalLength extends PathBBox {
   length: number;
 }
+export interface PathLengthFactoryOptions {
+  bbox: boolean;
+  length: boolean;
+  sampleSize: number;
+}
 export interface SegmentLimits {
   min: Point;
   max: Point;

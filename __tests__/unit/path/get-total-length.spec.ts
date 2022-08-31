@@ -25,21 +25,22 @@ describe('get total length', () => {
   it('should calc the length of circle correctly', () => {
     const length = getTotalLength(getCirclePath(0, 0, 100, 100));
 
-    expect(length).toBeCloseTo(628.292692472827); // 2 * Math.PI * 100
+    expect(length).toBeCloseTo(625.7378601609234); // 2 * Math.PI * 100
   });
 
   it('should calc the length of rounded rect correctly', () => {
     const length = getTotalLength(
       parsePathString('M2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2z') as PathArray,
     );
-    expect(length).toBeCloseTo(60.56635625960637);
+    expect(length).toBeCloseTo(60.55345531645519);
   });
 
   it('should calc the length of rounded rect correctly', () => {
     const length = getTotalLength(
       parsePathString('M2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2z') as PathArray,
     );
-    expect(length).toBeCloseTo(60.56635625960637);
+
+    expect(length).toBeCloseTo(60.55345531645519);
   });
 
   it('should calc the length of Q commands correctly', () => {
@@ -53,6 +54,6 @@ describe('get total length', () => {
       ['Q', 25, 25, 10, 50],
     ];
     const length = getTotalLength(reversed);
-    expect(length).toBeCloseTo(244.20588053509607);
+    expect(length).toBeCloseTo(243.8244865343346);
   });
 });

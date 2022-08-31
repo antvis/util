@@ -42,6 +42,7 @@ function getCurveArray(segments: PathArray) {
           segmentData[6],
           segmentData[7],
           segmentData[8],
+          { bbox: false },
         ).length
       : 0;
 
