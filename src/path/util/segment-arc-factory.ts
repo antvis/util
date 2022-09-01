@@ -136,7 +136,7 @@ export function segmentArcFactory(
   distance: number,
   options: Partial<PathLengthFactoryOptions>,
 ): LengthFactory {
-  const { bbox = true, length = true, sampleSize = 10 } = options;
+  const { bbox = true, length = true, sampleSize = 30 } = options;
   const distanceIsNumber = typeof distance === 'number';
   let x = X1;
   let y = Y1;

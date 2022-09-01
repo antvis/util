@@ -5,7 +5,7 @@ describe('get point at length', () => {
   it('should get point in rounded rect correctly', () => {
     const segments = parsePathString('M2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2z') as PathArray;
     const pt = getPointAtLength(segments, 25);
-    expect(pt).toEqual({ x: 8.723272341772404, y: 16 });
+    expect(pt).toEqual({ x: 8.717532406110443, y: 16 });
   });
 
   it('should get point in arc correctly', () => {
