@@ -201,6 +201,30 @@ distanceSquareRoot(a: [number, number], b: [number, number]): number;
 const [formattedPath1, formattedPath2] = equalizeSegments(path1, path2);
 ```
 
+### isPointInPolygon
+
+判断一个点是否在多边形内。多边形形如：
+
+```js
+const polygon = [
+  [0, 0],
+  [0, 100],
+  [30, 100],
+  [30, 0],
+];
+
+// [0, 0] 在多边形的边上
+isPointInPolygon(polygon, 0, 0); // true
+```
+
+### isPolygonsIntersect
+
+判断两个多边形是否相交：
+
+```js
+isPolygonsIntersect(polygon1, polygon2);
+```
+
 ## License
 
 MIT@[AntV](https://github.com/antvis).
