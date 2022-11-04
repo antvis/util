@@ -4,6 +4,7 @@ export { path2Absolute } from './convert/path-2-absolute';
 export { clonePath } from './process/clone-path';
 export { normalizePath } from './process/normalize-path';
 export { reverseCurve } from './process/reverse-curve';
+export { arcToCubic } from './process/arc-2-cubic';
 export { getPathBBox } from './util/get-path-bbox';
 export { getTotalLength } from './util/get-total-length';
 export { getPathBBoxTotalLength } from './util/get-path-bbox-total-length';
