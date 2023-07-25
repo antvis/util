@@ -1,5 +1,4 @@
 import { paramsParser } from '../parser/params-parser';
-import { clonePath } from '../process/clone-path';
 import { fixArc } from '../process/fix-arc';
 import { normalizePath } from '../process/normalize-path';
 import { isCurveArray } from '../util/is-curve-array';
@@ -12,7 +11,7 @@ export function path2Curve(
   needZCommandIndexes = false,
 ): CurveArray | [CurveArray, number[]] {
   if (isCurveArray(pathInput)) {
-    const cloned = clonePath(pathInput) as CurveArray;
+    const cloned = [].concat(pathInput) as CurveArray;
     if (needZCommandIndexes) {
       return [cloned, []];
     } else {
