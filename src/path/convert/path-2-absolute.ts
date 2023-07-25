@@ -1,11 +1,10 @@
-import { clonePath } from '../process/clone-path';
 import { isAbsoluteArray } from '../util/is-absolute-array';
 import { parsePathString } from '../parser/parse-path-string';
 import type { PathArray, AbsoluteArray, AbsoluteSegment } from '../types';
 
 export function path2Absolute(pathInput: string | PathArray): AbsoluteArray {
   if (isAbsoluteArray(pathInput)) {
-    return clonePath(pathInput) as AbsoluteArray;
+    return [].concat(pathInput) as AbsoluteArray;
   }
 
   const path = parsePathString(pathInput as PathArray) as PathArray;

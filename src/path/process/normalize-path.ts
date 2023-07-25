@@ -2,7 +2,6 @@ import { isNormalizedArray } from '../util/is-normalized-array';
 import { paramsParser } from '../parser/params-parser';
 import { path2Absolute } from '../convert/path-2-absolute';
 import type { PathArray, NormalArray } from '../types';
-import { clonePath } from './clone-path';
 import { normalizeSegment } from './normalize-segment';
 
 /**
@@ -13,7 +12,7 @@ import { normalizeSegment } from './normalize-segment';
  */
 export function normalizePath(pathInput: string | PathArray): NormalArray {
   if (isNormalizedArray(pathInput)) {
-    return clonePath(pathInput) as NormalArray;
+    return [].concat(pathInput) as NormalArray;
   }
 
   const path = path2Absolute(pathInput);

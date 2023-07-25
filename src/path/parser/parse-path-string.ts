@@ -1,4 +1,3 @@
-import { clonePath } from '../process/clone-path';
 import { isPathArray } from '../util/is-path-array';
 import type { PathArray } from '../types';
 import { scanSegment } from './scan-segment';
@@ -11,7 +10,7 @@ import { PathParser } from './path-parser';
  */
 export function parsePathString(pathInput: PathArray | string): PathArray | string {
   if (isPathArray(pathInput)) {
-    return clonePath(pathInput) as PathArray;
+    return [].concat(pathInput) as PathArray;
   }
 
   const path = new PathParser(pathInput);
