@@ -3,11 +3,21 @@ import isPlainObject from './is-plain-object';
 
 const MAX_MIX_LEVEL = 5;
 
+function hasOwn(object, property) {
+  if ((Object as any).hasOwn) {
+    return (Object as any).hasOwn(object, property);
+  }
+  if (object == null) {
+    throw new TypeError('Cannot convert undefined or null to object');
+  }
+  return Object.prototype.hasOwnProperty.call(Object(object), property);
+}
+
 function _deepMix(dist, src, level?, maxLevel?) {
   level = level || 0;
   maxLevel = maxLevel || MAX_MIX_LEVEL;
   for (const key in src) {
-    if (src.hasOwnProperty(key)) {
+    if (hasOwn(src, key)) {
       const value = src[key];
       if (value !== null && isPlainObject(value)) {
         if (!isPlainObject(dist[key])) {
