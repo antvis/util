@@ -5,12 +5,12 @@ const MAX_MIX_LEVEL = 5;
 
 function hasOwn(object, property) {
   if ((Object as any).hasOwn) {
-    return (Object as any).hasOwn(object, property)
+    return (Object as any).hasOwn(object, property);
   }
   if (object == null) {
-    throw new TypeError("Cannot convert undefined or null to object")
+    throw new TypeError('Cannot convert undefined or null to object');
   }
-  return Object.prototype.hasOwnProperty.call(Object(object), property)
+  return Object.prototype.hasOwnProperty.call(Object(object), property);
 }
 
 function _deepMix(dist, src, level?, maxLevel?) {
