@@ -1,3 +1,4 @@
+import flru from 'flru';
 import isFunction from './is-function';
 
 /**
@@ -5,8 +6,9 @@ import isFunction from './is-function';
  * _.memoize(calColor, (...args) => args[0]);
  * @param f
  * @param resolver
+ * @param maxSize lru maxSize
  */
-export default (f: Function, resolver?: (...args: any[]) => string) => {
+export default (f: Function, resolver?: (...args: any[]) => string, maxSize = 128) => {
   if (!isFunction(f)) {
     throw new TypeError('Expected a function');
   }
@@ -25,7 +27,7 @@ export default (f: Function, resolver?: (...args: any[]) => string) => {
     return result;
   };
 
-  memoized.cache = new Map();
+  memoized.cache = flru(maxSize);
 
   return memoized;
 };

@@ -1,4 +1,5 @@
 import { arr2rgb } from './arr2rgb';
+import { memoize } from '../lodash';
 
 const RGB_REG = /rgba?\(([\s.,0-9]+)\)/;
 
@@ -21,7 +22,7 @@ let iEl: HTMLElement;
  * @param {color} color 颜色
  * @return 将颜色转换到 '#ffffff' 的格式
  */
-export function toRGB(color: string): string {
+function toRGBString(color: string): string {
   // 如果已经是 rgb的格式
   if (color[0] === '#' && color.length === 7) {
     return color;
@@ -43,3 +44,10 @@ export function toRGB(color: string): string {
 
   return rst;
 }
+
+/**
+ * export with memoize.
+ * @param color
+ * @returns 
+ */
+export const toRGB = memoize(toRGBString, color => color, 256);
