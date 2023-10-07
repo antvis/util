@@ -1,5 +1,5 @@
-import { arr2rgb } from './arr2rgb';
 import { memoize } from '../lodash';
+import { arr2rgb } from './arr2rgb';
 
 const RGB_REG = /rgba?\(([\s.,0-9]+)\)/;
 
@@ -48,6 +48,6 @@ function toRGBString(color: string): string {
 /**
  * export with memoize.
  * @param color
- * @returns 
+ * @returns
  */
-export const toRGB = memoize(toRGBString, color => color, 256);
+export const toRGB = memoize(toRGBString, (color) => color, 256);
