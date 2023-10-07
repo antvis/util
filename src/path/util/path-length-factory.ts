@@ -25,8 +25,8 @@ export function pathLengthFactory(
   let mx = 0;
   let my = 0;
   let seg;
-  let MIN = [];
-  let MAX = [];
+  const MIN = [];
+  const MAX = [];
   let length = 0;
   let min = { x: 0, y: 0 };
   let max = min;

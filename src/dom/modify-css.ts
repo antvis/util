@@ -4,10 +4,7 @@
  * @param css
  * @returns
  */
-export function modifyCSS(
-  dom: HTMLElement | null | undefined,
-  css: { [key: string]: any },
-): HTMLElement {
+export function modifyCSS(dom: HTMLElement | null | undefined, css: { [key: string]: any }): HTMLElement {
   if (!dom) return;
 
   Object.keys(css).forEach((key) => {
