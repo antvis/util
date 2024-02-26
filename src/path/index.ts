@@ -1,6 +1,7 @@
 export { path2String } from './convert/path-2-string';
 export { path2Curve } from './convert/path-2-curve';
 export { path2Absolute } from './convert/path-2-absolute';
+export { path2Array } from './convert/path-2-array';
 export { clonePath } from './process/clone-path';
 export { normalizePath } from './process/normalize-path';
 export { reverseCurve } from './process/reverse-curve';

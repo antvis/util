@@ -39,6 +39,21 @@ const str: PathArray = [
 expect(path2String(str)).toEqual('M10 10L100 100l10 10h20v20');
 ```
 
+### path2Array
+
+将 PathArray 转换成数组，不会对原始定义中的命令进行修改：
+
+```js
+const str = 'M10 10L100 100l10 10h20v20';
+expect(path2Array(str)).toEqual([
+  ['M', 10, 10],
+  ['L', 100, 100],
+  ['l', 10, 10],
+  ['h', 20],
+  ['v', 20],
+]);
+```
+
 ### path2Absolute
 
 将定义中的相对命令转换成绝对命令，例如：
