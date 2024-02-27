@@ -240,6 +240,27 @@ isPointInPolygon(polygon, 0, 0); // true
 isPolygonsIntersect(polygon1, polygon2);
 ```
 
+## Benchmarks
+
+Build first.
+
+```bash
+yarn run benchmarks
+```
+
+We can get the following output in the console, it can be seen that the same method from 5.0 is ~3 times faster than 4.0.
+
+```js
+// logs
+// Path2String#4.0 x 14,795 ops/sec ±3.35% (79 runs sampled)
+// Path2String#5.0 x 51,710 ops/sec ±2.05% (85 runs sampled)
+// Fastest is Path2String#5.0
+
+// Path2Absolute#4.0 x 14,524 ops/sec ±2.55% (80 runs sampled)
+// Path2Absolute#5.0 x 35,120 ops/sec ±3.10% (81 runs sampled)
+// Fastest is Path2Absolute#5.0
+```
+
 ## License
 
 MIT@[AntV](https://github.com/antvis).
