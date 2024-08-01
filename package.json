@@ -25,13 +25,15 @@
     "build:esm": "rimraf ./esm && tsc --module ESNext --outDir esm",
     "build": "run-p build:*",
     "ci": "run-s lint test build",
-    "prepublishOnly": "npm run ci"
+    "prepublishOnly": "npm run ci",
+    "benchmarks": "node benchmarks/path-2-string.test && node benchmarks/path-2-absolute.test"
   },
   "keywords": [
     "util",
     "antv"
   ],
   "devDependencies": {
+    "@antv/path-util": "^2.0.15",
     "@commitlint/cli": "^11.0.0",
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
@@ -39,6 +41,7 @@
     "@types/jest": "^26.0.20",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
+    "benchmark": "^2.1.4",
     "eslint": "^7.22.0",
     "eslint-plugin-import": "^2.22.1",
     "husky": "^5.0.9",
