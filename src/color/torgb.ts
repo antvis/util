@@ -7,15 +7,18 @@ const RGB_REG = /rgba?\(([\s.,0-9]+)\)/;
  * 创建辅助 tag 取颜色
  * @returns
  */
-function createTmp(): HTMLElement {
-  const i = document.createElement('i');
+function getTmp(): HTMLElement {
+  let i = document.getElementById('antv-web-colour-picker');
+  if (i) {
+    return i;
+  }
+  i = document.createElement('i');
+  i.id = 'antv-web-colour-picker';
   i.title = 'Web Colour Picker';
   i.style.display = 'none';
   document.body.appendChild(i);
   return i;
 }
-
-let iEl: HTMLElement;
 
 /**
  * 将颜色转换到 rgb 的格式
@@ -28,10 +31,7 @@ function toRGBString(color: string): string {
     return color;
   }
 
-  if (!iEl) {
-    // 防止防止在页头报错
-    iEl = createTmp();
-  }
+  const iEl = getTmp();
 
   iEl.style.color = color;
 
