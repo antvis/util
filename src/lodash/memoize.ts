@@ -49,6 +49,8 @@ class FLRUCache<K, V> {
   }
 }
 
+const CacheMap = new Map<Function, FLRUCache<any, any>>();
+
 /**
  * 缓存函数的计算结果，避免重复计算
  * @example
@@ -58,21 +60,18 @@ class FLRUCache<K, V> {
  * @param resolver 生成缓存 key 的函数
  * @param maxSize lru 缓存的大小
  */
-export default function memoize(fn: Function, resolver?: (...args: any[]) => string, maxSize = 128) {
+export default function memoize<T extends Function>(fn: T, resolver?: (...args: any[]) => string, maxSize = 128) {
   const memoized = function (...args) {
     // 使用方法构造 key，如果不存在 resolver，则直接取第一个参数作为 key
     const key = resolver ? resolver.apply(this, args) : args[0];
-    const cache = memoized.cache;
+    if (!CacheMap.has(fn)) CacheMap.set(fn, new FLRUCache(maxSize));
+    const cache = CacheMap.get(fn);
 
-    if (cache.has(key)) {
-      return cache.get(key);
-    }
+    if (cache.has(key)) return cache.get(key);
     const result = fn.apply(this, args);
     cache.set(key, result);
     return result;
   };
 
-  memoized.cache = new FLRUCache(maxSize);
-
-  return memoized;
+  return memoized as unknown as T;
 }
