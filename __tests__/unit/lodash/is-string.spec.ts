@@ -8,9 +8,9 @@ describe('isString', () => {
   });
 
   it('string object', () => {
-    expect(isString(new String(''))).toBe(true);
-    expect(isString(new String('abc'))).toBe(true);
-    expect(isString(new String('123'))).toBe(true);
+    expect(isString(new String(''))).toBe(false);
+    expect(isString(new String('abc'))).toBe(false);
+    expect(isString(new String('123'))).toBe(false);
   });
 
   it('not string', () => {

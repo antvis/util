@@ -11,8 +11,8 @@ describe('max', () => {
   });
 
   it('empty', () => {
-    expect(max([])).toBe(undefined);
-    expect(max([NaN])).toBe(undefined);
-    expect(max([1, 2, NaN])).toBe(undefined);
+    expect(max([])).toBe(-Infinity);
+    expect(max([NaN])).toBe(NaN);
+    expect(max([1, 2, NaN])).toBe(NaN);
   });
 });

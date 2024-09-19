@@ -13,7 +13,7 @@ describe('color', function () {
     };
 
     // implement document defaultView getComputedStyle getPropertyValue in jsdom
-    mockGetComputedStyle = jest.spyOn(window, 'getComputedStyle').mockImplementation(
+    mockGetComputedStyle = jest.spyOn(document.defaultView!, 'getComputedStyle').mockImplementation(
       (el) =>
         ({
           getPropertyValue: () => {
