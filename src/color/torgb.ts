@@ -35,8 +35,7 @@ function toRGBString(color: string): string {
 
   iEl.style.color = color;
 
-  let rst = document.defaultView.getComputedStyle(iEl, '').getPropertyValue('color');
-
+  let rst = window.getComputedStyle(iEl, '').getPropertyValue('color');
   const matches = RGB_REG.exec(rst) as string[];
   const cArray: number[] = matches[1].split(/\s*,\s*/).map((s) => Number(s));
 

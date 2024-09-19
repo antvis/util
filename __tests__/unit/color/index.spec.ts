@@ -1,6 +1,33 @@
 import { gradient, toCSSGradient, toRGB } from '../../../src';
 
 describe('color', function () {
+  let mockGetComputedStyle;
+  beforeAll(() => {
+    const colorMap = {
+      red: 'rgb(255, 0, 0)',
+      white: 'rgb(255, 255, 255)',
+      black: 'rgb(0, 0, 0)',
+      blue: 'rgb(0, 0, 255)',
+      '#ddd': 'rgb(221, 221, 221)',
+      '#eeeeee': 'rgb(238, 238, 238)',
+    };
+
+    // implement document defaultView getComputedStyle getPropertyValue in jsdom
+    mockGetComputedStyle = jest.spyOn(window, 'getComputedStyle').mockImplementation(
+      (el) =>
+        ({
+          getPropertyValue: () => {
+            const color = (el as HTMLElement).style.color;
+            return colorMap[color] || color;
+          },
+        }) as any,
+    );
+  });
+
+  afterAll(() => {
+    mockGetComputedStyle?.mockRestore();
+  });
+
   it('toRGB', () => {
     expect(toRGB('red')).toBe('#ff0000');
     expect(toRGB('white')).toBe('#ffffff');
