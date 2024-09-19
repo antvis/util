@@ -1,5 +1,4 @@
-import each from './each';
-import isArray from './is-array';
+import isNil from './is-nil';
 
 /**
  * @param {Array} arr The array to iterate over.
@@ -18,11 +17,18 @@ import isArray from './is-array';
  * // => 1250010
  * // Math.max(...data) will encounter "Maximum call stack size exceeded" error
  */
-export default (arr: number[]): number | undefined => {
-  if (!isArray(arr)) {
-    return undefined;
+export default function max(arr: number[]): number | undefined {
+  const length = arr.length;
+  if (length === 0) return undefined;
+  let max = arr[0];
+
+  const isNonNumber = (value: number) => isNil(value) || isNaN(value);
+  if (isNonNumber(max)) return undefined;
+
+  for (let i = 1; i < length; i++) {
+    if (isNonNumber(arr[i])) return undefined;
+    if (arr[i] > max) max = arr[i];
   }
-  return arr.reduce((prev, curr) => {
-    return Math.max(prev, curr);
-  }, arr[0]);
-};
+
+  return max;
+}

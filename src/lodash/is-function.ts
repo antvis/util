@@ -1,6 +1,7 @@
 /**
- * @see https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore#_isfunction
+ * 判断值是否为函数
+ * @return 是否为函数
  */
-export default (value: any): value is Function => {
+export default function isFunction(value: unknown): value is Function {
   return typeof value === 'function';
-};
+}

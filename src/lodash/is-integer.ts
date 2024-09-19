@@ -1,9 +1,9 @@
 import isNumber from './is-number';
 
-const isInteger = Number.isInteger
-  ? Number.isInteger
-  : function (num: any): boolean {
-      return isNumber(num) && num % 1 === 0;
-    };
-
-export default isInteger;
+/**
+ * 判断值是否为整数
+ * @return 是否为整数
+ */
+export default function isInteger(value: number): boolean {
+  return isNumber(value) && value % 1 === 0;
+}

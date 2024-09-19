@@ -1,61 +1,64 @@
-import isFunction from './is-function';
+class FLRUCache<K, V> {
+  private cache: Map<K, V>;
+  private capacity: number;
 
-function flru(max: number) {
-  let num, curr, prev;
-  const limit = max || 1;
+  constructor(capacity: number) {
+    this.capacity = Math.max(capacity, 1);
+    this.cache = new Map<K, V>();
+  }
 
-  function keep(key, value) {
-    if (++num > limit) {
-      prev = curr;
-      reset(1);
-      ++num;
+  // 获取缓存中的值，并更新使用顺序
+  get(key: K): V | undefined {
+    if (!this.cache.has(key)) {
+      return undefined;
     }
-    curr[key] = value;
+
+    // 先删除再插入，以便更新顺序
+    const value = this.cache.get(key)!;
+    this.cache.delete(key);
+    this.cache.set(key, value);
+    return value;
   }
 
-  function reset(isPartial?: number) {
-    num = 0;
-    curr = Object.create(null);
-    isPartial || (prev = Object.create(null));
+  // 设置缓存值，更新使用顺序，并维护缓存大小
+  set(key: K, value: V): void {
+    if (this.cache.has(key)) {
+      // 如果 key 已存在，更新值并重新设置顺序
+      this.cache.delete(key);
+    } else if (this.cache.size >= this.capacity) {
+      // 容量已满，移除最久未使用的键值对
+      const firstKey = this.cache.keys().next().value;
+      this.cache.delete(firstKey);
+    }
+    this.cache.set(key, value);
   }
 
-  reset();
+  // 检查是否存在指定的 key
+  has(key: K): boolean {
+    return this.cache.has(key);
+  }
 
-  return {
-    clear: reset,
-    has: function (key) {
-      return curr[key] !== void 0 || prev[key] !== void 0;
-    },
-    get: function (key) {
-      var val = curr[key];
-      if (val !== void 0) return val;
-      if ((val = prev[key]) !== void 0) {
-        keep(key, val);
-        return val;
-      }
-    },
-    set: function (key, value) {
-      if (curr[key] !== void 0) {
-        curr[key] = value;
-      } else {
-        keep(key, value);
-      }
-    },
-  };
+  // 获取当前缓存大小
+  size(): number {
+    return this.cache.size;
+  }
+
+  // 清空缓存
+  clear(): void {
+    this.cache.clear();
+  }
 }
 
 /**
+ * 缓存函数的计算结果，避免重复计算
+ * @example
  * _.memoize(calColor);
  * _.memoize(calColor, (...args) => args[0]);
- * @param f
- * @param resolver
- * @param maxSize lru maxSize
+ * @param fn 缓存的函数
+ * @param resolver 生成缓存 key 的函数
+ * @param maxSize lru 缓存的大小
  */
-export default (f: Function, resolver?: (...args: any[]) => string, maxSize = 128) => {
-  if (!isFunction(f)) {
-    throw new TypeError('Expected a function');
-  }
-
+export default function memoize(fn: Function, resolver?: (...args: any[]) => string, maxSize = 128) {
   const memoized = function (...args) {
     // 使用方法构造 key，如果不存在 resolver，则直接取第一个参数作为 key
     const key = resolver ? resolver.apply(this, args) : args[0];
@@ -64,13 +67,12 @@ export default (f: Function, resolver?: (...args: any[]) => string, maxSize = 12
     if (cache.has(key)) {
       return cache.get(key);
     }
-    const result = f.apply(this, args);
-    // 缓存起来
+    const result = fn.apply(this, args);
     cache.set(key, result);
     return result;
   };
 
-  memoized.cache = flru(maxSize);
+  memoized.cache = new FLRUCache(maxSize);
 
   return memoized;
-};
+}

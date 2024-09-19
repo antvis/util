@@ -1,10 +1,7 @@
 /**
- * 判断是否数字
- * @return {Boolean} 是否数字
+ * 判断值是否为数字
+ * @return 是否为数字
  */
-import isType from './is-type';
-
-const isNumber = function (value: any): value is number {
-  return isType(value, 'Number');
-};
-export default isNumber;
+export default function isNumber(value: unknown): value is number {
+  return typeof value === 'number' || value instanceof Number;
+}
