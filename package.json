@@ -1,6 +1,6 @@
 {
   "name": "@antv/util",
-  "version": "3.3.9",
+  "version": "3.3.10",
   "license": "MIT",
   "sideEffects": false,
   "main": "lib/index.js",
@@ -26,9 +26,7 @@
     "build": "run-p build:*",
     "ci": "run-s lint test build",
     "prepublishOnly": "npm run ci",
-    "benchmarks": "node benchmarks/path-2-string.test && node benchmarks/path-2-absolute.test",
-    "postinstall": "husky install",
-    "prepare": "husky install"
+    "benchmarks": "node benchmarks/path-2-string.test && node benchmarks/path-2-absolute.test"
   },
   "keywords": [
     "util",
