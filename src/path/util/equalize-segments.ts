@@ -2,10 +2,9 @@ import type { CurveArray, PathArray } from '../types';
 import { midPoint } from './mid-point';
 import { segmentCubicFactory } from './segment-cubic-factory';
 
-function splitCubic(
-  pts: [number, number, number, number, number, number, number, number],
-  t = 0.5,
-): [CurveArray, CurveArray] {
+type SplitArray = [number, number, number, number, number, number, number, number, number];
+
+function splitCubic(pts: SplitArray, t = 0.5): [CurveArray, CurveArray] {
   const p0 = pts.slice(0, 2) as [number, number];
   const p1 = pts.slice(2, 4) as [number, number];
   const p2 = pts.slice(4, 6) as [number, number];
@@ -28,7 +27,7 @@ function splitCubic(
 function getCurveArray(segments: PathArray) {
   return segments.map((segment, i, pathArray) => {
     // @ts-ignore
-    const segmentData = i && pathArray[i - 1].slice(-2).concat(segment.slice(1));
+    const segmentData = i && (pathArray[i - 1].slice(-2).concat(segment.slice(1)) as SplitArray);
 
     // @ts-ignore
     const curveLength = i

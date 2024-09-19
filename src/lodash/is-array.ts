@@ -1,5 +1,7 @@
-import isType from './is-type';
-
-export default (value: any): value is Array<any> => {
-  return Array.isArray ? Array.isArray(value) : isType(value, 'Array');
-};
+/**
+ * 判断值是否为数组
+ * @return 是否为数组
+ */
+export default function isArray(value: unknown): value is Array<any> {
+  return Array.isArray(value);
+}

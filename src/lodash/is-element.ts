@@ -1,8 +1,7 @@
 /**
- * 判断是否HTML元素
- * @return {Boolean} 是否HTML元素
+ * 判断值是否为 HTML Element 或 Document
+ * @return 是否为 HTML Element 或 Document
  */
-const isElement = function (o: any): boolean {
-  return o instanceof Element || o instanceof Document;
-};
-export default isElement;
+export default function isElement(value: unknown): value is Element | Document {
+  return value instanceof Element || value instanceof Document;
+}

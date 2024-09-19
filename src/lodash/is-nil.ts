@@ -1,10 +1,7 @@
-// isFinite,
-const isNil = function (value: any): value is null | undefined {
-  /**
-   * isNil(null) => true
-   * isNil() => true
-   */
+/**
+ * 判断值是否为 null 或 undefined
+ * @return 是否为 null 或 undefined
+ */
+export default function isNil(value: unknown): value is null | undefined {
   return value === null || value === undefined;
-};
-
-export default isNil;
+}

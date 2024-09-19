@@ -2,7 +2,7 @@ import type { CurveArray } from '../types';
 
 // reverse CURVE based pathArray segments only
 export function reverseCurve(pathArray: CurveArray): CurveArray {
-  const rotatedCurve = pathArray
+  const rotatedCurve: any = pathArray
     .slice(1)
     .map((x, i, curveOnly) =>
       // @ts-ignore

@@ -1,7 +1,7 @@
-import isType from './is-type';
-
-const isDate = function (value: any): value is Date {
-  return isType(value, 'Date');
-};
-
-export default isDate;
+/**
+ * 判断值是否为 Date
+ * @return 是否为 Date
+ */
+export default function isDate(value: unknown): value is Date {
+  return value instanceof Date;
+}

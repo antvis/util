@@ -1,5 +1,7 @@
-import isType from './is-type';
-
-export default (str: any): str is string => {
-  return isType(str, 'String');
-};
+/**
+ * 判断值是否为字符串
+ * @return 是否为字符串
+ */
+export default function isString(value: unknown): value is string {
+  return typeof value === 'string';
+}

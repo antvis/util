@@ -1,9 +1,9 @@
-import { uglify } from 'rollup-plugin-uglify';
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import commonjs from '@rollup/plugin-commonjs';
+import terser from '@rollup/plugin-terser';
 
-module.exports = [
+export default [
   {
     input: 'src/index.ts',
     output: {
@@ -12,6 +12,11 @@ module.exports = [
       format: 'umd',
       sourcemap: false,
     },
-    plugins: [resolve(), typescript(), commonjs(), uglify()],
+    plugins: [
+      resolve(),
+      typescript(),
+      commonjs(),
+      terser(),
+    ],
   },
 ];

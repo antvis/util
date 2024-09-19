@@ -1,5 +1,3 @@
-import isFunction from './is-function';
-
 function flru(max: number) {
   let num, curr, prev;
   const limit = max || 1;
@@ -44,33 +42,29 @@ function flru(max: number) {
   };
 }
 
+const CacheMap = new Map<Function, ReturnType<typeof flru>>();
+
 /**
+ * 缓存函数的计算结果，避免重复计算
+ * @example
  * _.memoize(calColor);
  * _.memoize(calColor, (...args) => args[0]);
- * @param f
- * @param resolver
- * @param maxSize lru maxSize
+ * @param fn 缓存的函数
+ * @param resolver 生成缓存 key 的函数
+ * @param maxSize lru 缓存的大小
  */
-export default (f: Function, resolver?: (...args: any[]) => string, maxSize = 128) => {
-  if (!isFunction(f)) {
-    throw new TypeError('Expected a function');
-  }
-
+export default function memoize<T extends Function>(fn: T, resolver?: (...args: any[]) => string, maxSize = 128) {
   const memoized = function (...args) {
     // 使用方法构造 key，如果不存在 resolver，则直接取第一个参数作为 key
     const key = resolver ? resolver.apply(this, args) : args[0];
-    const cache = memoized.cache;
+    if (!CacheMap.has(fn)) CacheMap.set(fn, flru(maxSize));
+    const cache = CacheMap.get(fn);
 
-    if (cache.has(key)) {
-      return cache.get(key);
-    }
-    const result = f.apply(this, args);
-    // 缓存起来
+    if (cache.has(key)) return cache.get(key);
+    const result = fn.apply(this, args);
     cache.set(key, result);
     return result;
   };
 
-  memoized.cache = flru(maxSize);
-
-  return memoized;
-};
+  return memoized as unknown as T;
+}
