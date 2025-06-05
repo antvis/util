@@ -1,4 +1,4 @@
-# color（颜色）
+# color（颜色） 
 
 **[返回◀️](../../README.zh-CN.md)**
 
@@ -12,6 +12,8 @@
 - [rgb2arr](#rgb2arr) - rgb 颜色转换成数组
 - [gradient](#gradient) - 获取渐变函数
 - [toCSSGradient](#tocssgradient) - 将 g 渐变转换为 css 渐变
+
+<hr>
 
 ### toHex
 

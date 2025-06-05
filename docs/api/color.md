@@ -13,6 +13,8 @@
 - [gradient](#gradient) - 获取渐变函数
 - [toCSSGradient](#tocssgradient) - 将 g 渐变转换为 css 渐变
 
+<hr>
+
 ### toHex
 
 将数值从 0-255 转换成 16 进制字符串，主要用于颜色值的转换。

@@ -178,6 +178,8 @@
 - [size](#size) - 获取集合大小
 - [uniqueId](#uniqueid) - 生成唯一ID
 
+<hr>
+
 ### contains/includes
 
 检查数组或类数组对象中是否包含指定值。
@@ -2659,6 +2661,8 @@ console.log(lowerCase('Hello123'));  // "hello123"
 |---------|------|------|---------|
 | result | 转换后的字符串 | string | - |
 
+<hr>
+
 ### lowerFirst
 
 将字符串的第一个字符转换为小写。
@@ -2684,6 +2688,8 @@ console.log(lowerFirst('ABC'));      // "aBC"
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
 | result | 转换后的字符串 | string | - |
+
+<hr>
 
 ### substitute
 
@@ -2724,6 +2730,8 @@ console.log(substitute('\\{escaped} {normal}', { normal: 'value' }));
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
 | result | 替换后的字符串 | string | - |
+
+<hr>
 
 ### upperCase
 
@@ -2779,6 +2787,8 @@ console.log(upperFirst('abc'));      // "Abc"
 |---------|------|------|---------|
 | result | 转换后的字符串 | string | - |
 
+<hr>
+
 ### getType
 
 获取值的类型字符串。
@@ -2809,6 +2819,8 @@ console.log(getType(new Date()));   // "Date"
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
 | result | 类型字符串 | string | - |
+
+<hr>
 
 ### isArguments
 
@@ -2871,6 +2883,8 @@ console.log(isArray({ length: 3 })); // false
 |---------|------|------|---------|
 | result | 是否为数组 | boolean | - |
 
+<hr>
+
 ### isArrayLike
 
 判断值是否为类数组对象。
@@ -2900,6 +2914,8 @@ console.log(isArrayLike(() => {}));   // false
 |---------|------|------|---------|
 | result | 是否为类数组对象 | boolean | - |
 
+<hr>
+
 ### isBoolean
 
 判断值是否为布尔值。
@@ -2927,6 +2943,8 @@ console.log(isBoolean(new Boolean(true))); // true
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
 | result | 是否为布尔值 | boolean | - |
+
+<hr>
 
 ### isDate
 
@@ -2984,6 +3002,8 @@ console.log(isError({ message: 'Error' })); // false
 |---------|------|------|---------|
 | result | 是否为错误对象 | boolean | - |
 
+<hr>
+
 ### isFunction
 
 判断值是否为函数。
@@ -3011,6 +3031,8 @@ console.log(isFunction(null));         // false
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
 | result | 是否为函数 | boolean | - |
+
+<hr>
 
 ### isFinite
 
@@ -3040,6 +3062,8 @@ console.log(isFinite('123'));     // false
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
 | result | 是否为有限数 | boolean | - |
+
+<hr>
 
 ### isNil
 
@@ -3099,6 +3123,8 @@ console.log(isNull({}));        // false
 |---------|------|------|---------|
 | result | 是否为 null | boolean | - |
 
+<hr>
+
 ### isNumber
 
 判断值是否为数字。
@@ -3127,6 +3153,8 @@ console.log(isNumber(true));      // false
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
 | result | 是否为数字 | boolean | - |
+
+<hr>
 
 ### isObject
 
@@ -3188,6 +3216,8 @@ console.log(isObjectLike(null));            // false
 |---------|------|------|---------|
 | result | 是否为类对象 | boolean | - |
 
+<hr>
+
 ### isPlainObject
 
 判断值是否为普通对象（由 `{}` 或 `new Object` 创建）。
@@ -3216,6 +3246,8 @@ console.log(isPlainObject(new Date()));           // false
 |---------|------|------|---------|
 | result | 是否为普通对象 | boolean | - |
 
+<hr>
+
 ### isPrototype
 
 判断值是否为原型对象。
@@ -3243,6 +3275,8 @@ console.log(isPrototype(Object.create(null)));    // false
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
 | result | 是否为原型对象 | boolean | - |
+
+<hr>
 
 ### isRegExp
 
@@ -3300,6 +3334,8 @@ console.log(isString({}));        // false
 |---------|------|------|---------|
 | result | 是否为字符串 | boolean | - |
 
+<hr>
+
 ### isType
 
 判断值的具体类型。
@@ -3329,6 +3365,8 @@ console.log(isType(true, 'Boolean'));     // true
 |---------|------|------|---------|
 | result | 是否为指定类型 | boolean | - |
 
+<hr>
+
 ### isUndefined
 
 判断值是否为 undefined。
@@ -3355,6 +3393,8 @@ console.log(isUndefined(''));         // false
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
 | result | 是否为 undefined | boolean | - |
+
+<hr>
 
 ### isElement
 
@@ -3439,6 +3479,8 @@ function smoothScroll(element: HTMLElement, target: number, duration: number) {
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
 | handler | 动画句柄 | number | - |
+
+<hr>
 
 ### cancelAnimationFrame
 

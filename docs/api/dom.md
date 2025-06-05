@@ -9,6 +9,8 @@
 - [createDOM](#createdom) - 从 HTML 字符串创建 DOM 元素。
 - [modifyCSS](#modifycss) - 修改 DOM 元素的 CSS 样式。
 
+<hr>
+
 ### createDOM
 
 从 HTML 字符串创建 DOM 元素。

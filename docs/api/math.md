@@ -9,6 +9,8 @@
 - [isPointInPolygon](#ispointinpolygon) - 判断点是否在多边形内部（射线法）
 - [isPolygonsIntersect](#ispolygonsintersect) - 判断两个多边形是否相交
 
+<hr>
+
 ### isPointInPolygon
 
 判断点是否在多边形内部（射线法）。
@@ -76,6 +78,8 @@ console.log(isPointInPolygon(invalidPolygon, 50, 50));  // false
 3. 边界点被认为是在多边形内部
 4. 使用容差处理浮点数精度问题
 5. 多边形顶点按顺序排列（顺时针或逆时针）
+
+<hr>
 
 ### isPolygonsIntersect
 
@@ -155,4 +159,3 @@ console.log(isPolygonsIntersect(rectangle1, invalidPolygon));  // false
 3. 包围盒检测可以提高性能
 4. 一个多边形完全包含另一个多边形也被视为相交
 5. 边界接触也被视为相交
-

@@ -11,6 +11,8 @@
 - [transform](#transform) - 根据变换操作序列对矩阵进行变换
 - [vertical](#vertical) - 计算二维向量的垂直向量。
 
+<hr>
+
 ### angleTo
 
 计算两个二维向量之间的夹角。
