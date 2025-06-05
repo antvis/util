@@ -6,6 +6,9 @@ function isGradientColor(val) {
   return /^[r,R,L,l]{1}[\s]*\(/.test(val);
 }
 
+/**
+ * 将 g 渐变转换为 css 渐变
+ */
 export function toCSSGradient(gradientColor) {
   if (isGradientColor(gradientColor)) {
     let cssColor;
