@@ -1,10 +1,8 @@
-<h1 align="center">
-<b>@antv/util</b>
-</h1>
+<h1 align="center">@antv/util</h1>
 
 <div align="center">
 
-> The underlying utility library for AntV, not recommended for business use. [中文](./README.zh-CN.md)
+AntV 底层依赖的工具库，包含有所有的 util 纯函数，**不建议在自己业务中使用**，避免因为迭代过程的 Break Change 给您带来维护成本。
 
 [![Build Status](https://github.com/antvis/util/workflows/build/badge.svg)](https://github.com/antvis/util/actions)
 [![npm Version](https://img.shields.io/npm/v/@antv/util.svg)](https://www.npmjs.com/package/@antv/util)
@@ -13,25 +11,21 @@
 
 </div>
 
-## 🚥 Principles
 
-- Single npm package organized by directories for different types of methods, avoiding monorepo interdependencies
-- Content strongly related to AntV, avoiding duplication with utility libraries like lodash
-- Unused methods are removed promptly, ensuring new methods can be imported on demand
-- Old versions are not maintained; please upgrade to v3 if older versions of AntV tech stack need iteration
+## ✨ 特性
 
-## ✨ Features
+- **轻量级**：按需实现代码逻辑，尽可能的减少包大小；在 lodash 未优化包大小之前，不要在 AntV 中使用 lodash。
+- **工具丰富**：包含了不同类别的函数上百种。
+- **可视化**：特化工具可视化中使用的颜色、形状、路径、向量、矩阵等方向的功能。
 
-- **Lodash Integration**: Includes commonly used methods from lodash library, avoiding external method libraries in AntV
-- **Visualization**: Specialized tools for visualization features including colors, shapes, paths, vectors, matrices, etc.
 
-## 📦 Installation
+## 📦 安装
 
 ```bash
 $ npm install @antv/util
 ```
 
-## 🔨 Getting Started
+## 🔨 上手
 
 ```ts
 import { path2String, path2Array } from '@antv/util';
@@ -58,18 +52,27 @@ path2Array('M10 10L100 100l10 10h20v20');
  */
 ```
 
+
 ## 📎 API
 
-![npm License](https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*UspcRpjY6KUAAAAAQZAAAAgAemJ7AQ/original)
+- [color（颜色）](./docs/api/color.md) - 颜色格式转化、g 渐变转化 css 渐变等
+- [dom（元素）](./docs/api/dom.md) - 基础和 css 添加
+- [math（数学）](./docs/api/math.md) - 基础数学计算，包含判断点是否在两个点的线段上、判断点十分在多变形内等
+- [matrix（矩阵）](./docs/api/matrix.md) - 向量及矩阵计算方法
+- [path（图形）](./docs/api/path.md) - 图形绘画计算方法，包含转换、几何计算等
+- [lodash（通用方法）](./docs/api/lodash.md) - util 内置 lodash 通用方法，并添加了更多针对 AntV 的方法工具。
 
-- [color](./docs/api/color.en.md) - Color format conversion, gradient conversion from g to css, etc.
-- [dom](./docs/api/dom.en.md) - Basic and CSS additions
-- [math](./docs/api/math.en.md) - Basic mathematical calculations, including point-on-line-segment detection, point-in-polygon detection, etc.
-- [matrix](./docs/api/matrix.en.md) - Vector and matrix calculation methods
-- [path](./docs/api/path.en.md) - Shape drawing calculation methods, including transformations, geometric calculations, etc.
-- [lodash](./docs/api/lodash.en.md) - Built-in lodash common methods with additional AntV-specific utility tools
 
-## 📮 Contributing
+## 🚥 原则
+
+- util 只有一个 npm 包，按照目录来组织不同类型的方法，避免 monorepo 互相依赖。
+- 内容和 AntV 强相关，避免做和 lodash 等相同的工具库。
+- 不使用的方法，及时删除，并保持新增方法可以按需引入。
+- 保持单元测试、文档的完整性。
+- 旧版本不维护，如果 AntV 技术栈的旧版本需要迭代，请升级到 v3。
+
+
+## 📮 贡献
 
 ```bash
 $ git clone git@github.com:antvis/util.git
@@ -79,9 +82,10 @@ $ cd util
 $ npm i
 
 $ npm t
-```
+```📁
 
-After writing code, submit a PR.
+写完代码之后，提交 PR 即可。
+
 
 ## License
 

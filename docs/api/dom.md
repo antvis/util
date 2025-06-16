@@ -1,21 +1,13 @@
-# dom（元素）
+# 元素 `dom` 相关函数
 
-**[返回◀️](../../README.zh-CN.md)**
-
-## 📒 工具方法
-
-### 方法列表
+> 和 DOM 操作相关的函数。
 
 - [createDOM](#createdom) - 从 HTML 字符串创建 DOM 元素。
 - [modifyCSS](#modifycss) - 修改 DOM 元素的 CSS 样式。
 
-<hr>
+## createDOM
 
-### createDOM
-
-从 HTML 字符串创建 DOM 元素。
-
-#### 示例
+> 从 HTML 字符串创建 DOM 元素。
 
 ```ts
 import { createDOM } from '@antv/util';
@@ -58,25 +50,22 @@ function createTooltip(content: string) {
 }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
 | str | HTML字符串 | string | - |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
 | element | DOM元素 | HTMLElement | - |
 
-<hr>
 
-### modifyCSS
+## modifyCSS
 
-修改 DOM 元素的 CSS 样式。
-
-#### 示例
+> 修改 DOM 元素的 CSS 样式。
 
 ```ts
 import { modifyCSS } from '@antv/util';
@@ -134,14 +123,14 @@ function updateElementStyle(element: HTMLElement, isActive: boolean) {
 }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
 | dom | DOM元素 | HTMLElement \| null \| undefined | - |
 | css | CSS样式对象 | { [key: string]: any } | - |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|

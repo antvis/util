@@ -1,28 +1,18 @@
-# math（数学）
+# 数学 `math` 相关函数
 
-**[返回◀️](../../README.zh-CN.md)**
-
-## 📒 工具方法
-
-### 方法列表
+> 一些数学计算相关函数，目前主要是图形拾取和碰撞相关。
 
 - [isPointInPolygon](#ispointinpolygon) - 判断点是否在多边形内部（射线法）
 - [isPolygonsIntersect](#ispolygonsintersect) - 判断两个多边形是否相交
 
-<hr>
+## isPointInPolygon
 
-### isPointInPolygon
-
-判断点是否在多边形内部（射线法）。
-
-#### 功能说明
+> 判断点是否在多边形内部（射线法）。
 
 - 使用射线法判断点是否在多边形内部
 - 支持判断点是否在多边形边上
 - 处理特殊情况（如点数少于3个的情况）
 - 使用容差处理浮点数精度问题
-
-#### 示例
 
 ```ts
 import { isPointInPolygon } from '@antv/util';
@@ -57,7 +47,7 @@ const invalidPolygon = [[0, 0], [100, 100]];  // 少于3个点
 console.log(isPointInPolygon(invalidPolygon, 50, 50));  // false
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
@@ -65,13 +55,13 @@ console.log(isPointInPolygon(invalidPolygon, 50, 50));  // false
 | x | 检测点的x坐标 | number | - | 待检测点的x坐标 |
 | y | 检测点的y坐标 | number | - | 待检测点的y坐标 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 判断结果 | boolean | - | 点是否在多边形内部或边上 |
 
-#### 注意事项
+- 注意事项
 
 1. 多边形顶点数量必须大于等于3个
 2. 支持凸多边形和凹多边形
@@ -79,21 +69,16 @@ console.log(isPointInPolygon(invalidPolygon, 50, 50));  // false
 4. 使用容差处理浮点数精度问题
 5. 多边形顶点按顺序排列（顺时针或逆时针）
 
-<hr>
 
-### isPolygonsIntersect
+## isPolygonsIntersect
 
-判断两个多边形是否相交。
-
-#### 功能说明
+> 判断两个多边形是否相交。
 
 - 判断两个多边形是否存在交集
 - 使用包围盒快速判断是否可能相交
 - 检查点是否在另一个多边形内部
 - 检查线段是否相交
 - 支持凸多边形和凹多边形
-
-#### 示例
 
 ```ts
 import { isPolygonsIntersect } from '@antv/util';
@@ -139,20 +124,20 @@ const invalidPolygon = [[0, 0]];  // 单点
 console.log(isPolygonsIntersect(rectangle1, invalidPolygon));  // false
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
 | points1 | 第一个多边形的顶点数组 | number[][] | - |
 | points2 | 第二个多边形的顶点数组 | number[][] | - |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
 | result | 两个多边形是否相交 | boolean | - |
 
-#### 注意事项
+- 注意事项
 
 1. 多边形顶点数量必须大于等于2个
 2. 支持凸多边形和凹多边形
