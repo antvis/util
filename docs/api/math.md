@@ -7,7 +7,7 @@
 
 ## isPointInPolygon
 
-> 判断点是否在多边形内部（射线法）。
+判断点是否在多边形内部（射线法）。
 
 - 使用射线法判断点是否在多边形内部
 - 支持判断点是否在多边形边上
@@ -72,7 +72,7 @@ console.log(isPointInPolygon(invalidPolygon, 50, 50));  // false
 
 ## isPolygonsIntersect
 
-> 判断两个多边形是否相交。
+判断两个多边形是否相交。
 
 - 判断两个多边形是否存在交集
 - 使用包围盒快速判断是否可能相交

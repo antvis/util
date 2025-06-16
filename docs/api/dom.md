@@ -7,7 +7,7 @@
 
 ## createDOM
 
-> 从 HTML 字符串创建 DOM 元素。
+从 HTML 字符串创建 DOM 元素。
 
 ```ts
 import { createDOM } from '@antv/util';
@@ -65,7 +65,7 @@ function createTooltip(content: string) {
 
 ## modifyCSS
 
-> 修改 DOM 元素的 CSS 样式。
+修改 DOM 元素的 CSS 样式。
 
 ```ts
 import { modifyCSS } from '@antv/util';

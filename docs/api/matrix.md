@@ -9,7 +9,7 @@
 
 ## angleTo
 
-> 计算两个二维向量之间的夹角。
+计算两个二维向量之间的夹角。
 
 - 计算两个二维向量之间的夹角
 - 支持顺时针和逆时针方向的角度计算
@@ -75,7 +75,7 @@ console.log(angleTo(original, rotated)); // π/4 (45度)
 
 ## direction
 
-> 计算两个向量之间夹角的方向（顺时针或逆时针）。
+计算两个向量之间夹角的方向（顺时针或逆时针）。
 
 - 判断从向量v1到向量v2的旋转方向
 - 使用向量叉积的方法计算方向
@@ -147,7 +147,7 @@ function animateRotation(element: HTMLElement, targetAngle: number) {
 
 ## transform
 
-> 根据变换操作序列对矩阵进行变换。
+根据变换操作序列对矩阵进行变换。
 
 - 支持平移(translate)、缩放(scale)、旋转(rotate)和矩阵乘法(multiply)操作
 - 使用 gl-matrix 库进行矩阵运算

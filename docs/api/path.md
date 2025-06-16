@@ -1,10 +1,6 @@
-# path（图形）
+# 图形 `path` 相关方法
 
-**[返回◀️](../../README.zh-CN.md)**
-
-## 📒 工具方法
-
-### 方法列表
+> 和 SVG Path 相关的一些方法，覆盖面很广。
 
 - parser
   - [isSpace](#isspace) - 判断字符是否为空白字符。
@@ -62,21 +58,16 @@
   - [path2Curve](#path2curve) - 将 SVG 路径转换为三次贝塞尔曲线路径。
   - [path2String](#path2string) - 将路径数组转换为 SVG 路径字符串，支持数值精度控制。
 
-<hr>
 
-### isSpace
+## isSpace
 
 判断字符是否为空白字符。
-
-#### 功能说明
 
 - 检测字符是否为空白字符
 - 支持所有标准空白字符
 - 支持特殊 Unicode 空白字符
 - 包含换行符和行终止符
 - 使用字符的 Unicode 编码进行判断
-
-#### 示例
 
 ```ts
 import { isSpace } from '@antv/util';
@@ -119,19 +110,19 @@ console.log(trimString('  hello  '));  // "hello"
 console.log(trimString('\t\nhello\r\n'));  // "hello"
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | ch | 字符编码 | number | - | 要检查的字符的Unicode编码值 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 判断结果 | boolean | - | 是否为空白字符 |
 
-#### 支持的空白字符
+- 支持的空白字符
 
 | 类型 | Unicode | 说明 |
 |---------|------|------|
@@ -142,13 +133,10 @@ console.log(trimString('\t\nhello\r\n'));  // "hello"
 | 行终止符 | 0x2028, 0x2029 | 行分隔符，段落分隔符 |
 | 特殊空格 | 0x1680-0xfeff | 各种Unicode空白字符 |
 
-<hr>
 
-### isPathCommand
+## isPathCommand
 
 判断字符是否为 SVG 路径命令。
-
-#### 示例
 
 ```ts
 import { isPathCommand } from '@antv/util';
@@ -195,19 +183,19 @@ console.log(parsePath('M10 10L20 20'));  // ['M10 10', 'L20 20']
 console.log(parsePath('m5,5 l10,10'));   // ['m5,5', 'l10,10']
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | code | 字符编码 | number | - | 要检查的字符的Unicode编码值 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 判断结果 | boolean | - | 是否为路径命令 |
 
-#### 支持的路径命令
+- 支持的路径命令
 
 | 命令 | 说明 | 大写 | 小写 |
 |---------|------|------|------|
@@ -222,13 +210,10 @@ console.log(parsePath('m5,5 l10,10'));   // ['m5,5', 'l10,10']
 | T/t | 平滑二次贝塞尔曲线 | 绝对坐标 | 相对坐标 |
 | A/a | 弧线 | 绝对坐标 | 相对坐标 |
 
-<hr>
 
-### isDigitStart
+## isDigitStart
 
 判断字符是否为数字的起始字符（包括数字、正负号和小数点）。
-
-#### 示例
 
 ```ts
 import { isDigitStart } from '@antv/util';
@@ -271,19 +256,19 @@ console.log(parseNumber('+0.5em'));      // { value: 0.5, length: 4 }
 console.log(parseNumber('.75%'));        // { value: 0.75, length: 3 }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | code | 字符编码 | number | - | 要检查的字符的Unicode编码值 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 判断结果 | boolean | - | 是否为数字起始字符 |
 
-#### 支持的字符
+- 支持的字符
 
 | 字符类型 | Unicode | 说明 |
 |---------|------|------|
@@ -292,13 +277,10 @@ console.log(parseNumber('.75%'));        // { value: 0.75, length: 3 }
 | 负号 | 0x2d | - |
 | 小数点 | 0x2e | . |
 
-<hr>
 
-### isDigit
+## isDigit
 
 判断字符是否为数字字符（0-9）。
-
-#### 示例
 
 ```ts
 import { isDigit } from '@antv/util';
@@ -336,31 +318,28 @@ console.log(isNumericString('12.34'));   // false
 console.log(isNumericString('12a34'));   // false
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | code | 字符编码 | number | - | 要检查的字符的Unicode编码值 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 判断结果 | boolean | - | 是否为数字字符 |
 
-#### 支持的字符范围
+- 支持的字符范围
 
 | 字符 | Unicode | 说明 |
 |---------|------|------|
 | 0-9 | 48-57 | 阿拉伯数字 |
 
-<hr>
 
-### isArcCommand
+## isArcCommand
 
 判断字符是否为 SVG 路径中的弧线命令（A/a）。
-
-#### 示例
 
 ```ts
 import { isArcCommand } from '@antv/util';
@@ -430,39 +409,34 @@ console.log(parseArcParams(arc));
 // }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | code | 字符编码 | number | - | 要检查的字符的Unicode编码值 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 判断结果 | boolean | - | 是否为弧线命令 |
 
-#### 弧线命令格式
+- 弧线命令格式
 
 | 命令 | 参数 | 说明 |
 |---------|------|------|
 | A/a | rx ry x-axis-rotation large-arc-flag sweep-flag x y | 绘制弧线 |
 
-<hr>
 
-### finalizeSegment
+## finalizeSegment
 
 完成 SVG 路径片段的解析，并将解析结果添加到路径段数组中。
-
-#### 功能说明
 
 - 处理路径命令和对应的参数
 - 特殊处理 moveTo (M/m) 命令
 - 根据命令类型提取正确数量的参数
 - 支持命令的重复使用
 - 将解析结果添加到路径段数组中
-
-#### 示例
 
 ```ts
 import { finalizeSegment } from '@antv/util';
@@ -519,13 +493,13 @@ console.log(parsePath('M10 10 20 20 30 30'));
 // [['M', 10, 10], ['l', 20, 20], ['l', 30, 30]]
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | path | 路径解析器对象 | PathParser | - | 包含路径解析状态的对象 |
 
-#### PathParser 接口
+- PathParser 接口
 
 | 属性 | 说明 | 类型 | 中文说明 |
 |---------|------|------|---------|
@@ -534,21 +508,18 @@ console.log(parsePath('M10 10 20 20 30 30'));
 | data | 数值数组 | number[] | 收集的数值参数 |
 | segments | 路径片段数组 | any[][] | 解析后的路径片段数组 |
 
-<hr>
 
-### parsePathString
+## parsePathString
 
 将 SVG 路径字符串解析为路径片段数组。
 
-#### 功能说明
+- 功能说明
 
 - 解析 SVG 路径字符串为标准格式的数组
 - 支持所有标准 SVG 路径命令
 - 处理空格和分隔符
 - 错误处理和验证
 - 支持已经是数组格式的输入
-
-#### 示例
 
 ```ts
 import { parsePathString } from '@antv/util';
@@ -601,19 +572,19 @@ console.log(createPathObject(path));
 // }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | pathInput | 路径输入 | PathArray \| string | - | SVG路径字符串或路径数组 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 解析结果 | PathArray \| string | - | 路径片段数组或错误信息 |
 
-#### 支持的路径命令
+- 支持的路径命令
 
 | 命令 | 说明 | 参数格式 |
 |---------|------|------|
@@ -628,21 +599,18 @@ console.log(createPathObject(path));
 | A/a | 弧线 | rx, ry, angle, large-arc, sweep, x, y |
 | Z/z | 闭合路径 | 无参数 |
 
-<hr>
 
-### scanFlag
+## scanFlag
 
 扫描并验证 SVG 路径中弧线命令（A/a）的标志位参数。
 
-#### 功能说明
+- 功能说明
 
 - 验证弧线命令的标志位参数（large-arc-flag 和 sweep-flag）
 - 只接受 0 或 1 作为有效值
 - 更新解析器的参数值和索引
 - 提供详细的错误信息
 - 用于 SVG 路径解析过程
-
-#### 示例
 
 ```ts
 import { scanFlag } from '@antv/util';
@@ -710,13 +678,13 @@ console.log(parseArcFlags('A100 100 0 2 0 200 200'));
 // { largeArcFlag: 0, sweepFlag: 0, error: '...' }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | path | 路径解析器对象 | PathParser | - | 包含路径解析状态的对象 |
 
-#### PathParser 接口
+- PathParser 接口
 
 | 属性 | 说明 | 类型 | 中文说明 |
 |---------|------|------|---------|
@@ -725,21 +693,18 @@ console.log(parseArcFlags('A100 100 0 2 0 200 200'));
 | param | 参数值 | number | 解析得到的参数值 |
 | err | 错误信息 | string | 解析过程中的错误信息 |
 
-<hr>
 
-### scanParam
+## scanParam
 
 扫描并验证 SVG 路径中的数值参数。
 
-#### 功能说明
+- 功能说明
 
 - 验证路径字符串中的数值参数
 - 支持整数和浮点数
 - 支持科学计数法
 - 处理正负号
 - 提供详细的错误信息
-
-#### 示例
 
 ```ts
 import { scanParam } from '@antv/util';
@@ -815,13 +780,13 @@ console.log(parseNumberSequence('100 200 abc'));
 // { values: [100, 200], error: '...' }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | path | 路径解析器对象 | PathParser | - | 包含路径解析状态的对象 |
 
-#### PathParser 接口
+- PathParser 接口
 
 | 属性 | 说明 | 类型 | 中文说明 |
 |---------|------|------|---------|
@@ -831,28 +796,25 @@ console.log(parseNumberSequence('100 200 abc'));
 | max | 最大长度 | number | 字符串最大长度 |
 | err | 错误信息 | string | 解析过程中的错误信息 |
 
-#### 支持的数值格式
+- 支持的数值格式
 
 1. 整数：`123`
 2. 负数：`-123`
 3. 浮点数：`123.456`
 4. 科学计数法：`1e2`, `1.23e-4`
 
-<hr>
 
-### scanSegment
+## scanSegment
 
 扫描并解析 SVG 路径中的单个路径片段。
 
-#### 功能说明
+- 功能说明
 
 - 解析路径命令和其参数
 - 处理特殊的弧线命令参数
 - 支持参数之间的逗号分隔
 - 跳过空白字符
 - 验证参数数量和格式
-
-#### 示例
 
 ```ts
 import { scanSegment } from '@antv/util';
@@ -924,13 +886,13 @@ console.log(parseSVGPath('M10,10 L20,20 A30,30 0 1,0 40,40 Z'));
 // }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | path | 路径解析器对象 | PathParser | - | 包含路径解析状态的对象 |
 
-#### PathParser 接口
+- PathParser 接口
 
 | 属性 | 说明 | 类型 | 中文说明 |
 |---------|------|------|---------|
@@ -943,21 +905,18 @@ console.log(parseSVGPath('M10,10 L20,20 A30,30 0 1,0 40,40 Z'));
 | param | 参数值 | number | 当前解析的参数值 |
 | err | 错误信息 | string | 解析过程中的错误信息 |
 
-<hr>
 
-### skipSpaces
+## skipSpaces
 
 跳过路径字符串中的空白字符。
 
-#### 功能说明
+- 功能说明
 
 - 跳过所有类型的空白字符
 - 更新解析器的当前位置
 - 支持多种空白字符格式
 - 用于路径解析过程中的空白处理
 - 确保解析器指向有效字符
-
-#### 示例
 
 ```ts
 import { skipSpaces } from '@antv/util';
@@ -1056,13 +1015,13 @@ console.log(formatPathString('M   100   200    L   300   400'));
 // "M 100 200 L 300 400"
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | path | 路径解析器对象 | PathParser | - | 包含路径解析状态的对象 |
 
-#### PathParser 接口
+- PathParser 接口
 
 | 属性 | 说明 | 类型 | 中文说明 |
 |---------|------|------|---------|
@@ -1070,21 +1029,18 @@ console.log(formatPathString('M   100   200    L   300   400'));
 | index | 当前索引 | number | 当前解析位置 |
 | max | 最大长度 | number | 字符串最大长度 |
 
-<hr>
 
-### arcToCubic
+## arcToCubic
 
 将 SVG 路径中的弧线命令（A）转换为三次贝塞尔曲线命令（C）。
 
-#### 功能说明
+- 功能说明
 
 - 将椭圆弧转换为一系列三次贝塞尔曲线
 - 支持旋转角度
 - 处理大弧和小弧标志
 - 处理顺时针和逆时针方向
 - 基于 SVG 规范的实现
-
-#### 示例
 
 ```ts
 import { arcToCubic } from '@antv/util';
@@ -1175,7 +1131,7 @@ function bezierPoint(p0: number[], p1: number[], p2: number[], p3: number[], t: 
 }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
@@ -1187,27 +1143,24 @@ function bezierPoint(p0: number[], p1: number[], p2: number[], p3: number[], t: 
 | X2, Y2 | 终点坐标 | number | - | 弧线终点的x,y坐标 |
 | recursive | 递归参数 | number[] | - | 用于递归调用的参数数组 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | points | 控制点坐标 | number[] | - | 贝塞尔曲线的控制点坐标数组 |
 
-<hr>
 
-### clonePath
+## clonePath
 
 深度克隆路径数组，创建路径数据的完整副本。
 
-#### 功能说明
+- 功能说明
 
 - 创建路径数组的深度副本
 - 处理嵌套数组结构
 - 保持原始数据不变
 - 支持单个路径段和完整路径数组
 - 返回新的路径数组实例
-
-#### 示例
 
 ```ts
 import { clonePath } from '@antv/util';
@@ -1294,33 +1247,30 @@ console.log(animator.getPath());
 // [['M', 0, 0], ['L', 100, 100]]
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | path | 路径数据 | PathArray \| PathSegment | - | 要克隆的路径数组或路径段 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 克隆结果 | PathArray | - | 克隆后的新路径数组 |
 
-<hr>
 
-### fixArc
+## fixArc
 
 修复和处理弧线命令转换后的路径数组。
 
-#### 功能说明
+- 功能说明
 
 - 处理转换后的弧线命令
 - 将长路径段分割成多个三次贝塞尔曲线
 - 维护命令类型记录
 - 确保路径数组格式正确
 - 优化路径数据结构
-
-#### 示例
 
 ```ts
 import { fixArc } from '@antv/util';
@@ -1405,7 +1355,7 @@ console.log(optimizePath(complexPath));
 // ]
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
@@ -1413,21 +1363,18 @@ console.log(optimizePath(complexPath));
 | allPathCommands | 命令数组 | string[] | - | 记录所有路径命令的数组 |
 | i | 当前索引 | number | - | 当前处理的路径段索引 |
 
-<hr>
 
-### lineToCubic
+## lineToCubic
 
 将直线转换为三次贝塞尔曲线。
 
-#### 功能说明
+- 功能说明
 
 - 将直线段转换为等效的三次贝塞尔曲线
 - 使用中点作为控制点
 - 保持视觉效果不变
 - 统一路径段表示方式
 - 简化路径处理
-
-#### 示例
 
 ```ts
 import { lineToCubic } from '@antv/util';
@@ -1503,7 +1450,7 @@ console.log(animator(0.5));  // { x: 50, y: 50 }
 console.log(animator(1));    // { x: 100, y: 100 }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
@@ -1512,13 +1459,13 @@ console.log(animator(1));    // { x: 100, y: 100 }
 | x2 | 终点x坐标 | number | - | 直线终点的x坐标 |
 | y2 | 终点y坐标 | number | - | 直线终点的y坐标 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | points | 控制点坐标 | number[] | - | 贝塞尔曲线的控制点坐标数组 [cx1,cy1,cx2,cy2,x,y] |
 
-#### 注意事项
+- 注意事项
 
 1. 返回6个数值（3个控制点）
 2. 使用中点作为控制点
@@ -1526,21 +1473,18 @@ console.log(animator(1));    // { x: 100, y: 100 }
 4. 便于统一处理
 5. 支持任意方向的直线
 
-<hr>
 
-### normalizePath
+## normalizePath
 
 将 SVG 路径标准化为统一格式的路径数组。
 
-#### 功能说明
+- 功能说明
 
 - 将路径转换为绝对坐标
 - 标准化所有路径命令
 - 转换特殊命令（如 H、V）为通用命令（L）
 - 保持路径参数的连续性
 - 维护控制点信息
-
-#### 示例
 
 ```ts
 import { normalizePath } from '@antv/util';
@@ -1627,33 +1571,30 @@ console.log(analyzer.getBBox());
 // { x: 0, y: 0, width: 100, height: 100 }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | pathInput | 路径输入 | string \| PathArray | - | SVG路径字符串或路径数组 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 标准化路径 | NormalArray | - | 标准化后的路径数组 |
 
-<hr>
 
-### normalizeSegment
+## normalizeSegment
 
 标准化单个路径段，将特殊命令转换为基本命令（如 H/V -> L, T -> Q）。
 
-#### 功能说明
+- 功能说明
 
 - 将水平线段(H)转换为直线段(L)
 - 将垂直线段(V)转换为直线段(L)
 - 将平滑曲线(S)转换为贝塞尔曲线(C)
 - 将平滑二次曲线(T)转换为二次贝塞尔曲线(Q)
 - 维护控制点信息
-
-#### 示例
 
 ```ts
 import { normalizeSegment } from '@antv/util';
@@ -1746,20 +1687,20 @@ const quadraticPath = [
 console.log(normalizeQuadratic(quadraticPath));
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | segment | 路径段 | PathSegment | - | 要标准化的路径段 |
 | params | 参数对象 | object | - | 包含控制点信息的参数对象 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 标准化路径段 | NormalSegment | - | 标准化后的路径段 |
 
-#### 参数对象属性
+- 参数对象属性
 
 | 属性 | 说明 | 类型 | 中文说明 |
 |---------|------|------|---------|
@@ -1767,21 +1708,18 @@ console.log(normalizeQuadratic(quadraticPath));
 | x2, y2 | 前一控制点 | number | 前一个控制点的坐标 |
 | qx, qy | 二次曲线控制点 | number | 二次贝塞尔曲线的控制点 |
 
-<hr>
 
-### quadToCubic
+## quadToCubic
 
 将二次贝塞尔曲线转换为三次贝塞尔曲线。
 
-#### 功能说明
+- 功能说明
 
 - 将二次贝塞尔曲线(Q)转换为三次贝塞尔曲线(C)
 - 保持曲线的视觉效果不变
 - 使用 1/3 和 2/3 比例计算控制点
 - 统一曲线表示方式
 - 返回完整的控制点坐标
-
-#### 示例
 
 ```ts
 import { quadToCubic } from '@antv/util';
@@ -1859,7 +1797,7 @@ console.log(animator(0.5));  // { x: 50, y: 25 }
 console.log(animator(1));    // { x: 100, y: 0 }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
@@ -1870,13 +1808,13 @@ console.log(animator(1));    // { x: 100, y: 0 }
 | x2 | 终点x坐标 | number | - | 曲线终点的x坐标 |
 | y2 | 终点y坐标 | number | - | 曲线终点的y坐标 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | points | 控制点坐标 | number[] | - | 三次贝塞尔曲线的控制点坐标数组 [cpx1,cpy1,cpx2,cpy2,x,y] |
 
-#### 注意事项
+- 注意事项
 
 1. 保持曲线形状不变
 2. 使用固定比例计算
@@ -1884,21 +1822,18 @@ console.log(animator(1));    // { x: 100, y: 0 }
 4. 适用于路径转换
 5. 便于统一处理
 
-<hr>
 
-### reverseCurve
+## reverseCurve
 
 反转基于贝塞尔曲线的路径数组。
 
-#### 功能说明
+- 功能说明
 
 - 反转曲线路径的方向
 - 保持曲线的形状不变
 - 重新计算控制点位置
 - 仅处理贝塞尔曲线路径
 - 维护路径的连续性
-
-#### 示例
 
 ```ts
 import { reverseCurve } from '@antv/util';
@@ -1998,19 +1933,19 @@ console.log(animator.forward(0.5));   // 正向动画中点
 console.log(animator.backward(0.5));  // 反向动画中点
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | pathArray | 曲线路径数组 | CurveArray | - | 要反转的贝塞尔曲线路径数组 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 反转后的路径 | CurveArray | - | 反转后的贝塞尔曲线路径数组 |
 
-#### 注意事项
+- 注意事项
 
 1. 仅支持贝塞尔曲线路径
 2. 保持曲线形状不变
@@ -2018,21 +1953,18 @@ console.log(animator.backward(0.5));  // 反向动画中点
 4. 维护路径连续性
 5. 起点变为终点
 
-<hr>
 
-### roundPath
+## roundPath
 
 对路径数组中的数值进行精度舍入。
 
-#### 功能说明
+- 功能说明
 
 - 控制路径坐标的精度
 - 支持自定义小数位数
 - 可以关闭舍入功能
 - 保持命令类型不变
 - 创建新的路径数组
-
-#### 示例
 
 ```ts
 import { roundPath } from '@antv/util';
@@ -2134,20 +2066,20 @@ const responsivePath = adjustPathPrecision(complexPath, 800);
 console.log(responsivePath);
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | path | 路径数组 | PathArray | - | 要处理的路径数组 |
 | round | 精度控制 | number \| 'off' | - | 小数位数或关闭舍入 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 处理后的路径 | PathArray | - | 精度调整后的路径数组 |
 
-#### 注意事项
+- 注意事项
 
 1. 仅处理数值部分
 2. 保持命令字符不变
@@ -2155,21 +2087,18 @@ console.log(responsivePath);
 4. 精度值必须为整数
 5. 'off'表示不进行舍入
 
-<hr>
 
-### segmentToCubic
+## segmentToCubic
 
 将各种路径段转换为三次贝塞尔曲线段。
 
-#### 功能说明
+- 功能说明
 
 - 将不同类型的路径段统一转换为三次贝塞尔曲线
 - 支持弧线(A)、二次贝塞尔曲线(Q)、直线(L)和闭合路径(Z)的转换
 - 保持移动命令(M)不变
 - 维护控制点信息
 - 处理特殊情况
-
-#### 示例
 
 ```ts
 import { segmentToCubic } from '@antv/util';
@@ -2261,34 +2190,31 @@ function bezierInterpolate(p1: number[], p2: number[], p3: number[], t: number) 
 }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | segment | 路径段 | PathSegment | - | 要转换的路径段 |
 | params | 参数对象 | ParserParams | - | 包含控制点信息的参数对象 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 转换结果 | CSegment \| MSegment | - | 转换后的三次贝塞尔曲线段或移动命令 |
 
-<hr>
 
-### distanceSquareRoot
+## distanceSquareRoot
 
 计算两点之间的欧几里得距离。
 
-#### 功能说明
+- 功能说明
 
 - 计算二维平面上两点之间的直线距离
 - 使用平方根公式计算
 - 接受坐标点数组作为参数
 - 返回非负数值
 - 基于欧几里得距离公式
-
-#### 示例
 
 ```ts
 import { distanceSquareRoot } from '@antv/util';
@@ -2383,20 +2309,20 @@ console.log(detector.addPoint([4, 4]));     // true
 console.log(detector.addPoint([1, 1]));     // false (太近)
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | a | 第一个点 | [number, number] | - | 第一个点的坐标 |
 | b | 第二个点 | [number, number] | - | 第二个点的坐标 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | distance | 距离 | number | - | 两点之间的距离 |
 
-#### 注意事项
+- 注意事项
 
 1. 返回非负数值
 2. 使用欧几里得距离公式
@@ -2404,21 +2330,18 @@ console.log(detector.addPoint([1, 1]));     // false (太近)
 4. 计算结果是精确值
 5. 适用于平面坐标系
 
-<hr>
 
-### equalizeSegments
+## equalizeSegments
 
 平衡两个路径的段数，使它们具有相同数量的贝塞尔曲线段。
 
-#### 功能说明
+- 功能说明
 
 - 调整两个路径使其具有相同数量的段
 - 通过分割曲线段来实现平衡
 - 保持路径的视觉效果
 - 支持递归处理
 - 考虑曲线长度进行优化分割
-
-#### 示例
 
 ```ts
 import { equalizeSegments } from '@antv/util';
@@ -2515,7 +2438,7 @@ function animatePath(element: SVGPathElement, startPath: PathArray, endPath: Pat
 }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
@@ -2523,13 +2446,13 @@ function animatePath(element: SVGPathElement, startPath: PathArray, endPath: Pat
 | path2 | 第二个路径 | PathArray | - | 要平衡的第二个路径 |
 | TL | 目标段数 | number | - | 可选的目标段数 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 平衡后的路径 | CurveArray[] | - | 包含两个平衡后路径的数组 |
 
-#### 注意事项
+- 注意事项
 
 1. 保持路径视觉效果
 2. 考虑曲线长度
@@ -2537,21 +2460,18 @@ function animatePath(element: SVGPathElement, startPath: PathArray, endPath: Pat
 4. 仅处理贝塞尔曲线
 5. 维护路径连续性
 
-<hr>
 
-### getDrawDirection
+## getDrawDirection
 
 判断路径的绘制方向（顺时针或逆时针）。
 
-#### 功能说明
+- 功能说明
 
 - 通过计算路径面积判断绘制方向
 - 正面积表示顺时针方向
 - 负面积表示逆时针方向
 - 适用于闭合路径
 - 基于路径面积计算
-
-#### 示例
 
 ```ts
 import { getDrawDirection } from '@antv/util';
@@ -2653,19 +2573,19 @@ const compound = [
 console.log(processCompoundPath(compound));
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | pathArray | 路径数组 | PathArray | - | 要判断方向的路径数组 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 方向判断结果 | boolean | - | true表示顺时针，false表示逆时针 |
 
-#### 注意事项
+- 注意事项
 
 1. 适用于闭合路径
 2. 基于路径面积计算
@@ -2673,21 +2593,18 @@ console.log(processCompoundPath(compound));
 4. 考虑路径的起始点
 5. 支持复杂路径
 
-<hr>
 
-### getPathArea
+## getPathArea
 
 计算路径的面积，支持复杂的贝塞尔曲线路径。
 
-#### 功能说明
+- 功能说明
 
 - 计算路径围成的面积
 - 支持三次贝塞尔曲线
 - 自动转换路径为曲线形式
 - 考虑路径方向（正负面积）
 - 基于数学公式精确计算
-
-#### 示例
 
 ```ts
 import { getPathArea } from '@antv/util';
@@ -2777,19 +2694,19 @@ console.log(analyzer.isPointInPath(shape, [50, 50]));  // true
 console.log(analyzer.getCentroid(shape));  // { x: 50, y: 50 }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | path | 路径数组 | PathArray | - | 要计算面积的路径数组 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | area | 面积值 | number | - | 路径围成的面积（可能为负） |
 
-#### 注意事项
+- 注意事项
 
 1. 路径应该是闭合的
 2. 返回值可能为负（取决于路径方向）
@@ -2797,21 +2714,18 @@ console.log(analyzer.getCentroid(shape));  // { x: 50, y: 50 }
 4. 基于精确的数学公式
 5. 支持复杂路径计算
 
-<hr>
 
-### getPathBBoxTotalLength
+## getPathBBoxTotalLength
 
 计算路径的边界框和总长度信息。
 
-#### 功能说明
+- 功能说明
 
 - 计算路径的边界框（BBox）
 - 计算路径的总长度
 - 计算中心点坐标
 - 提供估算的深度值
 - 处理空路径的情况
-
-#### 示例
 
 ```ts
 import { getPathBBoxTotalLength } from '@antv/util';
@@ -2912,20 +2826,20 @@ const path2: PathArray = [
 console.log(analyzer.checkCollision(path, path2));  // true
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | path | 路径数组 | PathArray | - | 要分析的路径数组 |
 | options | 配置选项 | Partial<PathLengthFactoryOptions> | - | 可选的配置参数 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 路径信息 | PathBBoxTotalLength | - | 包含边界框和长度信息的对象 |
 
-#### 返回对象属性
+- 返回对象属性
 
 | 属性 | 说明 | 类型 | 中文说明 |
 |---------|------|------|---------|
@@ -2940,21 +2854,18 @@ console.log(analyzer.checkCollision(path, path2));  // true
 | cy | 中心y | number | 边界框中心y坐标 |
 | cz | 深度估计 | number | 估算的深度值 |
 
-<hr>
 
-### getPathBBox
+## getPathBBox
 
 获取路径的边界框（Bounding Box）信息。
 
-#### 功能说明
+- 功能说明
 
 - 计算路径的边界框
 - 支持字符串或数组格式的路径
 - 计算中心点坐标
 - 提供估算的深度值
 - 处理空路径的情况
-
-#### 示例
 
 ```ts
 import { getPathBBox } from '@antv/util';
@@ -3049,20 +2960,20 @@ function positionElement(element: SVGElement, path: PathArray, padding = 10) {
 }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | path | 路径 | string \| PathArray | - | 要分析的路径 |
 | options | 配置选项 | Partial<PathLengthFactoryOptions> | - | 可选的配置参数 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 边界框信息 | PathBBox | - | 包含边界框信息的对象 |
 
-#### 返回对象属性
+- 返回对象属性
 
 | 属性 | 说明 | 类型 | 中文说明 |
 |---------|------|------|---------|
@@ -3076,21 +2987,18 @@ function positionElement(element: SVGElement, path: PathArray, padding = 10) {
 | cy | 中心y | number | 边界框中心y坐标 |
 | cz | 深度估计 | number | 估算的深度值 |
 
-<hr>
 
-### getPointAtLength
+## getPointAtLength
 
 获取路径上指定距离处的坐标点。
 
-#### 功能说明
+- 功能说明
 
 - 计算路径上特定距离的点坐标
 - 支持字符串或数组格式的路径
 - 基于路径总长度的比例计算
 - 支持自定义配置选项
 - 精确定位路径上的点
-
-#### 示例
 
 ```ts
 import { getPointAtLength } from '@antv/util';
@@ -3189,7 +3097,7 @@ const follower = animator.createFollower(path);
 console.log(follower.getPointAtPercent(0.5));  // 路径中点
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
@@ -3197,27 +3105,24 @@ console.log(follower.getPointAtPercent(0.5));  // 路径中点
 | distance | 距离 | number | - | 要获取点的距离 |
 | options | 配置选项 | Partial<PathLengthFactoryOptions> | - | 可选的配置参数 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | point | 坐标点 | [number, number] | - | 指定距离处的坐标点 |
 
-<hr>
 
-### getPropertiesAtLength
+## getPropertiesAtLength
 
 获取路径上指定距离处的段属性信息。
 
-#### 功能说明
+- 功能说明
 
 - 获取指定距离处的路径段信息
 - 计算到该段的累计长度
 - 返回段的索引和属性
 - 支持字符串或数组格式的路径
 - 处理边界情况
-
-#### 示例
 
 ```ts
 import { getPropertiesAtLength } from '@antv/util';
@@ -3316,20 +3221,20 @@ const segments = analyzer.splitPath(path, 4);
 console.log('Path segments:', segments);
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | pathInput | 路径 | string \| PathArray | - | 要分析的路径 |
 | distance | 距离 | number | - | 指定的距离 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 段属性 | SegmentProperties | - | 包含段信息的对象 |
 
-#### 返回对象属性
+- 返回对象属性
 
 | 属性 | 说明 | 类型 | 中文说明 |
 |---------|------|------|---------|
@@ -3339,21 +3244,18 @@ console.log('Path segments:', segments);
 | lengthAtSegment | 累计长度 | number | 到该段的累计长度 |
 | point | 坐标点 | {x: number, y: number} | 段终点坐标 |
 
-<hr>
 
-### getPropertiesAtPoint
+## getPropertiesAtPoint
 
 获取路径上距离指定点最近的位置及其属性信息。
 
-#### 功能说明
+- 功能说明
 
 - 查找路径上最接近给定点的位置
 - 计算点到路径的最短距离
 - 返回最近点的段属性信息
 - 使用二分查找优化精度
 - 支持复杂路径结构
-
-#### 示例
 
 ```ts
 import { getPropertiesAtPoint } from '@antv/util';
@@ -3452,20 +3354,20 @@ const unwatch = monitor.watch({ x: 0, y: 0 }, (info) => {
 });
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | pathInput | 路径 | string \| PathArray | - | 要分析的路径 |
 | point | 目标点 | Point | - | 要检测的点坐标 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 点属性 | PointProperties | - | 包含最近点信息的对象 |
 
-#### 返回对象属性
+- 返回对象属性
 
 | 属性 | 说明 | 类型 | 中文说明 |
 |---------|------|------|---------|
@@ -3473,21 +3375,18 @@ const unwatch = monitor.watch({ x: 0, y: 0 }, (info) => {
 | distance | 距离 | number | 到路径的最短距离 |
 | segment | 段属性 | SegmentProperties | 最近点所在段的属性 |
 
-<hr>
 
-### getRotatedCurve
+## getRotatedCurve
 
 获取最佳旋转匹配的曲线路径。
 
-#### 功能说明
+- 功能说明
 
 - 计算两个曲线之间的最佳旋转匹配
 - 通过比较点之间的距离来评估匹配度
 - 支持循环旋转比较
 - 返回最佳匹配的旋转路径
 - 优化路径变形效果
-
-#### 示例
 
 ```ts
 import { getRotatedCurve } from '@antv/util';
@@ -3590,34 +3489,31 @@ const bestMatch = matcher.findBestMatch(curve1);
 console.log(bestMatch);
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | a | 源曲线 | CurveArray | - | 源曲线路径 |
 | b | 目标曲线 | CurveArray | - | 目标曲线路径 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 旋转后的曲线 | CurveArray | - | 最佳匹配的旋转曲线 |
 
-<hr>
 
-### getTotalLength
+## getTotalLength
 
 计算路径的总长度。
 
-#### 功能说明
+- 功能说明
 
 - 计算路径的总长度
 - 支持字符串或数组格式的路径
 - 提供配置选项
 - 高效准确的长度计算
 - 等同于 SVG 的 getTotalLength() 方法
-
-#### 示例
 
 ```ts
 import { getTotalLength } from '@antv/util';
@@ -3724,34 +3620,31 @@ function animate(duration: number) {
 animate(1000);  // 1秒动画
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | pathInput | 路径 | string \| PathArray | - | 要计算长度的路径 |
 | options | 配置选项 | Partial<PathLengthFactoryOptions> | - | 可选的配置参数 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | length | 总长度 | number | - | 路径的总长度 |
 
-<hr>
 
-### isAbsoluteArray
+## isAbsoluteArray
 
 判断路径数组是否全部由绝对坐标命令组成。
 
-#### 功能说明
+- 功能说明
 
 - 检查路径数组是否为绝对坐标
 - 验证所有命令是否为大写
 - 类型保护功能
 - 支持路径数组格式
 - 用于路径验证
-
-#### 示例
 
 ```ts
 import { isAbsoluteArray } from '@antv/util';
@@ -3860,33 +3753,30 @@ function convertToAbsolute(path: PathArray): AbsoluteArray {
 }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | path | 路径 | string \| PathArray | - | 要检查的路径 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 判断结果 | boolean | - | 是否为绝对坐标路径 |
 
-<hr>
 
-### isCurveArray
+## isCurveArray
 
 判断路径数组是否全部由三次贝塞尔曲线段（C）和移动命令（M）组成。
 
-#### 功能说明
+- 功能说明
 
 - 检查路径是否为标准化的曲线数组
 - 验证所有段是否为 M 或 C 命令
 - 提供类型保护功能
 - 用于曲线路径验证
 - 确保路径格式一致性
-
-#### 示例
 
 ```ts
 import { isCurveArray } from '@antv/util';
@@ -4005,33 +3895,30 @@ function simplifyBezier(curves: PathArray, tolerance: number): PathArray {
 }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | path | 路径 | string \| PathArray | - | 要检查的路径 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 判断结果 | boolean | - | 是否为曲线数组 |
 
-<hr>
 
-### isNormalizedArray
+## isNormalizedArray
 
 判断路径数组是否为标准化的绝对坐标路径（不包含简写命令）。
 
-#### 功能说明
+- 功能说明
 
 - 检查路径是否使用绝对坐标
 - 验证是否只包含标准命令（A、C、L、M、Q、Z）
 - 不允许使用简写命令（H、V、S、T）
 - 提供类型保护功能
 - 确保路径格式标准化
-
-#### 示例
 
 ```ts
 import { isNormalizedArray } from '@antv/util';
@@ -4151,19 +4038,19 @@ function convertToNormalized(path: PathArray): PathArray {
 }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | path | 路径 | string \| PathArray | - | 要检查的路径 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 判断结果 | boolean | - | 是否为标准化路径 |
 
-#### 标准命令列表
+- 标准命令列表
 
 | 命令 | 说明 | 参数格式 |
 |---------|------|------|
@@ -4174,21 +4061,18 @@ function convertToNormalized(path: PathArray): PathArray {
 | Q | 二次贝塞尔曲线 | x1,y1,x,y |
 | Z | 闭合路径 | 无参数 |
 
-<hr>
 
-### isPathArray
+## isPathArray
 
 判断是否为有效的路径数组。
 
-#### 功能说明
+- 功能说明
 
 - 验证数组是否为有效的路径数组
 - 检查每个段的命令和参数数量
 - 支持所有标准 SVG 路径命令
 - 提供类型保护功能
 - 验证路径格式的完整性
-
-#### 示例
 
 ```ts
 import { isPathArray } from '@antv/util';
@@ -4317,19 +4201,19 @@ const newPath = builder
 console.log(isPathArray(newPath));  // true
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | path | 路径 | string \| PathArray | - | 要验证的路径 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 判断结果 | boolean | - | 是否为有效路径数组 |
 
-#### 支持的命令
+- 支持的命令
 
 | 命令 | 说明 | 参数数量 | 中文说明 |
 |---------|------|------|---------|
@@ -4344,21 +4228,18 @@ console.log(isPathArray(newPath));  // true
 | V/v | 垂直线 | 1 | 绘制垂直线 |
 | Z/z | 闭合路径 | 0 | 闭合路径 |
 
-<hr>
 
-### isPointInStroke
+## isPointInStroke
 
 判断点是否在路径的描边上。
 
-#### 功能说明
+- 功能说明
 
 - 检测点是否位于路径的描边上
 - 支持字符串或数组格式的路径
 - 使用距离阈值进行判断
 - 高精度检测（默认阈值 0.001）
 - 基于最近点距离计算
-
-#### 示例
 
 ```ts
 import { isPointInStroke } from '@antv/util';
@@ -4481,34 +4362,31 @@ const samplePoints = analyzer.getSamplePoints();
 console.log(analyzer.checkPointSequence(samplePoints));
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | pathInput | 路径 | string \| PathArray | - | 要检测的路径 |
 | point | 检测点 | Point | - | 要检测的点坐标 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 判断结果 | boolean | - | 点是否在路径描边上 |
 
-<hr>
 
-### midPoint
+## midPoint
 
 计算两点之间的中间点或按比例插值点。
 
-#### 功能说明
+- 功能说明
 
 - 计算两点之间的插值点
 - 支持任意比例的插值
 - 线性插值计算
 - 返回插值点坐标
 - 用于路径和动画计算
-
-#### 示例
 
 ```ts
 import { midPoint } from '@antv/util';
@@ -4616,7 +4494,7 @@ animator.animate(point => {
 });
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
@@ -4624,27 +4502,24 @@ animator.animate(point => {
 | b | 终点 | number[] | - | 终点坐标 |
 | t | 插值比例 | number | - | 0-1之间的插值比例 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | point | 插值点 | number[] | - | 计算得到的插值点坐标 |
 
-<hr>
 
-### pathLengthFactory
+## pathLengthFactory
 
 路径长度计算工厂函数，用于计算路径的长度、指定距离的点位置和边界框。
 
-#### 功能说明
+- 功能说明
 
 - 计算路径总长度
 - 获取指定距离处的点坐标
 - 计算路径的边界框
 - 支持所有标准路径命令
 - 处理复杂路径计算
-
-#### 示例
 
 ```ts
 import { pathLengthFactory } from '@antv/util';
@@ -4765,7 +4640,7 @@ animation.animate(point => {
 });
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
@@ -4773,13 +4648,13 @@ animation.animate(point => {
 | distance | 距离 | number | - | 可选的指定距离 |
 | options | 配置选项 | Partial<PathLengthFactoryOptions> | - | 可选的配置参数 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 计算结果 | LengthFactory | - | 包含长度和边界信息的对象 |
 
-#### 返回对象属性
+- 返回对象属性
 
 | 属性 | 说明 | 类型 | 中文说明 |
 |---------|------|------|---------|
@@ -4788,21 +4663,18 @@ animation.animate(point => {
 | min | 最小坐标 | {x: number, y: number} | 边界框最小坐标 |
 | max | 最大坐标 | {x: number, y: number} | 边界框最大坐标 |
 
-<hr>
 
-### rotateVector
+## rotateVector
 
 旋转二维向量，根据给定角度计算向量的新坐标。
 
-#### 功能说明
+- 功能说明
 
 - 将二维向量绕原点旋转
 - 使用弧度表示旋转角度
 - 基于旋转矩阵计算
 - 返回新的坐标点
 - 保持向量长度不变
-
-#### 示例
 
 ```ts
 import { rotateVector } from '@antv/util';
@@ -4922,7 +4794,7 @@ console.log(shapeGenerator.createRegularPolygon(100, 5));  // 正五边形
 console.log(shapeGenerator.createStar(100, 50, 5));        // 五角星
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
@@ -4930,27 +4802,24 @@ console.log(shapeGenerator.createStar(100, 50, 5));        // 五角星
 | y | y坐标 | number | - | 向量的y坐标 |
 | rad | 旋转角度 | number | - | 旋转的弧度值 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 旋转结果 | {x: number, y: number} | - | 旋转后的坐标点 |
 
-<hr>
 
-### segmentArcFactory
+## segmentArcFactory
 
 计算弧线段的长度、指定距离的点位置和边界框。
 
-#### 功能说明
+- 功能说明
 
 - 计算弧线段的总长度
 - 获取弧线上指定距离的点
 - 计算弧线的边界框
 - 支持椭圆弧参数
 - 提供采样点精度控制
-
-#### 示例
 
 ```ts
 import { segmentArcFactory } from '@antv/util';
@@ -5085,7 +4954,7 @@ animation.animate(point => {
 });
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
@@ -5098,13 +4967,13 @@ animation.animate(point => {
 | distance | 距离 | number | - | 指定距离 |
 | options | 配置选项 | Partial<PathLengthFactoryOptions> | - | 配置参数 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 计算结果 | LengthFactory | - | 包含长度和边界信息的对象 |
 
-#### 配置选项
+- 配置选项
 
 | 选项 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
@@ -5112,21 +4981,18 @@ animation.animate(point => {
 | length | 是否计算长度 | boolean | true | 是否计算长度 |
 | sampleSize | 采样点数量 | number | 30 | 采样精度 |
 
-<hr>
 
-### segmentCubicFactory
+## segmentCubicFactory
 
 计算三次贝塞尔曲线段的长度、指定距离的点位置和边界框。
 
-#### 功能说明
+- 功能说明
 
 - 计算贝塞尔曲线段的总长度
 - 获取曲线上指定距离的点
 - 计算曲线的边界框
 - 支持采样点精度控制
 - 基于贝塞尔曲线公式计算
-
-#### 示例
 
 ```ts
 import { segmentCubicFactory } from '@antv/util';
@@ -5285,7 +5151,7 @@ animation.animate(point => {
 });
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
@@ -5296,13 +5162,13 @@ animation.animate(point => {
 | distance | 距离 | number | - | 指定距离 |
 | options | 配置选项 | Partial<PathLengthFactoryOptions> | - | 配置参数 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 计算结果 | LengthFactory | - | 包含长度和边界信息的对象 |
 
-#### 配置选项
+- 配置选项
 
 | 选项 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
@@ -5310,21 +5176,18 @@ animation.animate(point => {
 | length | 是否计算长度 | boolean | true | 是否计算长度 |
 | sampleSize | 采样点数量 | number | 10 | 采样精度 |
 
-<hr>
 
-### segmentLineFactory
+## segmentLineFactory
 
 计算直线段的长度、指定距离的点位置和边界框。
 
-#### 功能说明
+- 功能说明
 
 - 计算直线段的总长度
 - 获取线段上指定距离的点
 - 计算线段的边界框
 - 支持垂直线和水平线
 - 处理闭合路径（Z命令）
-
-#### 示例
 
 ```ts
 import { segmentLineFactory } from '@antv/util';
@@ -5471,7 +5334,7 @@ const grid = gridGenerator.generateGrid(200, 200, 4, 4);
 console.log(grid);
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
@@ -5479,27 +5342,24 @@ console.log(grid);
 | x2, y2 | 终点坐标 | number | - | 线段终点 |
 | distance | 距离 | number | - | 指定距离 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 计算结果 | LengthFactory | - | 包含长度和边界信息的对象 |
 
-<hr>
 
-### segmentQuadFactory
+## segmentQuadFactory
 
 计算二次贝塞尔曲线段的长度、指定距离的点位置和边界框。
 
-#### 功能说明
+- 功能说明
 
 - 计算二次贝塞尔曲线的总长度
 - 获取曲线上指定距离的点
 - 计算曲线的边界框
 - 支持采样点精度控制
 - 基于二次贝塞尔曲线公式计算
-
-#### 示例
 
 ```ts
 import { segmentQuadFactory } from '@antv/util';
@@ -5644,7 +5504,7 @@ animation.animate(point => {
 });
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
@@ -5654,13 +5514,13 @@ animation.animate(point => {
 | distance | 距离 | number | - | 指定距离 |
 | options | 配置选项 | Partial<PathLengthFactoryOptions> | - | 配置参数 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 计算结果 | LengthFactory | - | 包含长度和边界信息的对象 |
 
-#### 配置选项
+- 配置选项
 
 | 选项 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
@@ -5668,21 +5528,18 @@ animation.animate(point => {
 | length | 是否计算长度 | boolean | true | 是否计算长度 |
 | sampleSize | 采样点数量 | number | 10 | 采样精度 |
 
-<hr>
 
-### path2Absolute
+## path2Absolute
 
 将路径数组或路径字符串转换为绝对坐标路径数组。
 
-#### 功能说明
+- 功能说明
 
 - 将相对路径命令转换为绝对路径命令
 - 支持所有 SVG 路径命令（M, L, H, V, C, S, Q, T, A, Z）
 - 保持路径的形状不变
 - 跟踪当前绘制点的位置
 - 处理闭合路径命令（Z）
-
-#### 示例
 
 ```ts
 import { path2Absolute } from '@antv/util';
@@ -5726,19 +5583,19 @@ console.log(normalizePath(path));
 // "M10,20 L40,60 H90 Z"
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | pathInput | 路径输入 | string \| PathArray | - | SVG路径字符串或路径数组 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 绝对路径数组 | AbsoluteArray | - | 转换后的绝对坐标路径数组 |
 
-#### 支持的路径命令
+- 支持的路径命令
 
 | 命令 | 说明 | 相对命令 | 绝对命令 |
 |---------|------|------|---------|
@@ -5753,7 +5610,7 @@ console.log(normalizePath(path));
 | A/a | 弧线 | a | A |
 | Z/z | 闭合路径 | z | Z |
 
-#### 注意事项
+- 注意事项
 
 1. 输入可以是字符串或路径数组
 2. 所有数值会被转换为数字类型
@@ -5761,21 +5618,18 @@ console.log(normalizePath(path));
 4. 跟踪当前点位置以计算绝对坐标
 5. 处理路径闭合时返回到起始点
 
-<hr>
 
-### path2Array
+## path2Array
 
 将 SVG 路径字符串转换为标准的路径数组格式。
 
-#### 功能说明
+- 功能说明
 
 - 将 SVG 路径字符串解析为数组格式
 - 使用 parsePathString 进行解析
 - 返回标准化的路径数组
 - 便于路径数据的处理和操作
 - 类型安全的转换
-
-#### 示例
 
 ```ts
 import { path2Array } from '@antv/util';
@@ -5845,19 +5699,19 @@ console.log(translatePath('M10,10 L20,20', 5, 10));
 // [['M', 15, 20], ['L', 25, 30]]
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | pathInput | SVG路径字符串 | string | - | 需要转换的SVG路径字符串 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 路径数组 | PathArray | - | 转换后的标准路径数组 |
 
-#### 路径数组格式
+- 路径数组格式
 
 ```typescript
 type PathArray = [string, ...number[]][];
@@ -5867,7 +5721,7 @@ type PathArray = [string, ...number[]][];
 - 第一个元素是命令字符串
 - 后续元素是该命令的参数值
 
-#### 注意事项
+- 注意事项
 
 1. 输入必须是有效的SVG路径字符串
 2. 返回类型安全的路径数组
@@ -5875,21 +5729,18 @@ type PathArray = [string, ...number[]][];
 4. 支持所有标准SVG路径命令
 5. 便于后续处理和转换
 
-<hr>
 
-### path2Curve
+## path2Curve
 
 将 SVG 路径转换为三次贝塞尔曲线路径。
 
-#### 功能说明
+- 功能说明
 
 - 将各种路径命令转换为三次贝塞尔曲线（C命令）
 - 保持路径的形状不变
 - 支持记录闭合路径（Z命令）的位置
 - 处理弧线命令的特殊情况
 - 维护曲线的连续性
-
-#### 示例
 
 ```ts
 import { path2Curve } from '@antv/util';
@@ -5962,20 +5813,20 @@ function getBezierPoint(points: number[], t: number) {
 }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | pathInput | 路径输入 | string \| PathArray | - | SVG路径字符串或路径数组 |
 | needZCommandIndexes | 是否需要Z命令索引 | boolean | false | 是否返回闭合路径命令的位置 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 转换结果 | CurveArray \| [CurveArray, number[]] | - | 曲线数组或带Z命令索引的元组 |
 
-#### 注意事项
+- 注意事项
 
 1. 所有路径段都转换为C命令
 2. 保持路径的视觉效果不变
@@ -5983,21 +5834,18 @@ function getBezierPoint(points: number[], t: number) {
 4. 可选择保留Z命令位置
 5. 支持弧线命令的转换
 
-<hr>
 
-### path2String
+## path2String
 
 将路径数组转换为 SVG 路径字符串，支持数值精度控制。
 
-#### 功能说明
+- 功能说明
 
 - 将路径数组转换为 SVG 路径字符串
 - 支持数值精度的四舍五入
 - 生成标准的 SVG path 'd' 属性值
 - 连接所有路径段
 - 优化输出格式
-
-#### 示例
 
 ```ts
 import { path2String } from '@antv/util';
@@ -6066,20 +5914,20 @@ function animatePath(pathElement: SVGPathElement, newPath: PathArray) {
 }
 ```
 
-#### 参数说明
+- 参数说明
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | path | 路径数组 | PathArray | - | 要转换的路径数组 |
 | round | 精度控制 | number \| 'off' | 'off' | 数值精度（小数位数）或关闭四舍五入 |
 
-#### 返回值
+- 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | result | 路径字符串 | string | - | SVG路径字符串（d属性值） |
 
-#### 注意事项
+- 注意事项
 
 1. 输入必须是有效的路径数组
 2. 精度控制影响所有数值
@@ -6087,7 +5935,6 @@ function animatePath(pathElement: SVGPathElement, newPath: PathArray) {
 4. 生成的字符串符合SVG标准
 5. 命令和参数之间使用空格分隔
 
-<hr>
 
 ## 常量
 
