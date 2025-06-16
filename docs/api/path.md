@@ -114,7 +114,7 @@ console.log(trimString('\t\nhello\r\n'));  // "hello"
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| ch | 字符编码 | number | - | 要检查的字符的Unicode编码值 |
+| ch | 字符编码 | number | - | 要检查的字符的 Unicode 编码值 |
 
 - 返回值
 
@@ -131,7 +131,7 @@ console.log(trimString('\t\nhello\r\n'));  // "hello"
 | 换行符 | 0x0a | 换行 |
 | 回车符 | 0x0d | 回车 |
 | 行终止符 | 0x2028, 0x2029 | 行分隔符，段落分隔符 |
-| 特殊空格 | 0x1680-0xfeff | 各种Unicode空白字符 |
+| 特殊空格 | 0x1680-0xfeff | 各种 Unicode 空白字符 |
 
 
 ## isPathCommand
@@ -187,7 +187,7 @@ console.log(parsePath('m5,5 l10,10'));   // ['m5,5', 'l10,10']
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| code | 字符编码 | number | - | 要检查的字符的Unicode编码值 |
+| code | 字符编码 | number | - | 要检查的字符的 Unicode 编码值 |
 
 - 返回值
 
@@ -260,7 +260,7 @@ console.log(parseNumber('.75%'));        // { value: 0.75, length: 3 }
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| code | 字符编码 | number | - | 要检查的字符的Unicode编码值 |
+| code | 字符编码 | number | - | 要检查的字符的 Unicode 编码值 |
 
 - 返回值
 
@@ -322,7 +322,7 @@ console.log(isNumericString('12a34'));   // false
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| code | 字符编码 | number | - | 要检查的字符的Unicode编码值 |
+| code | 字符编码 | number | - | 要检查的字符的 Unicode 编码值 |
 
 - 返回值
 
@@ -413,7 +413,7 @@ console.log(parseArcParams(arc));
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| code | 字符编码 | number | - | 要检查的字符的Unicode编码值 |
+| code | 字符编码 | number | - | 要检查的字符的 Unicode 编码值 |
 
 - 返回值
 
@@ -576,7 +576,7 @@ console.log(createPathObject(path));
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| pathInput | 路径输入 | PathArray \| string | - | SVG路径字符串或路径数组 |
+| pathInput | 路径输入 | PathArray \| string | - | SVG 路径字符串或路径数组 |
 
 - 返回值
 
@@ -1135,12 +1135,12 @@ function bezierPoint(p0: number[], p1: number[], p2: number[], p3: number[], t: 
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| X1, Y1 | 起点坐标 | number | - | 弧线起点的x,y坐标 |
-| RX, RY | 半径 | number | - | 椭圆的x,y半径 |
+| X1, Y1 | 起点坐标 | number | - | 弧线起点的 x,y 坐标 |
+| RX, RY | 半径 | number | - | 椭圆的 x,y 半径 |
 | angle | 旋转角度 | number | - | 椭圆的旋转角度（度） |
-| LAF | 大弧标志 | number | - | 是否选择大弧（0或1） |
-| SF | 顺时针标志 | number | - | 是否顺时针绘制（0或1） |
-| X2, Y2 | 终点坐标 | number | - | 弧线终点的x,y坐标 |
+| LAF | 大弧标志 | number | - | 是否选择大弧（0 或 1） |
+| SF | 顺时针标志 | number | - | 是否顺时针绘制（0 或 1） |
+| X2, Y2 | 终点坐标 | number | - | 弧线终点的 x,y 坐标 |
 | recursive | 递归参数 | number[] | - | 用于递归调用的参数数组 |
 
 - 返回值
@@ -1454,10 +1454,10 @@ console.log(animator(1));    // { x: 100, y: 100 }
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| x1 | 起点x坐标 | number | - | 直线起点的x坐标 |
-| y1 | 起点y坐标 | number | - | 直线起点的y坐标 |
-| x2 | 终点x坐标 | number | - | 直线终点的x坐标 |
-| y2 | 终点y坐标 | number | - | 直线终点的y坐标 |
+| x1 | 起点 x 坐标 | number | - | 直线起点的 x 坐标 |
+| y1 | 起点 y 坐标 | number | - | 直线起点的 y 坐标 |
+| x2 | 终点 x 坐标 | number | - | 直线终点的 x 坐标 |
+| y2 | 终点 y 坐标 | number | - | 直线终点的 y 坐标 |
 
 - 返回值
 
@@ -1467,7 +1467,7 @@ console.log(animator(1));    // { x: 100, y: 100 }
 
 - 注意事项
 
-1. 返回6个数值（3个控制点）
+1. 返回 6 个数值（3 个控制点）
 2. 使用中点作为控制点
 3. 保持直线的视觉效果
 4. 便于统一处理
@@ -1575,7 +1575,7 @@ console.log(analyzer.getBBox());
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| pathInput | 路径输入 | string \| PathArray | - | SVG路径字符串或路径数组 |
+| pathInput | 路径输入 | string \| PathArray | - | SVG 路径字符串或路径数组 |
 
 - 返回值
 
@@ -1801,12 +1801,12 @@ console.log(animator(1));    // { x: 100, y: 0 }
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| x1 | 起点x坐标 | number | - | 曲线起点的x坐标 |
-| y1 | 起点y坐标 | number | - | 曲线起点的y坐标 |
-| qx | 控制点x坐标 | number | - | 二次贝塞尔曲线控制点的x坐标 |
-| qy | 控制点y坐标 | number | - | 二次贝塞尔曲线控制点的y坐标 |
-| x2 | 终点x坐标 | number | - | 曲线终点的x坐标 |
-| y2 | 终点y坐标 | number | - | 曲线终点的y坐标 |
+| x1 | 起点 x 坐标 | number | - | 曲线起点的 x 坐标 |
+| y1 | 起点 y 坐标 | number | - | 曲线起点的 y 坐标 |
+| qx | 控制点 x 坐标 | number | - | 二次贝塞尔曲线控制点的 x 坐标 |
+| qy | 控制点 y 坐标 | number | - | 二次贝塞尔曲线控制点的 y 坐标 |
+| x2 | 终点 x 坐标 | number | - | 曲线终点的 x 坐标 |
+| y2 | 终点 y 坐标 | number | - | 曲线终点的 y 坐标 |
 
 - 返回值
 
@@ -1818,7 +1818,7 @@ console.log(animator(1));    // { x: 100, y: 0 }
 
 1. 保持曲线形状不变
 2. 使用固定比例计算
-3. 返回6个坐标值
+3. 返回 6 个坐标值
 4. 适用于路径转换
 5. 便于统一处理
 
@@ -2583,7 +2583,7 @@ console.log(processCompoundPath(compound));
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| result | 方向判断结果 | boolean | - | true表示顺时针，false表示逆时针 |
+| result | 方向判断结果 | boolean | - | true 表示顺时针，false 表示逆时针 |
 
 - 注意事项
 
@@ -2846,12 +2846,12 @@ console.log(analyzer.checkCollision(path, path2));  // true
 | length | 路径长度 | number | 路径的总长度 |
 | width | 宽度 | number | 边界框的宽度 |
 | height | 高度 | number | 边界框的高度 |
-| x | 左上角x | number | 边界框左上角x坐标 |
-| y | 左上角y | number | 边界框左上角y坐标 |
-| x2 | 右下角x | number | 边界框右下角x坐标 |
-| y2 | 右下角y | number | 边界框右下角y坐标 |
-| cx | 中心x | number | 边界框中心x坐标 |
-| cy | 中心y | number | 边界框中心y坐标 |
+| x | 左上角 x | number | 边界框左上角 x 坐标 |
+| y | 左上角 y | number | 边界框左上角 y 坐标 |
+| x2 | 右下角 x | number | 边界框右下角 x 坐标 |
+| y2 | 右下角 y | number | 边界框右下角 y 坐标 |
+| cx | 中心 x | number | 边界框中心 x 坐标 |
+| cy | 中心 y | number | 边界框中心 y 坐标 |
 | cz | 深度估计 | number | 估算的深度值 |
 
 
@@ -2979,12 +2979,12 @@ function positionElement(element: SVGElement, path: PathArray, padding = 10) {
 |---------|------|------|---------|
 | width | 宽度 | number | 边界框的宽度 |
 | height | 高度 | number | 边界框的高度 |
-| x | 左上角x | number | 边界框左上角x坐标 |
-| y | 左上角y | number | 边界框左上角y坐标 |
-| x2 | 右下角x | number | 边界框右下角x坐标 |
-| y2 | 右下角y | number | 边界框右下角y坐标 |
-| cx | 中心x | number | 边界框中心x坐标 |
-| cy | 中心y | number | 边界框中心y坐标 |
+| x | 左上角 x | number | 边界框左上角 x 坐标 |
+| y | 左上角 y | number | 边界框左上角 y 坐标 |
+| x2 | 右下角 x | number | 边界框右下角 x 坐标 |
+| y2 | 右下角 y | number | 边界框右下角 y 坐标 |
+| cx | 中心 x | number | 边界框中心 x 坐标 |
+| cy | 中心 y | number | 边界框中心 y 坐标 |
 | cz | 深度估计 | number | 估算的深度值 |
 
 
@@ -4500,7 +4500,7 @@ animator.animate(point => {
 |---------|------|------|---------|----------|
 | a | 起始点 | number[] | - | 起始点坐标 |
 | b | 终点 | number[] | - | 终点坐标 |
-| t | 插值比例 | number | - | 0-1之间的插值比例 |
+| t | 插值比例 | number | - | 0-1 之间的插值比例 |
 
 - 返回值
 
@@ -4798,8 +4798,8 @@ console.log(shapeGenerator.createStar(100, 50, 5));        // 五角星
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| x | x坐标 | number | - | 向量的x坐标 |
-| y | y坐标 | number | - | 向量的y坐标 |
+| x | x 坐标 | number | - | 向量的 x 坐标 |
+| y | y 坐标 | number | - | 向量的 y 坐标 |
 | rad | 旋转角度 | number | - | 旋转的弧度值 |
 
 - 返回值
@@ -5156,8 +5156,8 @@ animation.animate(point => {
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | x1, y1 | 起点坐标 | number | - | 曲线起点 |
-| c1x, c1y | 控制点1 | number | - | 第一控制点 |
-| c2x, c2y | 控制点2 | number | - | 第二控制点 |
+| c1x, c1y | 控制点 1 | number | - | 第一控制点 |
+| c2x, c2y | 控制点 2 | number | - | 第二控制点 |
 | x2, y2 | 终点坐标 | number | - | 曲线终点 |
 | distance | 距离 | number | - | 指定距离 |
 | options | 配置选项 | Partial<PathLengthFactoryOptions> | - | 配置参数 |
@@ -5187,7 +5187,7 @@ animation.animate(point => {
 - 获取线段上指定距离的点
 - 计算线段的边界框
 - 支持垂直线和水平线
-- 处理闭合路径（Z命令）
+- 处理闭合路径（Z 命令）
 
 ```ts
 import { segmentLineFactory } from '@antv/util';
@@ -5587,7 +5587,7 @@ console.log(normalizePath(path));
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| pathInput | 路径输入 | string \| PathArray | - | SVG路径字符串或路径数组 |
+| pathInput | 路径输入 | string \| PathArray | - | SVG 路径字符串或路径数组 |
 
 - 返回值
 
@@ -5703,7 +5703,7 @@ console.log(translatePath('M10,10 L20,20', 5, 10));
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| pathInput | SVG路径字符串 | string | - | 需要转换的SVG路径字符串 |
+| pathInput | SVG 路径字符串 | string | - | 需要转换的 SVG 路径字符串 |
 
 - 返回值
 
@@ -5723,10 +5723,10 @@ type PathArray = [string, ...number[]][];
 
 - 注意事项
 
-1. 输入必须是有效的SVG路径字符串
+1. 输入必须是有效的 SVG 路径字符串
 2. 返回类型安全的路径数组
 3. 保持原始路径的完整性
-4. 支持所有标准SVG路径命令
+4. 支持所有标准 SVG 路径命令
 5. 便于后续处理和转换
 
 
@@ -5736,9 +5736,9 @@ type PathArray = [string, ...number[]][];
 
 - 功能说明
 
-- 将各种路径命令转换为三次贝塞尔曲线（C命令）
+- 将各种路径命令转换为三次贝塞尔曲线（C 命令）
 - 保持路径的形状不变
-- 支持记录闭合路径（Z命令）的位置
+- 支持记录闭合路径（Z 命令）的位置
 - 处理弧线命令的特殊情况
 - 维护曲线的连续性
 
@@ -5817,21 +5817,21 @@ function getBezierPoint(points: number[], t: number) {
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| pathInput | 路径输入 | string \| PathArray | - | SVG路径字符串或路径数组 |
-| needZCommandIndexes | 是否需要Z命令索引 | boolean | false | 是否返回闭合路径命令的位置 |
+| pathInput | 路径输入 | string \| PathArray | - | SVG 路径字符串或路径数组 |
+| needZCommandIndexes | 是否需要 Z 命令索引 | boolean | false | 是否返回闭合路径命令的位置 |
 
 - 返回值
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| result | 转换结果 | CurveArray \| [CurveArray, number[]] | - | 曲线数组或带Z命令索引的元组 |
+| result | 转换结果 | CurveArray \| [CurveArray, number[]] | - | 曲线数组或带 Z 命令索引的元组 |
 
 - 注意事项
 
-1. 所有路径段都转换为C命令
+1. 所有路径段都转换为 C 命令
 2. 保持路径的视觉效果不变
 3. 维护曲线的连续性
-4. 可选择保留Z命令位置
+4. 可选择保留 Z 命令位置
 5. 支持弧线命令的转换
 
 
@@ -5925,14 +5925,14 @@ function animatePath(pathElement: SVGPathElement, newPath: PathArray) {
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| result | 路径字符串 | string | - | SVG路径字符串（d属性值） |
+| result | 路径字符串 | string | - | SVG 路径字符串（d 属性值） |
 
 - 注意事项
 
 1. 输入必须是有效的路径数组
 2. 精度控制影响所有数值
 3. 'off' 表示不进行四舍五入
-4. 生成的字符串符合SVG标准
+4. 生成的字符串符合 SVG 标准
 5. 命令和参数之间使用空格分隔
 
 

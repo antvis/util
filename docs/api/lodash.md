@@ -6,21 +6,21 @@
   - [isBoolean](#isboolean) - 判断布尔值
   - [isNumber](#isnumber) - 判断数字
   - [isString](#isstring) - 判断字符串
-  - [isNil](#isnil) - 判断null/undefined
-  - [isNull](#isnull) - 判断null
-  - [isUndefined](#isundefined) - 判断undefined
+  - [isNil](#isnil) - 判断 null/undefined
+  - [isNull](#isnull) - 判断 null
+  - [isUndefined](#isundefined) - 判断 undefined
   - [isArray](#isarray) - 判断数组
   - [isArrayLike](#isarraylike) - 判断类数组
   - [isObject](#isobject) - 判断对象
   - [isObjectLike](#isobjectlike) - 判断类对象
   - [isPlainObject](#isplainobject) - 判断普通对象
   - [isPrototype](#isprototype) - 判断原型对象
-  - [isArguments](#isarguments) - 判断Arguments
+  - [isArguments](#isarguments) - 判断 Arguments
   - [isDate](#isdate) - 判断日期
   - [isError](#iserror) - 判断错误
   - [isFunction](#isfunction) - 判断函数
   - [isRegExp](#isregexp) - 判断正则
-  - [isElement](#iselement) - 判断DOM元素
+  - [isElement](#iselement) - 判断 DOM 元素
   - [isType](#istype) - 判断具体类型
   - [getType](#gettype) - 获取值类型
 - 数组 `array` 相关
@@ -110,7 +110,7 @@
   - [requestAnimationFrame](#requestanimationframe) - 请求动画帧
   - [cancelAnimationFrame](#cancelanimationframe) - 取消动画帧
   - [size](#size) - 获取集合大小
-  - [uniqueId](#uniqueid) - 生成唯一ID
+  - [uniqueId](#uniqueid) - 生成唯一 ID
 
 ## contains/includes
 
@@ -318,7 +318,7 @@ console.log(findUserByNamePattern('ja'));  // { id: 2, name: 'Jane', role: 'user
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| result | 查找结果 | T \| null | - | 匹配的元素或null |
+| result | 查找结果 | T \| null | - | 匹配的元素或 null |
 
 ## findIndex
 
@@ -437,7 +437,7 @@ console.log(firstValue(dataset, 'missing'));  // null
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| value | 属性值 | any | null | 找到的第一个值或null |
+| value | 属性值 | any | null | 找到的第一个值或 null |
 
 ## flatten
 
@@ -831,7 +831,7 @@ console.log(items);     // [{ id: 2, active: true }, { id: 3, active: true }]
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | arr | 数组 | T[] | - | 要修改的数组 |
-| predicate | 判断函数 | (value: T, idx: number, arr?: T[]) => boolean | - | 返回true表示移除该元素 |
+| predicate | 判断函数 | (value: T, idx: number, arr?: T[]) => boolean | - | 返回 true 表示移除该元素 |
 
 - 返回值
 
@@ -1092,7 +1092,7 @@ console.log(head(42));         // undefined
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| result | 首个元素 | any | undefined | 第一个元素或undefined |
+| result | 首个元素 | any | undefined | 第一个元素或 undefined |
 
 ## last
 
@@ -1135,7 +1135,7 @@ console.log(last(42));         // undefined
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| result | 最后元素 | any | undefined | 最后一个元素或undefined |
+| result | 最后元素 | any | undefined | 最后一个元素或 undefined |
 
 ## startsWith
 
@@ -1275,7 +1275,7 @@ console.log(filter(arrayLike as any, v => v > 'a'));  // ['b', 'c']
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
 | arr | 数组 | T[] | - | 要过滤的数组 |
-| func | 过滤函数 | (v: T, idx: number) => boolean | - | 返回true表示保留该元素 |
+| func | 过滤函数 | (v: T, idx: number) => boolean | - | 返回 true 表示保留该元素 |
 
 - 返回值
 
@@ -3726,9 +3726,9 @@ console.log(mix({}, { a: 1, b: undefined }));
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
 | dist | 目标对象 | Base & A & B & C | - |
-| src1 | 源对象1 | A | - |
-| src2 | 源对象2 | B | - |
-| src3 | 源对象3 | C | - |
+| src1 | 源对象 1 | A | - |
+| src2 | 源对象 2 | B | - |
+| src3 | 源对象 3 | C | - |
 
 ## get
 
@@ -3948,7 +3948,7 @@ console.log(toString({}));        // "[object Object]"
 
 ## uniqueId
 
-生成带前缀的唯一ID。
+生成带前缀的唯一 ID。
 
 - 示例
 
@@ -3969,13 +3969,13 @@ console.log(uniqueId('b_'));    // "b_1"
 
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
-| prefix | ID前缀 | string | 'g' |
+| prefix | ID 前缀 | string | 'g' |
 
 - 返回值
 
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
-| result | 唯一ID | string | - |
+| result | 唯一 ID | string | - |
 
 ## size
 

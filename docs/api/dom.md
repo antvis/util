@@ -54,13 +54,13 @@ function createTooltip(content: string) {
 
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
-| str | HTML字符串 | string | - |
+| str | HTML 字符串 | string | - |
 
 - 返回值
 
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
-| element | DOM元素 | HTMLElement | - |
+| element | DOM 元素 | HTMLElement | - |
 
 
 ## modifyCSS
@@ -127,11 +127,11 @@ function updateElementStyle(element: HTMLElement, isActive: boolean) {
 
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
-| dom | DOM元素 | HTMLElement \| null \| undefined | - |
-| css | CSS样式对象 | { [key: string]: any } | - |
+| dom | DOM 元素 | HTMLElement \| null \| undefined | - |
+| css | CSS 样式对象 | { [key: string]: any } | - |
 
 - 返回值
 
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
-| element | DOM元素 | HTMLElement | - |
+| element | DOM 元素 | HTMLElement | - |
