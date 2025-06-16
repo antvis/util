@@ -50,7 +50,7 @@ export { default as min } from './min';
 export { default as minBy } from './min-by';
 export { default as mod } from './mod';
 export { default as toDegree } from './to-degree';
-export { default as toInteger } from './to-integer'; // 
+export { default as toInteger } from './to-integer';
 export { default as toRadian } from './to-radian';
 
 // object
