@@ -2,6 +2,9 @@ import { isAbsoluteArray } from '../util/is-absolute-array';
 import { parsePathString } from '../parser/parse-path-string';
 import type { PathArray, AbsoluteArray, AbsoluteSegment } from '../types';
 
+/**
+ * Converts a `PathArray` to an `AbsoluteArray`.
+ */
 export function path2Absolute(pathInput: string | PathArray): AbsoluteArray {
   if (isAbsoluteArray(pathInput)) {
     return [].concat(pathInput) as AbsoluteArray;
