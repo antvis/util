@@ -34,17 +34,17 @@ function getCurveArray(segments: PathArray) {
     // @ts-ignore
     const curveLength = i
       ? segmentCubicFactory(
-        segmentData[0],
-        segmentData[1],
-        segmentData[2],
-        segmentData[3],
-        segmentData[4],
-        segmentData[5],
-        segmentData[6],
-        segmentData[7],
-        segmentData[8],
-        { bbox: false },
-      ).length
+          segmentData[0],
+          segmentData[1],
+          segmentData[2],
+          segmentData[3],
+          segmentData[4],
+          segmentData[5],
+          segmentData[6],
+          segmentData[7],
+          segmentData[8],
+          { bbox: false },
+        ).length
       : 0;
 
     let subsegs;
@@ -85,12 +85,12 @@ export function equalizeSegments(path1: PathArray, path2: PathArray, TL?: number
     x.l === tl
       ? x.map((y) => y.s)
       : x
-        .map((y, j) => {
-          canSplit = j && dif[i] && y.l >= mm[i];
-          dif[i] -= canSplit ? 1 : 0;
-          return canSplit ? y.ss : [y.s];
-        })
-        .flat(),
+          .map((y, j) => {
+            canSplit = j && dif[i] && y.l >= mm[i];
+            dif[i] -= canSplit ? 1 : 0;
+            return canSplit ? y.ss : [y.s];
+          })
+          .flat(),
   ) as CurveArray[];
 
   return result[0].length === result[1].length ? result : equalizeSegments(result[0], result[1], tl, depth + 1);
