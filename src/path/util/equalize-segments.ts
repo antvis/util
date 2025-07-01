@@ -4,6 +4,8 @@ import { segmentCubicFactory } from './segment-cubic-factory';
 
 type SplitArray = [number, number, number, number, number, number, number, number, number];
 
+const MAX_RECURSION_DEPTH = 50;
+
 function splitCubic(pts: SplitArray, t = 0.5): [CurveArray, CurveArray] {
   const p0 = pts.slice(0, 2) as [number, number];
   const p1 = pts.slice(2, 4) as [number, number];
@@ -61,7 +63,11 @@ function getCurveArray(segments: PathArray) {
   });
 }
 
-export function equalizeSegments(path1: PathArray, path2: PathArray, TL?: number): CurveArray[] {
+export function equalizeSegments(path1: PathArray, path2: PathArray, TL?: number, depth = 0): CurveArray[] {
+  if (depth > MAX_RECURSION_DEPTH) {
+    console.warn('Maximum recursion depth reached in equalizeSegments');
+    return [path1, path2] as CurveArray[];
+  }
   const c1 = getCurveArray(path1);
   const c2 = getCurveArray(path2);
   const L1 = c1.length;
@@ -87,5 +93,5 @@ export function equalizeSegments(path1: PathArray, path2: PathArray, TL?: number
           .flat(),
   ) as CurveArray[];
 
-  return result[0].length === result[1].length ? result : equalizeSegments(result[0], result[1], tl);
+  return result[0].length === result[1].length ? result : equalizeSegments(result[0], result[1], tl, depth + 1);
 }
