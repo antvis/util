@@ -13,6 +13,7 @@ lerna-debug.log*
 # Node
 node_modules/
 yarn.lock
+package-lock.json
 
 # Build
 dist
