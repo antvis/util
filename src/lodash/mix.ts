@@ -2,11 +2,7 @@
 function _mix<Base, Source>(dist: Base & Source, obj: Source): void {
   for (const key in obj) {
     // Prevent prototype pollution by skipping dangerous keys
-    if (
-      key === '__proto__' ||
-      key === 'constructor' ||
-      key === 'prototype'
-    ) {
+    if (key === '__proto__' || key === 'constructor' || key === 'prototype') {
       continue;
     }
     if (obj.hasOwnProperty(key) && obj[key] !== undefined) {
