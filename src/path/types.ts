@@ -30,27 +30,9 @@ export type ACommand = 'A';
 export type aCommand = 'a';
 
 export type AbsoluteCommand =
-  | MCommand
-  | LCommand
-  | VCommand
-  | HCommand
-  | ZCommand
-  | CCommand
-  | SCommand
-  | QCommand
-  | TCommand
-  | ACommand;
+  MCommand | LCommand | VCommand | HCommand | ZCommand | CCommand | SCommand | QCommand | TCommand | ACommand;
 export type RelativeCommand =
-  | mCommand
-  | lCommand
-  | vCommand
-  | hCommand
-  | zCommand
-  | cCommand
-  | sCommand
-  | qCommand
-  | tCommand
-  | aCommand;
+  mCommand | lCommand | vCommand | hCommand | zCommand | cCommand | sCommand | qCommand | tCommand | aCommand;
 
 export type PathCommand = AbsoluteCommand | RelativeCommand;
 
@@ -120,27 +102,9 @@ export interface SegmentProperties {
 
 export type ShortSegment = VertLineSegment | HorLineSegment | ShortCubicSegment | ShortQuadSegment | CloseSegment;
 export type AbsoluteSegment =
-  | MSegment
-  | LSegment
-  | VSegment
-  | HSegment
-  | CSegment
-  | SSegment
-  | QSegment
-  | TSegment
-  | ASegment
-  | ZSegment;
+  MSegment | LSegment | VSegment | HSegment | CSegment | SSegment | QSegment | TSegment | ASegment | ZSegment;
 export type RelativeSegment =
-  | mSegment
-  | lSegment
-  | vSegment
-  | hSegment
-  | cSegment
-  | sSegment
-  | qSegment
-  | tSegment
-  | aSegment
-  | zSegment;
+  mSegment | lSegment | vSegment | hSegment | cSegment | sSegment | qSegment | tSegment | aSegment | zSegment;
 export type NormalSegment = MSegment | LSegment | CSegment | QSegment | ASegment | ZSegment;
 
 export type PathArray = [MSegment | mSegment, ...PathSegment[]];

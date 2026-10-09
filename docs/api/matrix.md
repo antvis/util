@@ -149,7 +149,7 @@ function animateRotation(element: HTMLElement, targetAngle: number) {
 
 根据变换操作序列对矩阵进行变换。
 
-- 支持平移(translate)、缩放(scale)、旋转(rotate)和矩阵乘法(multiply)操作
+- 支持平移（translate）、缩放（scale）、旋转（rotate）和矩阵乘法（multiply）操作
 - 使用 gl-matrix 库进行矩阵运算
 - 按顺序执行变换操作
 - 支持初始矩阵输入

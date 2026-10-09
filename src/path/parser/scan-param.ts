@@ -36,7 +36,7 @@ export function scanParam(path: PathParser) {
   }
 
   if (ch !== 0x2e /* . */) {
-    zeroFirst = ch === 0x30 /* 0 */;
+    zeroFirst = ch === 0x30; /* 0 */
     index += 1;
 
     ch = pathValue.charCodeAt(index);
