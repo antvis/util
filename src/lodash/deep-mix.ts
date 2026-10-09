@@ -18,6 +18,10 @@ function _deepMix(dist, src, level?, maxLevel?) {
   maxLevel = maxLevel || MAX_MIX_LEVEL;
   for (const key in src) {
     if (hasOwn(src, key)) {
+      // Prevent prototype pollution by skipping dangerous keys
+      if (key === '__proto__' || key === 'constructor' || key === 'prototype') {
+        continue;
+      }
       const value = src[key];
       if (value !== null && isPlainObject(value)) {
         if (!isPlainObject(dist[key])) {
