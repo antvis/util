@@ -902,7 +902,7 @@ console.log(sortBy(numbers, item => Math.abs(item.value)));
 
 | 参数 | 说明 | 类型 | 默认值 | 中文说明 |
 |---------|------|------|---------|----------|
-| result | 排序后的数组 | ObjectType<T>[] | - | 排序后的数组(修改原数组) |
+| result | 排序后的数组 | ObjectType<T>[] | - | 排序后的数组（修改原数组） |
 
 ## union
 
@@ -3406,7 +3406,7 @@ const cached = memoize(heavyComputation, undefined, 1000);
 | augment | args | any[] | 目标类和要混入的对象/类 |
 | clone | obj | any | 要克隆的对象或数组 |
 | debounce | func | Function | 要防抖的函数 |
-| debounce | wait | number | 延迟时间(ms) |
+| debounce | wait | number | 延迟时间（ms） |
 | debounce | immediate | boolean | 是否立即执行 |
 | memoize | fn | Function | 要缓存的函数 |
 | memoize | resolver | Function | 缓存键生成函数 |
@@ -3880,7 +3880,7 @@ handler.cancel();
 | 参数 | 说明 | 类型 | 默认值 |
 |---------|------|------|---------|
 | func | 要节流的函数 | Function | - |
-| wait | 等待时间(ms) | number | - |
+| wait | 等待时间（ms） | number | - |
 | options | 配置选项 | OptionsType | {} |
 
 ## toArray
