@@ -27,8 +27,10 @@ export function normalizePath(pathInput: string | PathArray): NormalArray {
 
     params.x1 = +segment[seglen - 2];
     params.y1 = +segment[seglen - 1];
-    params.x2 = +segment[seglen - 4] || params.x1;
-    params.y2 = +segment[seglen - 3] || params.y1;
+    // Only a cubic segment has a second control point that a following S reflects.
+    // After any other segment, S uses the current point as its first control point.
+    params.x2 = segment[0] === 'C' ? +segment[3] : params.x1;
+    params.y2 = segment[0] === 'C' ? +segment[4] : params.y1;
   }
 
   return path as NormalArray;

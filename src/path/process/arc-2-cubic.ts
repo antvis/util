@@ -1,4 +1,5 @@
 import { rotateVector } from '../util/rotate-vector';
+import { lineToCubic } from './line-2-cubic';
 
 /**
  * Converts A (arc-to) segments to C (cubic-bezier-to).
@@ -20,8 +21,9 @@ export function arcToCubic(
 ) {
   let x1 = X1;
   let y1 = Y1;
-  let rx = RX;
-  let ry = RY;
+  // Negative radii use their absolute value.
+  let rx = Math.abs(RX);
+  let ry = Math.abs(RY);
   let x2 = X2;
   let y2 = Y2;
   // for more information of where this Math came from visit:
@@ -38,6 +40,11 @@ export function arcToCubic(
   let cy;
 
   if (!recursive) {
+    // A zero radius arc is a straight line to the end point.
+    if (!rx || !ry) {
+      return lineToCubic(X1, Y1, X2, Y2);
+    }
+
     xy = rotateVector(x1, y1, -rad);
     x1 = xy.x;
     y1 = xy.y;
