@@ -25,8 +25,19 @@ export function normalizePath(pathInput: string | PathArray): NormalArray {
     const segment = path[i];
     const seglen = segment.length;
 
-    params.x1 = +segment[seglen - 2];
-    params.y1 = +segment[seglen - 1];
+    if (segment[0] === 'M') {
+      params.x = +segment[1];
+      params.y = +segment[2];
+    }
+    if (segment[0] === 'Z') {
+      // Z has no coordinates: it moves the current point back to the start of the subpath,
+      // which is where a following command without its own M starts
+      params.x1 = params.x;
+      params.y1 = params.y;
+    } else {
+      params.x1 = +segment[seglen - 2];
+      params.y1 = +segment[seglen - 1];
+    }
     // Only a cubic segment has a second control point that a following S reflects.
     // After any other segment, S uses the current point as its first control point.
     params.x2 = segment[0] === 'C' ? +segment[3] : params.x1;
