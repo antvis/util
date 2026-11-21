@@ -8,7 +8,9 @@ function angleBetween(v0: Point, v1: Point) {
   const p = v0x * v1x + v0y * v1y;
   const n = Math.sqrt((v0x ** 2 + v0y ** 2) * (v1x ** 2 + v1y ** 2));
   const sign = v0x * v1y - v0y * v1x < 0 ? -1 : 1;
-  const angle = sign * Math.acos(p / n);
+  // rounding can push the cosine just past -1 or 1 (e.g. the opposite
+  // vectors of a half circle), where Math.acos returns NaN
+  const angle = sign * Math.acos(Math.min(1, Math.max(-1, p / n)));
 
   return angle;
 }
