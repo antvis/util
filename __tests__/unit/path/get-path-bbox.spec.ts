@@ -8,6 +8,14 @@ describe('get path bbox', () => {
     expect(bbox).toEqual({ cx: 0, cy: 0, cz: 0, height: 0, width: 0, x: 0, x2: 0, y: 0, y2: 0 });
   });
 
+  it('should calc a half circle arc whose radius is scaled up', () => {
+    const { x, y, width, height } = getPathBBox('M0 0 A1 1 0 0 1 2 39');
+    expect(x).toBeCloseTo(0);
+    expect(y).toBeCloseTo(0);
+    expect(width).toBeCloseTo(20.5, 1);
+    expect(height).toBeCloseTo(39);
+  });
+
   it('should calc rect path correctly', () => {
     const str: PathArray = [['M', 0, 0], ['L', 100, 0], ['L', 100, 100], ['L', 0, 100], ['Z']];
     const bbox = getPathBBox(str);

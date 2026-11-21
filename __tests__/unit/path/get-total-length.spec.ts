@@ -43,6 +43,15 @@ describe('get total length', () => {
     expect(length).toBeCloseTo(60.56493518777911);
   });
 
+  it('should calc the length of a half circle arc whose radius is scaled up', () => {
+    // The radius 1 is too small, so it is scaled up to half the distance between
+    // the endpoints. The start and end vectors are then opposite, and rounding
+    // put their cosine just below -1, which made the sweep angle NaN.
+    const length = getTotalLength('M0 0 A1 1 0 0 1 2 39');
+    const radius = Math.hypot(2, 39) / 2;
+    expect(Math.abs(length - Math.PI * radius)).toBeLessThan(0.1);
+  });
+
   it('should calc the length of Q commands correctly', () => {
     const reversed: PathArray = [
       ['M', 190, 50],
