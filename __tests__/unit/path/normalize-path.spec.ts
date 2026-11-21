@@ -1,4 +1,4 @@
-import { normalizePath, path2Curve } from '../../../src';
+import { getPathBBox, getTotalLength, normalizePath, path2Curve } from '../../../src';
 
 describe('test normalize path', () => {
   it('should use the current point for T after a non-quadratic segment', () => {
@@ -46,6 +46,31 @@ describe('test normalize path', () => {
       ['Q', 30, -10, 40, 0],
       ['Q', 50, 10, 60, 0],
     ]);
+  });
+});
+
+describe('test commands after Z', () => {
+  it('should start H, V, S and T after Z at the start of the subpath', () => {
+    expect(normalizePath('M10 10 h5 v5 Z h10 V30')).toEqual([
+      ['M', 10, 10],
+      ['L', 15, 10],
+      ['L', 15, 15],
+      ['Z'],
+      ['L', 20, 10],
+      ['L', 20, 30],
+    ]);
+    expect(normalizePath('M10 10 h5 Z S30 20 40 10')).toEqual([
+      ['M', 10, 10],
+      ['L', 15, 10],
+      ['Z'],
+      ['C', 10, 10, 30, 20, 40, 10],
+    ]);
+    expect(normalizePath('M10 10 h5 Z T40 10')).toEqual([['M', 10, 10], ['L', 15, 10], ['Z'], ['Q', 10, 10, 40, 10]]);
+  });
+
+  it('should measure a path that keeps drawing after Z', () => {
+    expect(getTotalLength('M10 10 h5 Z h10')).toBeCloseTo(20);
+    expect(getPathBBox('M10 10 h5 v5 Z V30')).toEqual(getPathBBox('M10 10 h5 v5 Z M10 10 V30'));
   });
 });
 
